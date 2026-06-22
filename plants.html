@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Browse our curated collection of indoor, outdoor, flowering, and ornamental plants at GreenSpire Solutions.">
+  <title>Plants Catalog — GreenSpire Solutions</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://ik.imagekit.io/greenspire/images/logo.webp?updatedAt=1776152708262">
+
+  <!-- Open Graph / Social Share -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Plants Catalog — GreenSpire Solutions">
+  <meta property="og:description" content="Browse our curated collection of indoor, outdoor, flowering, and ornamental plants.">
+  <meta property="og:image" content="https://ik.imagekit.io/greenspire/images/plants/money-plant.webp?updatedAt=1776152659560">
+  <meta property="og:url" content="https://greenspire.netlify.app/plants.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="style/global.css">
+  <link rel="stylesheet" href="style/header.css">
+  <link rel="stylesheet" href="style/footer.css">
+  <link rel="stylesheet" href="style/plants.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <nav class="navbar navbar--white" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="https://ik.imagekit.io/greenspire/images/logo.webp?updatedAt=1776152708262" alt="GreenSpire Solutions Logo" style="height:36px;width:auto;">
+        <span class="nav-logo-text">Green<span>Spire</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="plants.html">Plants</a>
+        <a href="contact.html">Contact</a>
+        <a href="tel:+919403400841" class="btn btn--primary nav-cta">
+          <span class="material-symbols-outlined">call</span> Call Now
+        </a>
+      </div>
+      <div class="nav-hamburger" id="navHamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span><span class="current">Plants</span>
+      </div>
+      <h1>Our Plant Collection</h1>
+      <p>Handpicked varieties for every space — indoors and outdoors</p>
+    </div>
+  </header>
+
+  <!-- PLANT CATALOG -->
+  <section class="section plants-catalog">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Browse Plants</p>
+        <h2>Find Your Perfect Plant</h2>
+        <p>Explore our wide range of indoor, outdoor, flowering, and ornamental plants.</p>
+      </div>
+
+      <div class="filter-bar reveal">
+        <button class="filter-pill active" data-filter="all">All Plants</button>
+        <button class="filter-pill" data-filter="indoor">Indoor</button>
+        <button class="filter-pill" data-filter="outdoor">Outdoor</button>
+        <button class="filter-pill" data-filter="flowering">Flowering</button>
+        <button class="filter-pill" data-filter="succulent">Succulents</button>
+        <button class="filter-pill" data-filter="tree">Trees</button>
+      </div>
+
+      <div class="plants-grid">
+        <!-- Plant 1 -->
+        <div class="plant-card reveal" data-category="indoor">
+          <div class="card-image">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/money-plant.webp?updatedAt=1776152659560" loading="lazy" alt="Money Plant">
+            <span class="card-badge">Popular</span>
+          </div>
+          <div class="card-body">
+            <p class="plant-category">Indoor</p>
+            <h3>Money Plant</h3>
+            <p class="botanical-name">Epipremnum aureum</p>
+            <div class="card-footer">
+              <span class="price">&#8377;149</span>
+            </div>
+          </div>
+        </div>
+        <!-- Plant 2 -->
+        <div class="plant-card reveal" data-category="indoor">
+          <div class="card-image">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/snake-plant.webp?updatedAt=1776152659241" loading="lazy" alt="Snake Plant">
+          </div>
+          <div class="card-body">
+            <p class="plant-category">Indoor</p>
+            <h3>Snake Plant</h3>
+            <p class="botanical-name">Sansevieria trifasciata</p>
+            <div class="card-footer">
+              <span class="price">&#8377;249</span>
+            </div>
+          </div>
+        </div>
+        <!-- Plant 3 -->
+        <div class="plant-card reveal" data-category="flowering">
+          <div class="card-image">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/Hibiscus.webp?updatedAt=1776152659584" loading="lazy" alt="Hibiscus">
+            <span class="card-badge">Seasonal</span>
+          </div>
+          <div class="card-body">
+            <p class="plant-category">Flowering</p>
+            <h3>Hibiscus</h3>
+            <p class="botanical-name">Hibiscus rosa-sinensis</p>
+            <div class="card-footer">
+              <span class="price">&#8377;199</span>
+            </div>
+          </div>
+        </div>
+        <!-- Plant 4 -->
+        <div class="plant-card reveal" data-category="succulent">
+          <div class="card-image">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/aloe-vera.webp?updatedAt=1776152659064" loading="lazy" alt="Aloe Vera">
+          </div>
+          <div class="card-body">
+            <p class="plant-category">Succulent</p>
+            <h3>Aloe Vera</h3>
+            <p class="botanical-name">Aloe barbadensis miller</p>
+            <div class="card-footer">
+              <span class="price">&#8377;129</span>
+            </div>
+          </div>
+        </div>
+        <!-- Plant 5 -->
+        <div class="plant-card reveal" data-category="outdoor">
+          <div class="card-image">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/Bougainvillea.webp?updatedAt=1776152659436" loading="lazy" alt="Bougainvillea">
+            <span class="card-badge">Best Seller</span>
+          </div>
+          <div class="card-body">
+            <p class="plant-category">Outdoor</p>
+            <h3>Bougainvillea</h3>
+            <p class="botanical-name">Bougainvillea glabra</p>
+            <div class="card-footer">
+              <span class="price">&#8377;299</span>
+            </div>
+          </div>
+        </div>
+        <!-- Plant 6 -->
+        <div class="plant-card reveal" data-category="tree">
+          <div class="card-image">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/Neem_Tree.webp?updatedAt=1776152659601" loading="lazy" alt="Neem Tree Sapling">
+          </div>
+          <div class="card-body">
+            <p class="plant-category">Tree</p>
+            <h3>Neem Tree</h3>
+            <p class="botanical-name">Azadirachta indica</p>
+            <div class="card-footer">
+              <span class="price">&#8377;349</span>
+            </div>
+          </div>
+        </div>
+        <!-- Plant 7 -->
+        <div class="plant-card reveal" data-category="flowering">
+          <div class="card-image">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/Jasmine.webp?updatedAt=1776152659475" loading="lazy" alt="Jasmine">
+          </div>
+          <div class="card-body">
+            <p class="plant-category">Flowering</p>
+            <h3>Jasmine</h3>
+            <p class="botanical-name">Jasminum sambac</p>
+            <div class="card-footer">
+              <span class="price">&#8377;179</span>
+            </div>
+          </div>
+        </div>
+        <!-- Plant 8 -->
+        <div class="plant-card reveal" data-category="indoor">
+          <div class="card-image">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/Peace_Lily.webp?updatedAt=1776152659532" loading="lazy" alt="Peace Lily">
+            <span class="card-badge">New</span>
+          </div>
+          <div class="card-body">
+            <p class="plant-category">Indoor</p>
+            <h3>Peace Lily</h3>
+            <p class="botanical-name">Spathiphyllum wallisii</p>
+            <div class="card-footer">
+              <span class="price">&#8377;399</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANT CARE TIPS -->
+  <section class="section plant-info-banner">
+    <div class="container reveal">
+      <h2>Plant Care Tips</h2>
+      <p>Simple practices to keep your green friends healthy and thriving</p>
+      <div class="care-tips-grid">
+        <div class="care-tip">
+          <span class="material-symbols-outlined">light_mode</span>
+          <h4>Right Sunlight</h4>
+          <p>Place plants where they get the right amount of light for their species.</p>
+        </div>
+        <div class="care-tip">
+          <span class="material-symbols-outlined">water_drop</span>
+          <h4>Proper Watering</h4>
+          <p>Water consistently but avoid overwatering — check the soil before each session.</p>
+        </div>
+        <div class="care-tip">
+          <span class="material-symbols-outlined">compost</span>
+          <h4>Organic Soil</h4>
+          <p>Use nutrient-rich organic soil mix for healthier root growth and blooming.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <span class="nav-logo-text">GreenSpire<span> Solutions</span></span>
+          </a>
+          <p>We bring nature closer to you with sustainable and beautiful green solutions. From maintenance to
+            complete makeovers, we do it all.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html"><span class="material-symbols-outlined">chevron_right</span> Home</a>
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Services</a>
+            <a href="plants.html"><span class="material-symbols-outlined">chevron_right</span> Plants</a>
+            <a href="contact.html"><span class="material-symbols-outlined">chevron_right</span> Contact</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <div class="footer-links">
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Garden Design</a>
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Landscaping</a>
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Lawn Care</a>
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Green Gifts</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <span class="material-symbols-outlined">location_on</span>
+            <span>Shop No.18, Shivakala Arcade, Boisar - Tarapur Road, Boisar - 401501</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="material-symbols-outlined">call</span>
+            <a href="tel:+919403400841">+91 9403400841</a>
+          </div>
+          <div class="footer-contact-item">
+            <span class="material-symbols-outlined">mail</span>
+            <a href="mailto:akashkapare2005@gmail.com">akashkapare2005@gmail.com</a>
+          </div>
+        </div>
+      </div><!-- /footer-grid -->
+      <div class="footer-bottom">
+        <div class="footer-social">
+          <!-- TODO: Replace with your real Facebook page URL -->
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon social-facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <!-- TODO: Replace with your real Instagram profile URL -->
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon social-instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/919403400841" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon social-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="mailto:akashkapare2005@gmail.com" aria-label="Email" class="social-icon social-mail">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GO TO TOP BUTTON -->
+  <button class="go-top-btn" id="goTopBtn" aria-label="Go to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

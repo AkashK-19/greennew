@@ -332,8 +332,8 @@
   if (!flow) return;
 
   function buildCurve() {
-    // Only inject on mobile (<= 768px)
-    const isMobile = window.innerWidth <= 768;
+    // Inject on phones and tablets where the process section uses a vertical timeline.
+    const isMobile = window.innerWidth <= 1024;
 
     // Remove any existing SVG we injected
     const existing = flow.querySelector('.process-curve-svg');
