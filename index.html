@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="GreenSpire Solutions — Professional landscaping, tree planting, and garden development services in Boisar. Transform your space with nature.">
+  <title>GreenSpire Solutions — Landscaping &amp; Garden Development</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://ik.imagekit.io/greenspire/images/logo.webp?updatedAt=1776152708262">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GreenSpire Solutions — Landscaping &amp; Garden Development">
+  <meta property="og:description" content="Professional landscaping, tree planting, and garden development services in Boisar.">
+  <meta property="og:image" content="https://ik.imagekit.io/greenspire/images/hero1.webp?updatedAt=1776152728259">
+  <meta property="og:url" content="https://greenspire.netlify.app/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style/global.css">
+  <link rel="stylesheet" href="style/header.css">
+  <link rel="stylesheet" href="style/footer.css">
+  <link rel="stylesheet" href="style/home.css">
+</head>
+
+<body>
+
+  <!-- ═══════ PAGE LOADER ═══════ -->
+  <div class="page-loader" id="pageLoader" aria-hidden="true">
+    <img class="loader-image" src="https://ik.imagekit.io/greenspire/images/logo.webp?updatedAt=1776152708262" alt="GreenSpire logo">
+    <div class="loader-logo">GreenSpire<span> Solutions</span></div>
+  </div>
+
+  <!-- ═══════ CUSTOM CURSOR ═══════ -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ═══════ ANNOUNCEMENT BAR ═══════ -->
+  <div class="announcement-bar" aria-label="Announcement">
+    <div class="ann-inner">
+      <span><span class="material-symbols-outlined">local_florist</span> Free garden consultation for first-time clients</span>
+      <span><span class="material-symbols-outlined">emoji_events</span> 500+ Happy Clients across Boisar &amp; Palghar</span>
+      <span><span class="material-symbols-outlined">eco</span> 100% Eco-Friendly Practices</span>
+      <span><span class="material-symbols-outlined">call</span> Call Now: +91 8080956853</span>
+      <span><span class="material-symbols-outlined">card_giftcard</span> Corporate Green Gifting Available</span>
+      <!-- duplicate for seamless loop -->
+      <span><span class="material-symbols-outlined">local_florist</span> Free garden consultation for first-time clients</span>
+      <span><span class="material-symbols-outlined">emoji_events</span> 500+ Happy Clients across Boisar &amp; Palghar</span>
+      <span><span class="material-symbols-outlined">eco</span> 100% Eco-Friendly Practices</span>
+      <span><span class="material-symbols-outlined">call</span> Call Now: +91 8080956853</span>
+      <span><span class="material-symbols-outlined">card_giftcard</span> Corporate Green Gifting Available</span>
+    </div>
+  </div>
+
+  <!-- ═══════ NAVBAR ═══════ -->
+  <nav class="navbar navbar--white" id="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo" aria-label="GreenSpire Home">
+        <img src="https://ik.imagekit.io/greenspire/images/logo.webp?updatedAt=1776152708262"
+          alt="GreenSpire Solutions Logo" style="height:40px;width:auto;">
+        <span class="nav-logo-text">GreenSpire Solutions</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="plants.html">Plants</a>
+        <a href="contact.html">Contact</a>
+        <a href="tel:+918080956853" class="btn btn--primary nav-cta" id="navCallCta">
+          <span class="material-symbols-outlined">call</span> Call Now
+        </a>
+      </div>
+
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════
+       HERO — 3-PANEL EDITORIAL
+       ═══════════════════════════════════════ -->
+  <section class="hero-editorial" id="hero" aria-label="Hero section">
+
+    <!-- Panel 1: Content -->
+    <div class="hero-panel hero-panel--dark">
+      <div class="hero-panel-inner">
+
+        <h1 class="hero-display-title">
+          We Turn<br>
+          <span class="title-outline">Empty</span><br>
+          Spaces Into<br>
+          <em>Green</em> Life.
+        </h1>
+
+        <p class="hero-desc-v2">
+          Science-backed landscaping, garden design &amp; eco-gifting —
+          trusted by 500+ clients across Boisar and beyond.
+        </p>
+
+        <div class="hero-ctas-v2">
+          <a href="services.html" class="btn btn--amber-solid" id="heroExploreCta">
+            Explore Services <span class="material-symbols-outlined">arrow_forward</span>
+          </a>
+          <a href="#get-quote" class="btn btn--ghost-white" id="heroQuoteCta">Get Free Quote</a>
+        </div>
+
+        <div class="hero-founder-badge">
+          <div class="badge-avatar">GK</div>
+          <div>
+            <strong>Gaurav Kapare</strong>
+            <span>M.Sc Horticulture · Dr. BSKKV</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Panel 2: Hero Slideshow -->
+    <div class="hero-panel hero-panel--center">
+      <div class="hero-slideshow" id="heroSlideshow">
+
+        <div class="hero-slide hero-slide--active">
+          <img src="https://ik.imagekit.io/greenspire/images/hero1.webp?updatedAt=1776152728259"
+            alt="GreenSpire landscaping project" fetchpriority="high">
+          <div class="slide-caption">
+            <span class="slide-tag">Landscaping</span>
+          </div>
+        </div>
+
+        <div class="hero-slide">
+          <img src="https://ik.imagekit.io/greenspire/images/hero2.webp?updatedAt=1776152728259"
+            alt="GreenSpire garden design" loading="lazy">
+          <div class="slide-caption">
+            <span class="slide-tag">Garden Design</span>
+          </div>
+        </div>
+
+        <div class="hero-slide">
+          <img src="https://ik.imagekit.io/greenspire/images/service1.webp?updatedAt=1776152736994"
+            alt="GreenSpire terrace garden" loading="lazy">
+          <div class="slide-caption">
+            <span class="slide-tag">Terrace Garden</span>
+          </div>
+        </div>
+
+        <!-- Slide Dots removed -->
+
+        <!-- Slide Progress Bar -->
+        <div class="slide-progress" aria-hidden="true">
+          <div class="slide-progress-bar" id="slideProgressBar"></div>
+        </div>
+
+      </div>
+      <div class="hero-blob-1" aria-hidden="true"></div>
+      <div class="hero-blob-2" aria-hidden="true"></div>
+    </div>
+
+    <!-- Panel 3: Cards -->
+    <div class="hero-panel hero-panel--right">
+
+      <div class="hero-right-card hero-right-card--amber">
+        <div class="right-card-body">
+          <span class="right-card-pill">Quick Book</span>
+          <h3>Book a <br>Garden Visit</h3>
+          <a href="contact.html" class="right-card-btn" id="heroBookBtn">
+            Contact Us <span class="material-symbols-outlined">north_east</span>
+          </a>
+        </div>
+        <div class="right-card-media">
+          <img src="https://ik.imagekit.io/greenspire/images/service1.webp?updatedAt=1776152736994"
+            loading="lazy" alt="Garden consultation service">
+        </div>
+      </div>
+
+      <div class="hero-right-card hero-right-card--mint">
+        <div class="right-card-media">
+          <img src="https://ik.imagekit.io/greenspire/images/work5.webp?updatedAt=1776152709496"
+            loading="lazy" alt="Terrace garden project">
+        </div>
+        <div class="right-card-media">
+          <img src="https://ik.imagekit.io/greenspire/images/work2.webp?updatedAt=1776152711094"
+            loading="lazy" alt="Garden work project">
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       AMBER TICKER STRIP
+       ═══════════════════════════════════════ -->
+  <div class="marquee-ticker" aria-hidden="true">
+    <div class="marquee-ticker-inner">
+      <!-- Set 1 -->
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">local_florist</span> Garden Design <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">park</span> Tree Planting <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">house</span> Landscape Architecture <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">eco</span> Eco-Friendly Practices <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">card_giftcard</span> Green Corporate Gifting <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">star</span> 4.9 Star Rated Service <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">emoji_events</span> 500+ Happy Clients <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">sprout</span> Lawn Care &amp; Maintenance <span class="ticker-dot"></span></div>
+      <!-- Set 2 (duplicate) -->
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">local_florist</span> Garden Design <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">park</span> Tree Planting <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">house</span> Landscape Architecture <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">eco</span> Eco-Friendly Practices <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">card_giftcard</span> Green Corporate Gifting <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">star</span> 4.9 Star Rated Service <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">emoji_events</span> 500+ Happy Clients <span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span class="material-symbols-outlined ticker-icon">sprout</span> Lawn Care &amp; Maintenance <span class="ticker-dot"></span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       STATS BAR
+       ═══════════════════════════════════════ -->
+  <section class="stats-bar-v2" aria-label="Statistics">
+    <div class="container">
+      <div class="stats-grid-v2">
+        <div class="stat-v2 reveal">
+          <p class="stat-num-v2"><span class="counter" data-target="500">0</span>+</p>
+          <p class="stat-lbl-v2">Happy Clients</p>
+        </div>
+        <div class="stat-divider-v2" aria-hidden="true"></div>
+        <div class="stat-v2 reveal">
+          <p class="stat-num-v2"><span class="counter" data-target="200">0</span>+</p>
+          <p class="stat-lbl-v2">Plant Varieties</p>
+        </div>
+        <div class="stat-divider-v2" aria-hidden="true"></div>
+        <div class="stat-v2 reveal">
+          <p class="stat-num-v2"><span class="counter" data-target="150">0</span>+</p>
+          <p class="stat-lbl-v2">Projects Done</p>
+        </div>
+        <div class="stat-divider-v2" aria-hidden="true"></div>
+        <div class="stat-v2 reveal">
+          <p class="stat-num-v2">4.9<span style="font-size:1.6rem" aria-hidden="true"><span class="material-symbols-outlined">star</span></span></p>
+          <p class="stat-lbl-v2">Avg. Rating</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CATEGORIES SCROLL STRIP
+       ═══════════════════════════════════════ -->
+  <section class="categories-section" id="categories" aria-label="Our Categories">
+    <div class="container">
+      <p class="section-label" style="color:var(--clr-amber-light);text-align:center;display:block;">
+        What We Offer
+      </p>
+      <h2 class="text-center" style="color:var(--clr-white);font-family:var(--ff-heading);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;margin-bottom:var(--space-xl);">
+        Our Services
+      </h2>
+    </div>
+    <div class="categories-scroll" id="categoriesScroll">
+
+      <div class="cat-pill">
+        <div class="cat-icon">
+          <img src=https://ik.imagekit.io/greenspire/images/service1.webp?updatedAt=1776152736994" alt="Plants" loading="lazy">
+        </div>
+        <span class="cat-name">Plants</span>
+      </div>
+
+      <div class="cat-pill">
+        <div class="cat-icon">
+          <img src="https://ik.imagekit.io/greenspire/images/service1.webp?updatedAt=1776152736994" alt="Pots" loading="lazy">
+        </div>
+        <span class="cat-name">Pots</span>
+      </div>
+
+      <div class="cat-pill">
+        <div class="cat-icon">
+          <img src="https://ik.imagekit.io/greenspire/images/plants/money-plant.webp?updatedAt=1776152659560" alt="Soils" loading="lazy">
+        </div>
+        <span class="cat-name">Soils</span>
+      </div>
+
+      <div class="cat-pill">
+        <div class="cat-icon">
+          <img src="https://ik.imagekit.io/greenspire/images/plants/Peace_Lily.webp?updatedAt=1776152659532" alt="Fertilisers" loading="lazy">
+        </div>
+        <span class="cat-name">Fertilisers</span>
+      </div>
+
+      <div class="cat-pill">
+        <div class="cat-icon">
+          <img src="https://ik.imagekit.io/greenspire/images/plants/Jasmine.webp?updatedAt=1776152659475" alt="Seeds" loading="lazy">
+        </div>
+        <span class="cat-name">Seeds</span>
+      </div>
+
+      <div class="cat-pill">
+        <div class="cat-icon">
+          <img src="https://ik.imagekit.io/greenspire/images/plants/Bougainvillea.webp?updatedAt=1776152659436" alt="Garden Tools" loading="lazy">
+        </div>
+        <span class="cat-name">Garden Tools</span>
+      </div>
+
+      <div class="cat-pill">
+        <div class="cat-icon">
+          <img src="https://ik.imagekit.io/greenspire/images/plants/aloe-vera.webp?updatedAt=1776152659064" alt="Watering Solutions" loading="lazy">
+        </div>
+        <span class="cat-name">Watering</span>
+      </div>
+
+      <div class="cat-pill">
+        <div class="cat-icon">
+          <img src="https://ik.imagekit.io/greenspire/images/plants/aloe-vera.webp?updatedAt=1776152659064" alt="Pest Control" loading="lazy">
+        </div>
+        <span class="cat-name">Pest Control</span>
+      </div>
+
+      <div class="cat-pill">
+        <div class="cat-icon">
+          <img src="https://ik.imagekit.io/greenspire/images/plants/aloe-vera.webp?updatedAt=1776152659064" alt="Garden Decor" loading="lazy">
+        </div>
+        <span class="cat-name">Garden Decor</span>
+      </div>
+
+      <div class="cat-pill">
+        <div class="cat-icon">
+          <img src="https://ik.imagekit.io/greenspire/images/plants/aloe-vera.webp?updatedAt=1776152659064" alt="Green Gifts" loading="lazy">
+        </div>
+        <span class="cat-name">Green Gifts</span>
+      </div>
+
+      <div class="cat-pill">
+        <div class="cat-icon">
+          <img src="https://ik.imagekit.io/greenspire/images/plants/aloe-vera.webp?updatedAt=1776152659064" alt="Trees" loading="lazy">
+        </div>
+        <span class="cat-name">Trees</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SERVICES — WHAT WE DO (REDESIGN)
+       ═══════════════════════════════════════ -->
+  <section class="section wwd-section" id="services-preview" aria-label="Our Services">
+    <div class="container">
+
+      <div class="wwd-header reveal">
+        <div class="wwd-header-left">
+          <p class="section-label wwd-label">What We Do</p>
+          <h2 class="wwd-title">Our Green Expertise</h2>
+          <p class="wwd-subtitle">From soil to skyline — we craft beautiful, sustainable green spaces tailored to your vision.</p>
+        </div>
+        <a href="services.html" class="btn btn--outline wwd-view-all" id="svcViewAll">
+          View All <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+
+      <div class="wwd-grid">
+
+        <!-- FEATURED: Custom Garden Design (col 1, spans 2 rows) -->
+        <div class="wwd-card wwd-featured reveal">
+          <img src="https://ik.imagekit.io/greenspire/images/service1.webp?updatedAt=1776152736994" loading="lazy" alt="Custom Garden Design">
+          <div class="wwd-featured-overlay"></div>
+          <div class="wwd-featured-body">
+            <span class="wwd-featured-tag">⭐ Most Popular</span>
+            <h3>Custom Garden Design</h3>
+            <p>Tailored layouts by our BSKKV-certified horticulturist — from your vision to lush, breathtaking reality.</p>
+            <a href="#get-quote" class="btn btn--amber-solid" id="svcFeatureCta">
+              Get Free Quote <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- TEAL: Full-Scale Landscaping (spans col 2–3, row 1) -->
+        <div class="wwd-card wwd-wide-top wwd-card--teal reveal">
+          <div class="wwd-wide-text">
+            <h4>Full-Scale Landscaping</h4>
+            <p>Trees, shrubs & complete outdoor makeovers for homes and commercial spaces.</p>
+          </div>
+        </div>
+
+        <!-- LIME: Lawn Care (col 2, row 2) -->
+        <div class="wwd-card wwd-small-card wwd-card--lime reveal">
+          <div class="wwd-small-text">
+            <h4>Lawn Care &amp; Upkeep</h4>
+            <p>Seasonal mowing, fertilising &amp; expert maintenance plans.</p>
+          </div>
+        </div>
+
+        <!-- CORAL: Terrace Gardens (col 3, row 2) -->
+        <div class="wwd-card wwd-small-card wwd-card--coral reveal">
+          <div class="wwd-small-text">
+            <h4>Terrace Gardens</h4>
+            <p>Vertical planters &amp; herb walls for urban balconies and homes.</p>
+          </div>
+        </div>
+
+        <!-- AMBER: Corporate Green Gifting (col 1–2, row 3) -->
+        <div class="wwd-card wwd-img-card wwd-card--amber wwd-img-amber reveal">
+          <div class="wwd-img-card-photo">
+            <img src="https://ik.imagekit.io/greenspire/images/hero2.webp?updatedAt=1776152728259" loading="lazy" alt="Corporate Green Gifting">
+          </div>
+          <div class="wwd-img-card-body">
+            <h4>Corporate Green Gifting</h4>
+            <p>Diwali hampers, onboarding kits &amp; bulk eco orders for corporates and businesses.</p>
+          </div>
+        </div>
+
+        <!-- PURPLE: Event Green Styling (col 3, row 3) -->
+        <div class="wwd-card wwd-img-card wwd-img-purple wwd-card--purple reveal">
+          <div class="wwd-img-card-photo">
+            <img src="https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795" loading="lazy" alt="Event Green Styling">
+          </div>
+          <div class="wwd-img-card-body">
+            <h4>Event Green Styling</h4>
+            <p>Floral &amp; plant decor for weddings, parties &amp; occasions.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+ 
+  <!-- ═══════════════════════════════════════
+       WHY GREENSPIRE — SPLIT PANEL
+       ═══════════════════════════════════════ -->
+ <section class="why-section" id="why" aria-label="Why Choose GreenSpire">
+    <img class="why-bg-img" src="https://ik.imagekit.io/greenspire/images/3a68ea0f-f8fa-48de-a490-28f92edc816f.png?updatedAt=1781956686937" alt="GreenSpire potted plants on a sunlit table" loading="lazy">
+    <div class="container">
+      <div class="why-content reveal-left">
+        <p class="section-label section-label--dark">Why Choose Us</p>
+        <h2>Garden Services<br>by GreenSpire</h2>
+        <p class="why-desc">
+          Our end-to-end garden services cover everything from botanical styling and
+          landscape architecture to curated planters — all tailored to your vision
+          and handled with zero hassle.
+        </p>
+        <div class="why-points">
+  <div class="why-point">
+    <span class="why-point-icon material-symbols-outlined">verified</span>
+    <span>BSKKV Certified Expert</span>
+  </div>
+  <div class="why-point">
+    <span class="why-point-icon material-symbols-outlined">eco</span>
+    <span>100% Eco-Friendly Practices</span>
+  </div>
+  <div class="why-point">
+    <span class="why-point-icon material-symbols-outlined">groups</span>
+    <span>500+ Happy Clients</span>
+  </div>
+  <div class="why-point">
+    <span class="why-point-icon material-symbols-outlined">support_agent</span>
+    <span>After-Service Support</span>
+  </div>
+  <div class="why-point">
+    <span class="why-point-icon material-symbols-outlined">schedule</span>
+    <span>On-Time Project Delivery</span>
+  </div>
+  <div class="why-point">
+    <span class="why-point-icon material-symbols-outlined">design_services</span>
+    <span>Free Design Consultation</span>
+  </div>
+</div>
+        <a href="services.html" class="btn btn--amber-solid" id="whyViewServices">
+          View All Services <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+</section>
+
+ <!-- ═══════════════════════════════════════
+     BRANDS 
+     ═══════════════════════════════════════ -->
+<div class="brands-strip" id="brands" aria-label="Trusted by leading brands">
+  <div class="brands-label">Our Esteemed Clients</div>
+  <p class="brands-desc">Over the years, we have forged partnerships with numerous individuals &amp; brands as plant collaborators, committed to delivering exceptional service</p>
+  <div class="brands-marquee-wrap">
+    <div class="brands-marquee">
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/royal%20pharma.jpg" loading="lazy" alt="Royal Pharma"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/resonance.png" loading="lazy" alt="Resonance Specialties"></div>
+<div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/raghuvanshi.jpg" loading="lazy" alt="Raghuvanshi"></div>
+<div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/mango%20inn.jpg" loading="lazy" alt="The Mango Inn"></div>
+
+<div class="brand-row-break"></div>
+
+<div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/terracon.jpg" loading="lazy" alt="Terracon"></div>
+<div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/eastmen.png" loading="lazy" alt="Eastmen Chemicals"></div>
+<div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/chemical%20india.jpg" loading="lazy" alt="Sumitomo Chemical India"></div>
+    </div>
+  </div>
+</div>
+
+  <!-- ═══════════════════════════════════════
+       ABOUT FOUNDER
+       ═══════════════════════════════════════ -->
+  <section class="section about-v2" id="about" aria-label="About Founder">
+    <div class="container">
+      <div class="about-v2-grid">
+        <div class="about-v2-img reveal-left">
+          <img src="https://ik.imagekit.io/greenspire/images/about.webp?updatedAt=1776152697371"
+            loading="lazy" alt="Mr. Gaurav Chandulal Kapare — Founder of GreenSpire Solutions">
+        </div>
+        <div class="about-v2-content reveal-right">
+          <p class="section-label">About The Founder</p>
+          <h2>Rooted in Knowledge,<br>Growing with Passion</h2>
+          <p class="about-owner-name">Mr. Gaurav Chandulal Kapare</p>
+          <p>
+            With a deep academic foundation in horticulture and years of hands-on experience,
+            Gaurav founded GreenSpire Solutions to bring nature closer to people. Every project
+            is guided by sustainable practices, scientific knowledge, and a genuine love for plants.
+          </p>
+          <div class="about-v2-features">
+            <div class="av2-feat">
+              <span class="av2-feat-icon"><span class="material-symbols-outlined">school</span></span>
+              <div><strong>Certified Horticulturist</strong><span>Dr. BSKKV, Dapoli</span></div>
+            </div>
+            <div class="av2-feat">
+              <span class="av2-feat-icon"><span class="material-symbols-outlined">eco</span></span>
+              <div><strong>Eco-Friendly</strong><span>Sustainable practices</span></div>
+            </div>
+            <div class="av2-feat">
+              <span class="av2-feat-icon"><span class="material-symbols-outlined">emoji_events</span></span>
+              <div><strong>500+ Projects</strong><span>Since 2023</span></div>
+            </div>
+            <div class="av2-feat">
+              <span class="av2-feat-icon"><span class="material-symbols-outlined">forum</span></span>
+              <div><strong>Expert Consultancy</strong><span>One-on-one advice</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       GET A FREE QUOTE — NETLIFY FORM
+       ═══════════════════════════════════════ -->
+  <section class="section quote-section" id="get-quote" aria-label="Request a Free Quote">
+    <div class="container">
+      <div class="quote-grid">
+
+        <!-- Rotating image panel — cycles through 7 photos automatically, one every 1s, controlled by JS (see main.js) -->
+        <div class="quote-gallery reveal-left">
+          <div class="quote-panel" id="quoteGallery">
+            <div class="quote-slide is-active">
+              <img src="https://ik.imagekit.io/greenspire/images/one.webp?updatedAt=1782052740374"
+                loading="lazy" alt="Mr. Gaurav Kapare personally handing over a potted plant to a client">
+            </div>
+            <div class="quote-slide">
+              <img src="https://ik.imagekit.io/greenspire/images/two.webp?updatedAt=1782052781581"
+                loading="lazy" alt="GreenSpire founder consulting a client on garden plans">
+            </div>
+            <div class="quote-slide">
+              <img src="https://ik.imagekit.io/greenspire/images/three.webp?updatedAt=1782052802278"
+                loading="lazy" alt="A freshly completed GreenSpire garden, ready for handover">
+            </div>
+            <div class="quote-slide">
+              <img src="https://ik.imagekit.io/greenspire/images/four.webp?updatedAt=1782052720639"
+                loading="lazy" alt="GreenSpire garden project">
+            </div>
+            <div class="quote-slide">
+              <img src="https://ik.imagekit.io/greenspire/images/five.webp?updatedAt=1782052824458"
+                loading="lazy" alt="GreenSpire garden project">
+            </div>
+            <div class="quote-slide">
+              <img src="https://ik.imagekit.io/greenspire/images/six.webp?updatedAt=1782052865684"
+                loading="lazy" alt="GreenSpire garden project">
+            </div>
+            <div class="quote-slide">
+              <img src="https://ik.imagekit.io/greenspire/images/seven.webp?updatedAt=1782052760754"
+                loading="lazy" alt="GreenSpire garden project">
+            </div>
+          </div>
+        </div>
+
+        <!-- Quote form — sits directly on the section background, no card -->
+        <div class="quote-content reveal-right">
+          <p class="section-label">Get In Touch</p>
+          <h2>Request Your Free Garden Quote</h2>
+          <p class="quote-form-sub">Share a few details below and Gaurav will personally reach out to plan your perfect green space.</p>
+
+          <!--
+            NETLIFY FORMS — same integration pattern as contact.html, separate form name
+            so submissions land in Netlify Dashboard → Forms → "quote" (kept distinct
+            from the "contact" form on the Contact page).
+          -->
+          <div id="quoteFormWrap">
+            <form name="quote" method="POST" id="quoteForm" data-netlify="true" netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="quote">
+
+              <!-- Honeypot — hidden from humans, traps bots -->
+              <p class="qf-hidden"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+              <div class="qf-row">
+                <div class="qf-group qf-group--name">
+                  <input type="text" id="qfName" name="name" placeholder=" " required>
+                  <label for="qfName">Full Name</label>
+                </div>
+                <div class="qf-group qf-group--phone">
+                  <input type="tel" id="qfPhone" name="phone" placeholder=" " required>
+                  <label for="qfPhone">Phone Number</label>
+                </div>
+              </div>
+
+              <div class="qf-group qf-group--email">
+                <input type="email" id="qfEmail" name="email" placeholder=" " required>
+                <label for="qfEmail">Email Address</label>
+              </div>
+
+              <div class="qf-group qf-group--select">
+                <label for="qfService">Service Interested In</label>
+                <select id="qfService" name="service">
+                  <option value="">Select a service</option>
+                  <option value="Garden Design">Garden Design</option>
+                  <option value="Planting &amp; Landscaping">Planting &amp; Landscaping</option>
+                  <option value="Lawn Care">Lawn Care</option>
+                  <option value="Irrigation Systems">Irrigation Systems</option>
+                  <option value="Expert Maintenance">Expert Maintenance</option>
+                  <option value="Corporate Green Gifts">Corporate Green Gifts</option>
+                  <option value="Consultancy Services">Consultancy Services</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="qf-group qf-group--message">
+                <textarea id="qfMessage" name="message" placeholder=" " required></textarea>
+                <label for="qfMessage">Tell us about your project</label>
+              </div>
+
+              <button type="submit" class="btn btn--primary qf-submit" id="quoteSubmitBtn">
+                <span class="material-symbols-outlined">local_florist</span> Get Quote
+              </button>
+            </form>
+          </div>
+
+          <!-- Success state shown after submit -->
+          <div class="qf-success" id="quoteFormSuccess">
+            <div class="qf-success-icon">
+              <span class="material-symbols-outlined">eco</span>
+            </div>
+            <h3>Thank You!</h3>
+            <p>Your request has been planted 🌱 — Gaurav will get back to you within 24 hours.</p>
+            <button class="btn btn--outline" id="quoteSendAnotherBtn">
+              <span class="material-symbols-outlined">refresh</span> Send Another Request
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       LET'S GO STRIP
+       ═══════════════════════════════════════ -->
+  <div class="letsgo-strip" aria-hidden="true">
+    <div class="letsgo-track">
+      <span class="letsgo-item">Let's Go <span class="material-symbols-outlined">eco</span></span>
+      <span class="letsgo-item letsgo-item--outline">Let's Go <span class="material-symbols-outlined">eco</span></span>
+      <span class="letsgo-item">Let's Go <span class="material-symbols-outlined">eco</span></span>
+      <span class="letsgo-item letsgo-item--outline">Let's Go <span class="material-symbols-outlined">eco</span></span>
+      <span class="letsgo-item">Let's Go <span class="material-symbols-outlined">eco</span></span>
+      <span class="letsgo-item letsgo-item--outline">Let's Go <span class="material-symbols-outlined">eco</span></span>
+      <!-- duplicate set for seamless loop -->
+      <span class="letsgo-item">Let's Go <span class="material-symbols-outlined">eco</span></span>
+      <span class="letsgo-item letsgo-item--outline">Let's Go <span class="material-symbols-outlined">eco</span></span>
+      <span class="letsgo-item">Let's Go <span class="material-symbols-outlined">eco</span></span>
+      <span class="letsgo-item letsgo-item--outline">Let's Go <span class="material-symbols-outlined">eco</span></span>
+      <span class="letsgo-item">Let's Go <span class="material-symbols-outlined">eco</span></span>
+      <span class="letsgo-item letsgo-item--outline">Let's Go <span class="material-symbols-outlined">eco</span></span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       PORTFOLIO / OUR WORK
+       ═══════════════════════════════════════ -->
+  <section class="section portfolio-section" id="portfolio" aria-label="Our Portfolio">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Our Portfolio</p>
+        <h2>View Our Work</h2>
+        <p>A glimpse into the beautiful green spaces we've created for our clients.</p>
+      </div>
+
+      <div class="gallery-fan" role="list">
+
+        <div class="gallery-item tall reveal" role="listitem"
+          data-images="https://ik.imagekit.io/greenspire/images/work1.webp,https://ik.imagekit.io/greenspire/images/work2.webp?updatedAt=1776152711094,https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834">
+          <img src="https://ik.imagekit.io/greenspire/images/work1.webp"
+            loading="lazy" alt="Residential Garden Makeover">
+        </div>
+
+        <div class="gallery-item medium reveal" role="listitem"
+          data-images="https://ik.imagekit.io/greenspire/images/work2.webp?updatedAt=1776152711094,https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834,https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795">
+          <img src="https://ik.imagekit.io/greenspire/images/work2.webp?updatedAt=1776152711094"
+            loading="lazy" alt="Corporate Office Greenery">
+        </div>
+
+        <div class="gallery-item short reveal" role="listitem"
+          data-images="https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834,https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795,https://ik.imagekit.io/greenspire/images/work5.webp?updatedAt=1776152709496">
+          <img src="https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834"
+            loading="lazy" alt="Farm Landscape Design">
+        </div>
+
+        <div class="gallery-item medium reveal" role="listitem"
+          data-images="https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795,https://ik.imagekit.io/greenspire/images/work5.webp?updatedAt=1776152709496,https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754">
+          <img src="https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795"
+            loading="lazy" alt="Wedding Venue Decoration">
+        </div>
+
+        <div class="gallery-item short reveal" role="listitem"
+          data-images="https://ik.imagekit.io/greenspire/images/work5.webp?updatedAt=1776152709496,https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754,https://ik.imagekit.io/greenspire/images/work1.webp">
+          <img src="https://ik.imagekit.io/greenspire/images/work5.webp?updatedAt=1776152709496"
+            loading="lazy" alt="Terrace Garden Setup">
+        </div>
+
+        <div class="gallery-item tall reveal" role="listitem"
+          data-images="https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754,https://ik.imagekit.io/greenspire/images/work1.webp,https://ik.imagekit.io/greenspire/images/work2.webp?updatedAt=1776152711094">
+          <img src="https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754"
+            loading="lazy" alt="Public Park Renovation">
+        </div>
+
+        <div class="gallery-item medium reveal" role="listitem"
+          data-images="https://ik.imagekit.io/greenspire/images/work1.webp,https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795,https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754">
+          <img src="https://ik.imagekit.io/greenspire/images/work1.webp"
+            loading="lazy" alt="Community Garden Project">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox — image-only viewer, no text/details -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project photos">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="lightbox-content">
+      <div class="lightbox-media">
+        <button class="lightbox-arrow lightbox-arrow--prev" id="lightboxPrev" aria-label="Previous photo">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <img src="" alt="" id="lightboxImg">
+        <button class="lightbox-arrow lightbox-arrow--next" id="lightboxNext" aria-label="Next photo">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+      <div class="lightbox-thumbs" id="lightboxThumbs"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       TESTIMONIALS
+       ═══════════════════════════════════════ -->
+  <section class="section testimonials-section" id="testimonials" aria-label="Client Testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Client Reviews</p>
+        <h2>What Our Clients Say</h2>
+        <p>Real feedback from people who trusted us with their green spaces.</p>
+      </div>
+    </div>
+    <div class="testimonials-track-wrapper">
+      <div class="testimonials-track" id="testimonialsTrack">
+
+        <div class="testimonial-card">
+          <span class="quote-icon">&ldquo;</span>
+          <div class="testimonial-stars">
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <p class="review-text">"GreenSpire transformed our backyard into a paradise. The garden design was stunning and the execution was flawless. Highly recommend!"</p>
+          <div class="testimonial-author">
+            <div class="avatar">R</div>
+            <div class="author-info">
+              <h4>Rajesh Patil</h4>
+              <p>Homeowner, Boisar</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <span class="quote-icon">&ldquo;</span>
+          <div class="testimonial-stars">
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <p class="review-text">"The corporate green gifting service was perfect for our Diwali. Beautiful eco-friendly plants, elegantly packaged. Employees loved them!"</p>
+          <div class="testimonial-author">
+            <div class="avatar">S</div>
+            <div class="author-info">
+              <h4>Sneha Deshmukh</h4>
+              <p>HR Manager, Tarapur</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <span class="quote-icon">&ldquo;</span>
+          <div class="testimonial-stars">
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <p class="review-text">"Gaurav's expertise in horticulture really shows. He designed our farmhouse landscape beautifully and the maintenance service keeps it looking perfect."</p>
+          <div class="testimonial-author">
+            <div class="avatar">A</div>
+            <div class="author-info">
+              <h4>Amit Sharma</h4>
+              <p>Farm Owner, Palghar</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <span class="quote-icon">&ldquo;</span>
+          <div class="testimonial-stars">
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <p class="review-text">"We hired GreenSpire for our terrace garden and the result was beyond expectations. Smart use of space, beautiful plants, very professional service."</p>
+          <div class="testimonial-author">
+            <div class="avatar">P</div>
+            <div class="author-info">
+              <h4>Priya Iyer</h4>
+              <p>Resident, Boisar</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <span class="quote-icon">&ldquo;</span>
+          <div class="testimonial-stars">
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <p class="review-text">"Outstanding lawn care service! Our commercial property's lawns have never looked better. The team is punctual, professional, and passionate."</p>
+          <div class="testimonial-author">
+            <div class="avatar">V</div>
+            <div class="author-info">
+              <h4>Vikram Joshi</h4>
+              <p>Business Owner, Boisar</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <span class="quote-icon">&ldquo;</span>
+          <div class="testimonial-stars">
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <p class="review-text">"The consultancy session with Gaurav was incredibly insightful. He identified all the issues with our existing garden and gave us a clear revival plan."</p>
+          <div class="testimonial-author">
+            <div class="avatar">M</div>
+            <div class="author-info">
+              <h4>Meera Kulkarni</h4>
+              <p>Teacher, Palghar</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duplicate set — required for a seamless continuous-loop marquee (track scrolls exactly -50%, then resets unnoticed) -->
+        <div class="testimonial-card" aria-hidden="true">
+          <span class="quote-icon">&ldquo;</span>
+          <div class="testimonial-stars">
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <p class="review-text">"GreenSpire transformed our backyard into a paradise. The garden design was stunning and the execution was flawless. Highly recommend!"</p>
+          <div class="testimonial-author">
+            <div class="avatar">R</div>
+            <div class="author-info">
+              <h4>Rajesh Patil</h4>
+              <p>Homeowner, Boisar</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" aria-hidden="true">
+          <span class="quote-icon">&ldquo;</span>
+          <div class="testimonial-stars">
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <p class="review-text">"The corporate green gifting service was perfect for our Diwali. Beautiful eco-friendly plants, elegantly packaged. Employees loved them!"</p>
+          <div class="testimonial-author">
+            <div class="avatar">S</div>
+            <div class="author-info">
+              <h4>Sneha Deshmukh</h4>
+              <p>HR Manager, Tarapur</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" aria-hidden="true">
+          <span class="quote-icon">&ldquo;</span>
+          <div class="testimonial-stars">
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <p class="review-text">"Gaurav's expertise in horticulture really shows. He designed our farmhouse landscape beautifully and the maintenance service keeps it looking perfect."</p>
+          <div class="testimonial-author">
+            <div class="avatar">A</div>
+            <div class="author-info">
+              <h4>Amit Sharma</h4>
+              <p>Farm Owner, Palghar</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" aria-hidden="true">
+          <span class="quote-icon">&ldquo;</span>
+          <div class="testimonial-stars">
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <p class="review-text">"We hired GreenSpire for our terrace garden and the result was beyond expectations. Smart use of space, beautiful plants, very professional service."</p>
+          <div class="testimonial-author">
+            <div class="avatar">P</div>
+            <div class="author-info">
+              <h4>Priya Iyer</h4>
+              <p>Resident, Boisar</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" aria-hidden="true">
+          <span class="quote-icon">&ldquo;</span>
+          <div class="testimonial-stars">
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <p class="review-text">"Outstanding lawn care service! Our commercial property's lawns have never looked better. The team is punctual, professional, and passionate."</p>
+          <div class="testimonial-author">
+            <div class="avatar">V</div>
+            <div class="author-info">
+              <h4>Vikram Joshi</h4>
+              <p>Business Owner, Boisar</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" aria-hidden="true">
+          <span class="quote-icon">&ldquo;</span>
+          <div class="testimonial-stars">
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <p class="review-text">"The consultancy session with Gaurav was incredibly insightful. He identified all the issues with our existing garden and gave us a clear revival plan."</p>
+          <div class="testimonial-author">
+            <div class="avatar">M</div>
+            <div class="author-info">
+              <h4>Meera Kulkarni</h4>
+              <p>Teacher, Palghar</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CTA BAND
+       ═══════════════════════════════════════ -->
+  <section class="cta-band" id="cta-band" aria-label="Call to action">
+    <div class="container">
+      <div class="cta-band-inner">
+        <div class="cta-band-text">
+          <h2>Ready to Transform<br>Your Space?</h2>
+          <p>Get a free consultation with our certified horticulturist today.</p>
+        </div>
+        <div class="cta-band-actions">
+          <a href="contact.html" class="btn btn--amber-solid" id="ctaBandBook">
+            <span class="material-symbols-outlined">calendar_month</span> Book a Visit
+          </a>
+          <a href="tel:+918080956853" class="btn btn--ghost-white" id="ctaBandCall">
+            <span class="material-symbols-outlined">call</span> +91 80809 56853
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" aria-label="GreenSpire Home">
+            <span class="nav-logo-text" style="color:var(--clr-white);">GreenSpire<span style="color:var(--clr-amber);"> Solutions</span></span>
+          </a>
+          <p>We bring nature closer to you with sustainable and beautiful green solutions. From maintenance to complete makeovers, we do it all.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html"><span class="material-symbols-outlined">chevron_right</span> Home</a>
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Services</a>
+            <a href="plants.html"><span class="material-symbols-outlined">chevron_right</span> Plants</a>
+            <a href="contact.html"><span class="material-symbols-outlined">chevron_right</span> Contact</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <div class="footer-links">
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Garden Design</a>
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Landscaping</a>
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Lawn Care</a>
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Green Gifts</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <span class="material-symbols-outlined">location_on</span>
+            <span>Shop No.18, Shivakala Arcade, Boisar-Tarapur Road, Boisar - 401501</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="material-symbols-outlined">call</span>
+            <a href="tel:+918080956853">+91 8080956853</a>
+          </div>
+          <div class="footer-contact-item">
+            <span class="material-symbols-outlined">mail</span>
+            <a href="mailto:greenspire.solutions23@gmail.com">greenspire.solutions23@gmail.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 GreenSpire Solutions. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/greenspire_solutions?igsh=bWRpNmI1Njk5MXk5"
+            target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+            class="social-icon social-instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/8080956853"
+            target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+            class="social-icon social-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="mailto:greenspire.solutions23@gmail.com"
+            aria-label="Email" class="social-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GO TO TOP -->
+  <button class="go-top-btn" id="goTopBtn" aria-label="Go to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <script src="js/main.js"></script>
+
+  <!-- Quote form submit handler (Netlify AJAX submission) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var form = document.getElementById('quoteForm');
+      if (!form) return;
+
+      var formWrap = document.getElementById('quoteFormWrap');
+      var formSuccess = document.getElementById('quoteFormSuccess');
+      var submitBtn = document.getElementById('quoteSubmitBtn');
+      var sendAnotherBtn = document.getElementById('quoteSendAnotherBtn');
+
+      function encode(data) {
+        return Object.keys(data)
+          .map(function (key) {
+            return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
+          })
+          .join('&');
+      }
+
+      function showSuccess() {
+        formWrap.classList.add('hidden');
+        formSuccess.classList.add('visible');
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      function resetSubmitBtn() {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span class="material-symbols-outlined">local_florist</span> Get Quote';
+      }
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="material-symbols-outlined">hourglass_empty</span> Sending...';
+
+        try {
+          var formData = new FormData(form);
+          var data = Object.fromEntries(formData.entries());
+          data['form-name'] = 'quote';
+
+          var response = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encode(data)
+          });
+
+          if (!response.ok) {
+            throw new Error('Form submission failed with status: ' + response.status);
+          }
+
+          showSuccess();
+          window.history.replaceState({}, document.title, window.location.pathname);
+        } catch (error) {
+          resetSubmitBtn();
+          var errMsg = document.getElementById('quoteFormErrorMsg');
+          if (!errMsg) {
+            errMsg = document.createElement('p');
+            errMsg.id = 'quoteFormErrorMsg';
+            errMsg.className = 'qf-error-msg';
+            submitBtn.after(errMsg);
+          }
+          errMsg.textContent = 'Something went wrong. Please try again or call us directly.';
+        }
+      });
+
+      sendAnotherBtn.addEventListener('click', function () {
+        formSuccess.classList.remove('visible');
+        formWrap.classList.remove('hidden');
+        form.reset();
+        resetSubmitBtn();
+        var errMsg = document.getElementById('quoteFormErrorMsg');
+        if (errMsg) errMsg.textContent = '';
+        window.history.replaceState({}, document.title, window.location.pathname);
+      });
+    });
+  </script>
+</body>
+</html>

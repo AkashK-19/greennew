@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="GreenSpire Solutions — Explore our professional landscaping, garden design, lawn care, and eco-friendly gardening services.">
+  <title>Our Services — GreenSpire Solutions</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://ik.imagekit.io/greenspire/images/logo.webp?updatedAt=1776152708262">
+
+  <!-- Open Graph / Social Share -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Our Services — GreenSpire Solutions">
+  <meta property="og:description" content="Explore our professional landscaping, garden design, lawn care, and eco-friendly gardening services.">
+  <meta property="og:image" content="https://ik.imagekit.io/greenspire/images/service1.webp?updatedAt=1776152736994">
+  <meta property="og:url" content="https://greenspire.netlify.app/services.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style/global.css">
+  <link rel="stylesheet" href="style/header.css">
+  <link rel="stylesheet" href="style/footer.css">
+  <link rel="stylesheet" href="style/services.css">
+</head>
+
+<body>
+
+  <!-- NO PRELOADER on services page — only on index.html -->
+
+  <!-- ═══════ CUSTOM CURSOR ═══════ -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ═══════ ANNOUNCEMENT BAR ═══════ -->
+  <div class="announcement-bar" aria-label="Announcement">
+    <div class="ann-inner">
+      <span><span class="material-symbols-outlined">local_florist</span> Free garden consultation for first-time clients</span>
+      <span><span class="material-symbols-outlined">emoji_events</span> 500+ Happy Clients across Boisar &amp; Palghar</span>
+      <span><span class="material-symbols-outlined">eco</span> 100% Eco-Friendly Practices</span>
+      <span><span class="material-symbols-outlined">call</span> Call Now: +91 8080956853</span>
+      <span><span class="material-symbols-outlined">card_giftcard</span> Corporate Green Gifting Available</span>
+      <!-- duplicate for seamless loop -->
+      <span><span class="material-symbols-outlined">local_florist</span> Free garden consultation for first-time clients</span>
+      <span><span class="material-symbols-outlined">emoji_events</span> 500+ Happy Clients across Boisar &amp; Palghar</span>
+      <span><span class="material-symbols-outlined">eco</span> 100% Eco-Friendly Practices</span>
+      <span><span class="material-symbols-outlined">call</span> Call Now: +91 8080956853</span>
+      <span><span class="material-symbols-outlined">card_giftcard</span> Corporate Green Gifting Available</span>
+    </div>
+  </div>
+
+  <!-- ═══════ NAVBAR ═══════ -->
+  <nav class="navbar navbar--white" id="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo" aria-label="GreenSpire Home">
+        <img src="https://ik.imagekit.io/greenspire/images/logo.webp?updatedAt=1776152708262"
+          alt="GreenSpire Solutions Logo" style="height:40px;width:auto;">
+        <span class="nav-logo-text">GreenSpire Solutions</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="plants.html">Plants</a>
+        <a href="contact.html">Contact</a>
+        <a href="tel:+918080956853" class="btn btn--primary nav-cta" id="navCallCta">
+          <span class="material-symbols-outlined">call</span> Call Now
+        </a>
+      </div>
+
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <!-- ═══════ PAGE HERO ═══════ -->
+  <header class="svc-hero">
+    <div class="svc-hero-bg">
+      <div class="svc-hero-orb svc-hero-orb--1"></div>
+      <div class="svc-hero-orb svc-hero-orb--2"></div>
+    </div>
+    <div class="container">
+      <div class="svc-hero-breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="svc-hero-sep">/</span>
+        <span>Services</span>
+      </div>
+      <h1 class="svc-hero-title">Our <em>Services</em></h1>
+    </div>
+  </header>
+
+  <!-- ═══════ ALL SERVICES ═══════ -->
+  <section class="section services-full" id="all-services">
+    <div class="container">
+
+      <div class="svc-section-intro reveal">
+        <p class="section-label section-label--dark">What We Offer</p>
+        <h2>Complete Green Solutions</h2>
+        <p>Comprehensive, science-backed solutions — from custom landscape blueprints to organic maintenance packages — crafted with expertise and passion.</p>
+      </div>
+
+      <!-- FILTER TABS — clean underline style, no pills -->
+      <div class="svc-filter reveal">
+        <button class="svc-filter-btn active" data-filter="all">All</button>
+        <button class="svc-filter-btn" data-filter="design">Design &amp; Landscaping</button>
+        <button class="svc-filter-btn" data-filter="care">Care &amp; Maintenance</button>
+        <button class="svc-filter-btn" data-filter="gifts">Consulting &amp; Gifting</button>
+      </div>
+
+      <!-- SERVICES GRID — magazine-style, uniform rows -->
+      <div class="services-grid">
+
+        <!-- Card 1 — Garden Design (photo, featured/wide) -->
+        <div class="svc-card svc-card--photo svc-card--wide reveal" data-category="design">
+          <div class="svc-card-img">
+            <img src="https://ik.imagekit.io/greenspire/images/service1.webp?updatedAt=1776152736994" loading="lazy" alt="Custom garden design layout">
+            <span class="svc-cat-tag">Design</span>
+            <span class="svc-popular">Most Popular</span>
+            <button class="svc-save" aria-label="Save Garden Design" aria-pressed="false">
+              <span class="material-symbols-outlined">bookmark</span>
+            </button>
+          </div>
+          <div class="svc-card-body">
+            <h3>Garden Design</h3>
+            <p>Custom 2D/3D layouts for your dream garden, spanning commercial and residential spaces. We turn raw acreage into botanical masterpieces.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 — Lawn Care (image + colorful body) -->
+        <div class="svc-card svc-card--photo reveal" data-category="care">
+          <div class="svc-card-img svc-card-img--med">
+            <img src="https://ik.imagekit.io/greenspire/images/work2.webp?updatedAt=1776152711094" loading="lazy" alt="Lush lawn care and grass maintenance">
+            <span class="svc-cat-tag">Care</span>
+            <button class="svc-save" aria-label="Save Lawn Care" aria-pressed="false">
+              <span class="material-symbols-outlined">bookmark</span>
+            </button>
+          </div>
+          <div class="svc-card-body svc-card-body--colored svc-grad--lime">
+            <h3>Lawn Care</h3>
+            <p>Professional grass seeding, custom mowing, aerating, and organic treatments to keep your sod lush, uniform, and healthy.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 — Planting & Landscaping (photo) -->
+        <div class="svc-card svc-card--photo reveal" data-category="design">
+          <div class="svc-card-img svc-card-img--med">
+            <img src="https://ik.imagekit.io/greenspire/images/work1.webp" loading="lazy" alt="Residential garden planting and landscaping">
+            <span class="svc-cat-tag">Design</span>
+            <button class="svc-save" aria-label="Save Planting and Landscaping" aria-pressed="false">
+              <span class="material-symbols-outlined">bookmark</span>
+            </button>
+          </div>
+          <div class="svc-card-body">
+            <h3>Planting &amp; Landscaping</h3>
+            <p>Selection and strategic planting of trees, shrubs, and seasonal flora tailored to local soil chemistry and microclimates.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 — Corporate Green Gifts (photo) -->
+        <div class="svc-card svc-card--photo reveal" data-category="gifts">
+          <div class="svc-card-img svc-card-img--med">
+            <img src="https://ik.imagekit.io/greenspire/images/hero2.webp?updatedAt=1776152728259" loading="lazy" alt="Corporate green gifting hampers">
+            <span class="svc-cat-tag">Gifting</span>
+            <button class="svc-save" aria-label="Save Corporate Green Gifts" aria-pressed="false">
+              <span class="material-symbols-outlined">bookmark</span>
+            </button>
+          </div>
+          <div class="svc-card-body">
+            <h3>Corporate Green Gifts</h3>
+            <p>Eco-friendly, sustainable potted plants customized with corporate logos for festive greetings, hampers, and branding events.</p>
+          </div>
+        </div>
+
+        <!-- Card 5 — Expert Maintenance (photo) -->
+        <div class="svc-card svc-card--photo reveal" data-category="care">
+          <div class="svc-card-img svc-card-img--med">
+            <img src="https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754" loading="lazy" alt="Scheduled park and garden maintenance">
+            <span class="svc-cat-tag">Care</span>
+            <button class="svc-save" aria-label="Save Expert Maintenance" aria-pressed="false">
+              <span class="material-symbols-outlined">bookmark</span>
+            </button>
+          </div>
+          <div class="svc-card-body">
+            <h3>Expert Maintenance</h3>
+            <p>Scheduled pruning, weeding, pest control, and seasonal health inspections to preserve the aesthetic value of your space.</p>
+          </div>
+        </div>
+
+        <!-- Card 6 — Landscape Execution (image + colorful body) -->
+        <div class="svc-card svc-card--photo reveal" data-category="design">
+          <div class="svc-card-img svc-card-img--med">
+            <img src="https://ik.imagekit.io/greenspire/images/hero1.webp?updatedAt=1776152728259" loading="lazy" alt="Landscape execution and site preparation">
+            <span class="svc-cat-tag">Design</span>
+            <button class="svc-save" aria-label="Save Landscape Execution" aria-pressed="false">
+              <span class="material-symbols-outlined">bookmark</span>
+            </button>
+          </div>
+          <div class="svc-card-body svc-card-body--colored svc-grad--amber">
+            <h3>Landscape Execution</h3>
+            <p>End-to-end site preparation, earth moving, stone works, and master planting implementation managed by certified experts.</p>
+          </div>
+        </div>
+
+        <!-- Card 7 — Farm Landscape (photo, wide) -->
+        <div class="svc-card svc-card--photo svc-card--wide reveal" data-category="design">
+          <div class="svc-card-img">
+            <img src="https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834" loading="lazy" alt="Farm landscape design with orchards">
+            <span class="svc-cat-tag">Design</span>
+            <button class="svc-save" aria-label="Save Farm Landscape" aria-pressed="false">
+              <span class="material-symbols-outlined">bookmark</span>
+            </button>
+          </div>
+          <div class="svc-card-body">
+            <h3>Farm Landscape</h3>
+            <p>Acreage layouts integrating organic agriculture, orchards, and windbreaks designed for sustainable yields and clean aesthetics.</p>
+          </div>
+        </div>
+
+        <!-- Card 8 — Irrigation Systems (photo) -->
+        <div class="svc-card svc-card--photo reveal" data-category="care">
+          <div class="svc-card-img svc-card-img--med">
+            <img src="https://ik.imagekit.io/greenspire/images/service2.webp?updatedAt=1776152709217" loading="lazy" alt="Smart drip irrigation system">
+            <span class="svc-cat-tag">Care</span>
+            <button class="svc-save" aria-label="Save Irrigation Systems" aria-pressed="false">
+              <span class="material-symbols-outlined">bookmark</span>
+            </button>
+          </div>
+          <div class="svc-card-body">
+            <h3>Irrigation Systems</h3>
+            <p>Installation of smart drip and sprinkler networks designed to automate watering patterns while conserving valuable resources.</p>
+          </div>
+        </div>
+
+        <!-- Card 9 — Consultancy Services (image + colorful body) -->
+        <div class="svc-card svc-card--photo reveal" data-category="gifts">
+          <div class="svc-card-img svc-card-img--med">
+            <img src="https://ik.imagekit.io/greenspire/images/about.webp?updatedAt=1776152697371" loading="lazy" alt="One-on-one horticulture consultancy session">
+            <span class="svc-cat-tag">Consulting</span>
+            <button class="svc-save" aria-label="Save Consultancy Services" aria-pressed="false">
+              <span class="material-symbols-outlined">bookmark</span>
+            </button>
+          </div>
+          <div class="svc-card-body svc-card-body--colored svc-grad--purple">
+            <h3>Consultancy Services</h3>
+            <p>One-on-one professional advice on plant pathology, soil health, crop selection, and garden design by an M.Sc Horticulturist.</p>
+          </div>
+        </div>
+
+        <!-- Card 10 — Indoor & Outdoor Styling (photo) -->
+        <div class="svc-card svc-card--photo reveal" data-category="design">
+          <div class="svc-card-img svc-card-img--med">
+            <img src="https://ik.imagekit.io/greenspire/images/work5.webp?updatedAt=1776152709496" loading="lazy" alt="Terrace garden indoor and outdoor styling">
+            <span class="svc-cat-tag">Design</span>
+            <button class="svc-save" aria-label="Save Indoor and Outdoor Styling" aria-pressed="false">
+              <span class="material-symbols-outlined">bookmark</span>
+            </button>
+          </div>
+          <div class="svc-card-body">
+            <h3>Indoor &amp; Outdoor Styling</h3>
+            <p>Artistic arrangements of container plants, vertical greens, and green walls to breathe life into homes, balconies, and offices.</p>
+          </div>
+        </div>
+
+        <!-- Card 11 — Fertilizer Application (image + colorful body) -->
+        <div class="svc-card svc-card--photo reveal" data-category="care">
+          <div class="svc-card-img svc-card-img--med">
+            <img src="https://ik.imagekit.io/greenspire/images/two.webp?updatedAt=1782052781581" loading="lazy" alt="Organic fertilizer application and soil testing">
+            <span class="svc-cat-tag">Care</span>
+            <button class="svc-save" aria-label="Save Fertilizer Application" aria-pressed="false">
+              <span class="material-symbols-outlined">bookmark</span>
+            </button>
+          </div>
+          <div class="svc-card-body svc-card-body--colored svc-grad--teal">
+            <h3>Fertilizer Application</h3>
+            <p>Scientific soil testing coupled with precise application of organic minerals to correct deficiencies and boost foliage vitality.</p>
+          </div>
+        </div>
+
+        <!-- Card 12 — Green Styling (photo) -->
+        <div class="svc-card svc-card--photo reveal" data-category="design">
+          <div class="svc-card-img svc-card-img--med">
+            <img src="https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795" loading="lazy" alt="Green styling for wedding venue decoration">
+            <span class="svc-cat-tag">Design</span>
+            <button class="svc-save" aria-label="Save Green Styling" aria-pressed="false">
+              <span class="material-symbols-outlined">bookmark</span>
+            </button>
+          </div>
+          <div class="svc-card-body">
+            <h3>Green Styling</h3>
+            <p>Exquisite temporary plant arrangements, props, and backdrops tailored for weddings, corporate shoots, and live events.</p>
+          </div>
+        </div>
+
+      </div><!-- /services-grid -->
+    </div>
+  </section>
+
+  <!-- ═══════ HOW WE WORK ═══════ -->
+  <section class="section work-flow-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Our Process</p>
+        <h2>How We Work</h2>
+        <p>A smooth, science-backed journey from initial ideas to a thriving green reality.</p>
+      </div>
+      <div class="process-flow">
+        <svg class="process-wave" viewBox="0 0 1200 260" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="processWaveGradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#87A878"/>
+              <stop offset="50%" stop-color="#F5C842"/>
+              <stop offset="100%" stop-color="#1A3C2A"/>
+            </linearGradient>
+          </defs>
+          <!-- Wave: starts LOW (col1 trough ~200px), rises to HIGH (col2 crest ~36px), LOW (col3), HIGH (col4) -->
+          <path d="M 140,200 C 180,200 220,36 300,36 C 380,36 400,36 440,36 C 520,36 560,200 640,200 C 720,200 740,200 760,200 C 840,200 880,36 960,36 C 1020,36 1060,36 1060,36" />
+        </svg>
+
+        <div class="process-step process-step--low reveal" style="--i:0">
+          <div class="process-node" data-num="01">
+            <span class="material-symbols-outlined">chat</span>
+          </div>
+          <div class="process-copy">
+            <span class="process-step-label">Step 01</span>
+            <h4>Consultation</h4>
+            <p>On-site survey to analyze layout, lighting parameters, and soil mechanics.</p>
+          </div>
+        </div>
+
+        <div class="process-step process-step--high reveal" style="--i:1">
+          <div class="process-node" data-num="02">
+            <span class="material-symbols-outlined">design_services</span>
+          </div>
+          <div class="process-copy">
+            <span class="process-step-label">Step 02</span>
+            <h4>Custom Design</h4>
+            <p>Preparation of customized 2D/3D layouts and botanical palettes for review.</p>
+          </div>
+        </div>
+
+        <div class="process-step process-step--low reveal" style="--i:2">
+          <div class="process-node" data-num="03">
+            <span class="material-symbols-outlined">construction</span>
+          </div>
+          <div class="process-copy">
+            <span class="process-step-label">Step 03</span>
+            <h4>Precision Execution</h4>
+            <p>Systematic ground preparation, hardscaping, planting, and drip setup.</p>
+          </div>
+        </div>
+
+        <div class="process-step process-step--high reveal" style="--i:3">
+          <div class="process-node" data-num="04">
+            <span class="material-symbols-outlined">spa</span>
+          </div>
+          <div class="process-copy">
+            <span class="process-step-label">Step 04</span>
+            <h4>Long-term Care</h4>
+            <p>Post-installation support and periodic upkeep routines to ensure stability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ OUR COMMITMENT ═══════ -->
+  <section class="eco-section">
+    <div class="container">
+      <div class="eco-split">
+
+        <!-- LEFT — two portrait photos side by side, ref-style -->
+        <div class="eco-split-photos reveal-left">
+          <div class="eco-photo eco-photo--back">
+            <img src="https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834" alt="Sustainable farm landscape" loading="lazy">
+          </div>
+          <div class="eco-photo eco-photo--front">
+            <img src="https://ik.imagekit.io/greenspire/images/about.webp?updatedAt=1776152697371" alt="GreenSpire horticulture expert" loading="lazy">
+            <!-- floating experience badge -->
+            <div class="eco-exp-badge">
+              <strong>8+</strong>
+              <span>Years of<br>Eco Expertise</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT — label, heading, text, two icon pillars -->
+        <div class="eco-split-content reveal-right">
+          <p class="section-label section-label--amber">Our Commitment</p>
+          <h2>Grow Green,<br><em>Live Better</em></h2>
+          <p class="eco-intro-text">Every project we take on is guided by a single principle — leave the soil healthier than we found it. We combine science-backed horticulture with a deep respect for nature.</p>
+
+          <!-- Two feature pillars — matches ref icon cards -->
+          <div class="eco-pillars">
+            <div class="eco-pillar">
+              <div class="eco-pillar-icon">
+                <span class="material-symbols-outlined">compost</span>
+              </div>
+              <div>
+                <h4>Organic Inputs</h4>
+                <p>100% natural fertilizers and bio-pest controls — no synthetic run-offs, ever.</p>
+              </div>
+            </div>
+            <div class="eco-pillar">
+              <div class="eco-pillar-icon">
+                <span class="material-symbols-outlined">water_drop</span>
+              </div>
+              <div>
+                <h4>Water Conservation</h4>
+                <p>Smart drip networks and moisture-retentive media to minimise every drop used.</p>
+              </div>
+            </div>
+            <div class="eco-pillar">
+              <div class="eco-pillar-icon">
+                <span class="material-symbols-outlined">recycling</span>
+              </div>
+              <div>
+                <h4>Zero Waste</h4>
+                <p>Green waste composting and sustainable methods across all project scopes.</p>
+              </div>
+            </div>
+            <div class="eco-pillar">
+              <div class="eco-pillar-icon">
+                <span class="material-symbols-outlined">science</span>
+              </div>
+              <div>
+                <h4>Science-Backed</h4>
+                <p>Designed by an M.Sc Horticulturist — soil tests, plant pathology, precision care.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CTA BANNER ═══════ -->
+  <section class="section cta-banner">
+    <div class="container reveal">
+      <p class="section-label" style="justify-content:center;">Ready to Start?</p>
+      <h2>Let's Build Your Dream Garden</h2>
+      <p>Consult with Gaurav Kapare (M.Sc Horticulture) to bring scientific design and greenery into your residential or corporate space.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn--primary">
+          <span class="material-symbols-outlined">calendar_month</span> Book a Visit
+        </a>
+        <a href="tel:+918080956853" class="btn btn--outline">
+          <span class="material-symbols-outlined">call</span> Call Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" aria-label="GreenSpire Home">
+            <span class="nav-logo-text" style="color:var(--clr-white);">GreenSpire<span style="color:var(--clr-amber);"> Solutions</span></span>
+          </a>
+          <p>We bring nature closer to you with sustainable and beautiful green solutions. From maintenance to complete makeovers, we do it all.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html"><span class="material-symbols-outlined">chevron_right</span> Home</a>
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Services</a>
+            <a href="plants.html"><span class="material-symbols-outlined">chevron_right</span> Plants</a>
+            <a href="contact.html"><span class="material-symbols-outlined">chevron_right</span> Contact</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <div class="footer-links">
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Garden Design</a>
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Landscaping</a>
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Lawn Care</a>
+            <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Green Gifts</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <span class="material-symbols-outlined">location_on</span>
+            <span>Shop No.18, Shivakala Arcade, Boisar-Tarapur Road, Boisar - 401501</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="material-symbols-outlined">call</span>
+            <a href="tel:+918080956853">+91 8080956853</a>
+          </div>
+          <div class="footer-contact-item">
+            <span class="material-symbols-outlined">mail</span>
+            <a href="mailto:greenspire.solutions23@gmail.com">greenspire.solutions23@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 GreenSpire Solutions. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/greenspire_solutions?igsh=bWRpNmI1Njk5MXk5"
+            target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+            class="social-icon social-instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/8080956853"
+            target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+            class="social-icon social-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="mailto:greenspire.solutions23@gmail.com"
+            aria-label="Email" class="social-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GO TO TOP BUTTON -->
+  <button class="go-top-btn" id="goTopBtn" aria-label="Go to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.svc-filter-btn');
+      const cards = document.querySelectorAll('.services-grid .svc-card');
+      const grid = document.querySelector('.services-grid');
+      const countEl = document.getElementById('filterCount');
+
+      function updateGrid(filter) {
+        grid.style.opacity = '0';
+        setTimeout(() => {
+          let visibleCount = 0;
+          cards.forEach(card => {
+            const category = card.dataset.category;
+            if (filter === 'all' || category === filter) {
+              card.style.display = '';
+              card.classList.add('visible');
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          if (countEl) countEl.textContent = visibleCount;
+          // Update grid attribute for CSS empty-space fix
+          grid.dataset.visible = visibleCount;
+          grid.style.opacity = '1';
+        }, 280);
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          updateGrid(btn.dataset.filter);
+        });
+      });
+
+      // Init
+      updateGrid('all');
+
+      // Save / bookmark toggle
+      document.querySelectorAll('.svc-save').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const saved = btn.classList.toggle('is-saved');
+          btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
