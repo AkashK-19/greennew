@@ -835,6 +835,24 @@
     height:420px;
     max-width:700px;
     margin-inline:auto;
+    /* Ensure photos are visible on tablet */
+    display: block;
+    position: relative;
+  }
+
+  /* Restore photo visibility on tablet like desktop */
+  .eco-photo--back {
+    width: 54%;
+    height: 88%;
+    top: 0;
+    left: 0;
+  }
+
+  .eco-photo--front {
+    width: 54%;
+    height: 72%;
+    bottom: 0;
+    right: 0;
   }
 
   .eco-pillars{
@@ -843,8 +861,8 @@
   }
 
   .process-num{
-  display:none;
-}
+    display:none;
+  }
 
 }
 
@@ -871,12 +889,17 @@
   }
 
   .eco-pillar { padding: var(--space-md); }
+
+  /* Hide the icon on mobile — text-only pillars in 2×2 */
+  .eco-pillar-icon {
+    display: none;
+  }
   .eco-intro-text { max-width: none; }
 }
 
 @media (max-width: 480px) {
   .eco-pillars {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -928,46 +951,77 @@
     grid-column: span 1;
   }
 
-  /* How We Work — 2×2 grid, no wave */
+  /* How We Work — 2×2 grid */
   .process-flow {
     grid-template-columns: repeat(2, 1fr);
     row-gap: var(--space-2xl);
+    column-gap: var(--space-xl);
+    padding-top: 0;
   }
 
+  /* Hide the desktop sinusoidal SVG wave */
   .process-wave { display: none; }
 
+  /* Reset the low/high vertical offsets */
   .process-step--low,
   .process-step--high { margin-top: 0; }
 
+  /* Add a simple horizontal dashed line connector between steps in same row */
+  .process-step {
+    position: relative;
+  }
+
+  /* Right-side connector: steps 1 and 3 (odd positions in 2-col grid) */
+  .process-step:nth-child(odd)::after {
+    content: '';
+    position: absolute;
+    top: 36px; /* vertically centred on the node */
+    right: calc(-1 * var(--space-xl) / 2 - 8px);
+    width: calc(var(--space-xl) + 16px);
+    height: 2px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--clr-amber) 0px,
+      var(--clr-amber) 7px,
+      transparent 7px,
+      transparent 13px
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Vertical connector between row 1 and row 2: from step 2 down to step 3 */
+  .process-step:nth-child(2)::before {
+    content: '';
+    position: absolute;
+    bottom: calc(-1 * var(--space-2xl) / 2);
+    left: 35px; /* centre of the node */
+    width: 2px;
+    height: calc(var(--space-2xl));
+    background: repeating-linear-gradient(
+      180deg,
+      var(--clr-sage) 0px,
+      var(--clr-sage) 7px,
+      transparent 7px,
+      transparent 13px
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
 }
 
-/* ── Between 769px and 1024px (tablet proper) ── */
+/* ── iPad Air specific (769px to 1024px) ── */
 @media (min-width: 769px) and (max-width: 1024px) {
 
-  .eco-split {
-    grid-template-columns: 1fr;
-    gap: var(--space-2xl);
+  /* Services cards — keep 2 col, equal height */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
   }
 
-  .eco-split-content {
-    text-align: center;
-  }
-
-  .eco-intro-text {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 600px;
-  }
-
-  .eco-split-photos {
-    height: 420px;
-    max-width: 700px;
-    margin-inline: auto;
-  }
-
-  .eco-pillars {
-    max-width: 700px;
-    margin-inline: auto;
+  .svc-card {
+    height: auto;
   }
 
   .process-num {
