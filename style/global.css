@@ -112,7 +112,7 @@ body {
   background: var(--clr-cream);
   overflow-x: hidden;
   line-height: 1.6;
-  cursor: none;
+  cursor: auto;
 }
 
 img, video {
@@ -133,47 +133,8 @@ ul, ol {
 button {
   border: none;
   background: none;
-  cursor: none;
+  cursor: pointer;
   font: inherit;
-}
-
-/* ── Custom Cursor ── */
-.cursor-dot,
-.cursor-ring {
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transition: opacity 0.3s ease;
-  mix-blend-mode: difference;
-}
-
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--clr-white);
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
-}
-
-.cursor-ring {
-  width: 36px;
-  height: 36px;
-  border: 2px solid var(--clr-white);
-  transform: translate(-50%, -50%);
-  transition: transform 0.12s ease, width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
-}
-
-body.cursor-hover .cursor-dot {
-  width: 12px;
-  height: 12px;
-  background: var(--clr-white);
-}
-
-body.cursor-hover .cursor-ring {
-  width: 56px;
-  height: 56px;
-  border-color: var(--clr-white);
 }
 
 /* ── Container ── */
@@ -200,7 +161,7 @@ body.cursor-hover .cursor-ring {
   font-weight: 600;
   letter-spacing: 0.5px;
   transition: all var(--transition-bounce);
-  cursor: none;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
@@ -424,7 +385,7 @@ body::before {
   transform: translateY(20px);
   transition: all var(--transition);
   pointer-events: none;
-  cursor: none;
+  cursor: pointer;
 }
 
 .go-top-btn.visible {
@@ -494,7 +455,7 @@ body::before {
   align-items: center;
   justify-content: center;
   transition: all var(--transition);
-  cursor: none;
+  cursor: pointer;
 }
 
 .lightbox-close:hover {
@@ -547,7 +508,7 @@ body::before {
   align-items: center;
   justify-content: center;
   transition: all var(--transition);
-  cursor: none;
+  cursor: pointer;
   z-index: 2;
 }
 
@@ -581,7 +542,7 @@ body::before {
   opacity: 0.5;
   border: 2px solid transparent;
   transition: all var(--transition);
-  cursor: none;
+  cursor: pointer;
 }
 
 .lightbox-thumbs img:hover {

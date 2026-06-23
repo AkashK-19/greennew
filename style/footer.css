@@ -60,7 +60,6 @@
   color: rgba(255,255,255,0.5);
   font-size: var(--fs-small);
   transition: all var(--transition);
-  cursor: none;
 }
 
 .footer-links a .material-symbols-outlined {
@@ -101,7 +100,6 @@
 .footer-contact-item a {
   color: rgba(255,255,255,0.5);
   transition: color var(--transition);
-  cursor: none;
 }
 
 .footer-contact-item a:hover { color: var(--clr-amber); }
@@ -138,7 +136,6 @@
   color: rgba(255,255,255,0.6);
   font-size: 1rem;
   transition: all var(--transition);
-  cursor: none;
 }
 
 .social-instagram:hover {

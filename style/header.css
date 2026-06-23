@@ -115,7 +115,6 @@ body {
   align-items: center;
   gap: 10px;
   z-index: var(--z-top);
-  cursor: none;
 }
 
 .nav-logo img {
@@ -262,7 +261,6 @@ body {
   gap: 5px;
   padding: 8px;
   z-index: var(--z-top);
-  cursor: none;
   border-radius: var(--radius-sm);
   transition: background var(--transition);
 }

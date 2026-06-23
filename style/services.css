@@ -59,7 +59,7 @@ body.no-announcement .navbar {
   border: 1.5px solid #d1d5db;
   border-radius: 8px;
   transition: all 0.2s ease;
-  cursor: none;
+  cursor: pointer;
   white-space: nowrap;
   letter-spacing: 0.2px;
   line-height: 1;
@@ -290,7 +290,6 @@ body.no-announcement .navbar {
   opacity: 0;
   transform: translateY(-4px);
   transition: all var(--transition);
-  cursor: none;
   border: none;
 }
 
@@ -1342,35 +1341,9 @@ body.no-announcement .navbar {
 
 
 /* ══════════════════════════════════════════════════
-   TOUCH / MOBILE — cursor hidden, native pointer restored
+   TOUCH / MOBILE — 
    ══════════════════════════════════════════════════ */
 @media (hover: none) and (pointer: coarse) {
-  /* Hide the dot & ring elements completely on touch devices */
-  .cursor-dot,
-  .cursor-ring {
-    display: none !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-
-  /* Restore default cursor for touch users */
-  body,
-  a,
-  button,
-  .btn,
-  .svc-filter-btn,
-  .svc-save,
-  .go-top-btn,
-  .lightbox-close,
-  .lightbox-arrow,
-  .lightbox-thumbs img {
-    cursor: auto !important;
-  }
-
-  a, button, .btn, .svc-filter-btn, .svc-save {
-    cursor: pointer !important;
-  }
-
   /* Touch-press feedback — mimics desktop hover lift */
   .svc-card.touch-active {
     transform: translateY(-6px) scale(1.015) !important;

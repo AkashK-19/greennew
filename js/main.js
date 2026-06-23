@@ -20,49 +20,6 @@
   setTimeout(hideLoader, 3000);
 })();
 
-/* ═══════════════════════════════════════════
-   CUSTOM CURSOR
-   ═══════════════════════════════════════════ */
-(function () {
-  const dot = document.querySelector('.cursor-dot');
-  const ring = document.querySelector('.cursor-ring');
-  if (!dot || !ring) return;
-
-  // Detect touch/pointer-coarse device — hide cursor entirely and bail
-  const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-  if (isTouchDevice) {
-    dot.style.display  = 'none';
-    ring.style.display = 'none';
-    return; // no cursor logic needed on touch screens
-  }
-
-  let mouseX = 0, mouseY = 0;
-  let ringX = 0, ringY = 0;
-  let raf;
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.left = mouseX + 'px';
-    dot.style.top  = mouseY + 'px';
-  });
-
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
-    ring.style.left = ringX + 'px';
-    ring.style.top  = ringY + 'px';
-    raf = requestAnimationFrame(animateRing);
-  }
-  animateRing();
-
-  // Hover state on interactive elements
-  const interactives = document.querySelectorAll('a, button, [role="button"], .svc-card, .gallery-item, .cat-pill, .testimonial-card, .wwd-card');
-  interactives.forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-  });
-})();
 
 /* ═══════════════════════════════════════════
    NAVBAR — Scroll Behavior & Active State
@@ -737,7 +694,6 @@
   if (!wavePath) return;
   const section = wavePath.closest('.work-flow-section');
   if (!section) return;
-
   const observer = new IntersectionObserver(([entry]) => {
     wavePath.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
   }, { threshold: 0.05 });
