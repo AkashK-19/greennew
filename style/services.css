@@ -165,10 +165,50 @@
   grid-column: span 2;
 }
 
+/* Full-width card spanning all 3 columns */
+.svc-card--full {
+  grid-column: span 3;
+}
+
+.svc-card--full .svc-card-img {
+  aspect-ratio: 21 / 7;
+}
+
+/* Panorama image ratio for the full-width card */
+.svc-card-img--panorama {
+  aspect-ratio: 21 / 7;
+}
+
+/* Full-width card body — horizontal layout on desktop */
+.svc-card--full .svc-card-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-xl);
+  padding: var(--space-xl) var(--space-2xl);
+}
+
+.svc-card--full .svc-card-body h3 {
+  font-size: 1.35rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.svc-card--full .svc-card-body p {
+  font-size: var(--fs-small);
+  max-width: 680px;
+}
+
 /* When a wide card would be lonely (only 1 visible card in row after filter),
    collapse it back to span 1 so the grid doesn't show empty space */
 .services-grid[data-visible="1"] .svc-card--wide,
 .services-grid[data-visible="2"] .svc-card--wide {
+  grid-column: span 1;
+}
+
+.services-grid[data-visible="1"] .svc-card--full,
+.services-grid[data-visible="2"] .svc-card--full,
+.services-grid[data-visible="3"] .svc-card--full {
   grid-column: span 1;
 }
 
@@ -786,7 +826,7 @@
 }
 
 /* ── Tablet ── */
-@media (max-width:1024px){
+@media (max-width:1023px){
 
   .eco-split{
     grid-template-columns:1fr;
@@ -925,9 +965,9 @@
 
 
 /* ══════════════════════════════════════════════════
-   RESPONSIVE — Tablet (≤ 1200px)
+   RESPONSIVE — Tablet (≤ 1023px)
    ══════════════════════════════════════════════════ */
-@media (max-width: 1200px) {
+@media (max-width: 1023px) {
 
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -997,8 +1037,8 @@
 
 }
 
-/* ── iPad Air specific (769px to 1024px) ── */
-@media (min-width: 769px) and (max-width: 1024px) {
+/* ── iPad Air specific (769px to 1023px) ── */
+@media (min-width: 769px) and (max-width: 1023px) {
 
   /* Services cards — keep 2 col, equal height */
   .services-grid {
@@ -1018,26 +1058,9 @@
 
 
 /* ══════════════════════════════════════════════════
-   RESPONSIVE — Tablet & Mobile (≤ 1024px)
+   RESPONSIVE — Tablet & Mobile (≤ 1023px)
    ══════════════════════════════════════════════════ */
-@media (max-width: 1024px) {
-  .svc-filter {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    width: min(100%, 620px);
-    margin-inline: auto;
-  }
-
-  .svc-filter-btn {
-    width: 100%;
-    min-height: 44px;
-    padding: 10px 14px;
-    white-space: normal;
-    overflow-wrap: anywhere;
-    text-align: center;
-  }
-
+@media (max-width: 1023px) {
   .svc-card {
     height: 100%;
   }
@@ -1146,6 +1169,61 @@
     max-width: none;
   }
 }
+/* ── Tablet (768px to 1023px) ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .svc-filter {
+    gap: 8px;
+  }
+
+  .svc-filter-btn {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+    white-space: normal;
+    line-height: 1.3;
+  }
+
+  /* Switch to 2-col grid on tablet */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Wide cards collapse to 1 col on tablet — prevents orphan gaps */
+  .svc-card--wide {
+    grid-column: span 1;
+  }
+
+  /* Wide card image — reset to standard ratio */
+  .svc-card--wide .svc-card-img {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Full-width card spans both columns */
+  .svc-card--full {
+    grid-column: span 2;
+  }
+
+  /* Full card image — taller on tablet */
+  .svc-card--full .svc-card-img,
+  .svc-card-img--panorama {
+    aspect-ratio: 16 / 5;
+  }
+
+  /* Full card body — stacked vertically on tablet */
+  .svc-card--full .svc-card-body {
+    flex-direction: column;
+    padding: var(--space-lg);
+  }
+
+  .svc-card--full .svc-card-body h3 {
+    white-space: normal;
+    font-size: 1.2rem;
+  }
+
+  .svc-card--full .svc-card-body p {
+    font-size: 0.82rem;
+    max-width: 100%;
+  }
+}
 
 @media (max-width: 767px) {
 
@@ -1156,21 +1234,36 @@
   }
 
   .svc-card--wide { grid-column: span 1; }
+  .svc-card--full { grid-column: span 1; }
 
   .svc-card--wide .svc-card-img { aspect-ratio: 16 / 9; }
+  .svc-card--full .svc-card-img,
+  .svc-card-img--panorama { aspect-ratio: 16 / 9; }
 
-  /* ── Filter — horizontal scroll ── */
+  .svc-card--full .svc-card-body {
+    flex-direction: column;
+    padding: var(--space-lg);
+  }
+
+  .svc-card--full .svc-card-body h3 {
+    white-space: normal;
+  }
+
+  /* ── Filter — 2x2 grid ── */
   .svc-filter {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: 100%;
-    overflow: visible;
-    padding-bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    margin-bottom: var(--space-2xl);
   }
 
   .svc-filter-btn {
-    padding: 9px 10px;
-    flex-shrink: 1;
-    font-size: 0.76rem;
+    padding: 6px 8px;
+    font-size: 0.70rem;
+    min-height: 36px;
+    line-height: 1.2;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   /* ══════════════════════════════════════════
@@ -1294,7 +1387,16 @@
   .svc-hero-title { font-size: 2.2rem; }
 
   .svc-filter {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    max-width: 100%;
+  }
+
+  .svc-filter-btn {
+    padding: 5px 6px;
+    font-size: 0.66rem;
+    min-height: 34px;
+    line-height: 1.15;
   }
 }
 
