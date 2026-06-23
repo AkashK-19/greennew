@@ -199,7 +199,6 @@ button {
 .btn--amber-solid:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 15px 40px rgba(19, 18, 15, 0.45);
-  
 }
 
 .btn--ghost-white {
@@ -648,3 +647,46 @@ body::before {
 .text-white  { color: var(--clr-white); }
 .text-amber  { color: var(--clr-amber); }
 .text-forest { color: var(--clr-forest); }
+
+
+/* ═══════════════════════════════════════════
+   GLOBAL RESPONSIVE ADJUSTMENTS (Tablet & Mobile)
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  :root {
+    /* Reduce global paddings to prevent components from crushing together */
+    --space-4xl: 4rem;
+    --space-3xl: 3rem;
+    --space-2xl: 2.25rem;
+    --space-xl:  1.5rem;
+    --space-lg:  1.25rem;
+
+    /* Scale down large font tiers */
+    --fs-4xl: 2.5rem;
+    --fs-3xl: 2rem;
+    --fs-2xl: 1.5rem;
+    
+    --container-pad: 1.25rem;
+  }
+  
+  /* Reduce main section gaps */
+  .section {
+    padding-block: var(--space-3xl);
+  }
+
+  .section-header h2 {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    line-height: 1.15;
+  }
+  
+  .lightbox-content {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --space-3xl: 2.5rem;
+    --space-4xl: 3rem;
+  }
+}

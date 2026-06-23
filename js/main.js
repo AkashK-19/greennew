@@ -703,3 +703,26 @@
 
 console.log('%cGreenSpire Solutions', 'color: #1A3C2A; font-size: 1.2rem; font-weight: bold;');
 console.log('%cNature meets design — Built with ❤️', 'color: #87A878; font-size: 0.9rem;');
+
+
+
+(function(){
+
+  if(window.innerWidth > 768) return;
+
+  const gallery = document.querySelector('.gallery-fan');
+
+  if(!gallery) return;
+
+  setInterval(() => {
+
+      const cards =
+      gallery.querySelectorAll('.gallery-item');
+
+      gallery.prepend(
+        cards[cards.length - 1]
+      );
+
+  },3000);
+
+})();

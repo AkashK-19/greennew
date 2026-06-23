@@ -45,7 +45,7 @@
         <a href="services.html">Services</a>
         <a href="plants.html" class="active">Plants</a>
         <a href="contact.html">Contact</a>
-        <a href="tel:+919403400841" class="btn btn--primary nav-cta">
+        <a href="tel:+918080956853" class="btn btn--primary nav-cta">
           <span class="material-symbols-outlined">call</span> Call Now
         </a>
       </div>
@@ -62,10 +62,10 @@
   <!-- PLANT CATALOG -->
   <section class="section plants-catalog">
     <div class="container">
-      <div class="section-header reveal">
-        <p class="section-label">Browse Plants</p>
+      <div class="svc-section-intro reveal">
+        <p class="section-label section-label--dark">Browse Plants</p>
         <h2>Find Your Perfect Plant</h2>
-        <p>Explore our wide range of indoor, outdoor, flowering, and ornamental plants.</p>
+        <p>Explore our wide range of indoor, outdoor, flowering, and ornamental plants — curated with care by our certified horticulturist.</p>
       </div>
 
       <div class="filter-bar-wrap reveal">
@@ -893,11 +893,11 @@
           </div>
           <div class="footer-contact-item">
             <span class="material-symbols-outlined">call</span>
-            <a href="tel:+919403400841">+91 9403400841</a>
+            <a href="tel:+918080956853">+91 8080956853</a>
           </div>
           <div class="footer-contact-item">
             <span class="material-symbols-outlined">mail</span>
-            <a href="mailto:akashkapare2005@gmail.com">akashkapare2005@gmail.com</a>
+            <a href="mailto:greenspire.solutions23@gmail.com">greenspire.solutions23@gmail.com</a>
           </div>
         </div>
       </div><!-- /footer-grid -->
@@ -979,7 +979,7 @@
     /* show/hide cards — use class-based fade to avoid inline style fighting CSS transitions */
     allCards.forEach(c => {
       c.style.display = 'none';
-      c.classList.remove('card-visible', 'scroll-pop', 'scroll-past');
+      c.classList.remove('card-visible', 'pop-hidden', 'pop-visible', 'touch-active');
     });
     filtered.forEach((c, i) => {
       if (i >= start && i < end) {
@@ -996,7 +996,11 @@
 
     buildPagination(totalPages, filtered.length);
 
+    /* Re-run touch pop-in for newly shown cards */
+    if (typeof TouchCards !== 'undefined') {
+      requestAnimationFrame(() => TouchCards.refresh());
     }
+  }
 
   /* ── BUILD PAGINATION ── */
   function buildPagination(totalPages, total) {
@@ -1079,42 +1083,61 @@
   })();
 
   /* ══════════════════════════════════════════════════════════
-     SCROLL-POP  
+     TOUCH: POP-IN on viewport entry + press lift (like services page)
   ══════════════════════════════════════════════════════════ */
-  const isTouchDevice = () =>
-    window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  /* ── Touch interactions — exposed as refreshable singleton ── */
+  const TouchCards = (() => {
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (!isTouch) return { refresh: () => {} };
 
-  function initScrollPop() {
-    if (!isTouchDevice()) return;
+    let popObserver = null;
+    const listenedCards = new WeakSet();
 
-    const popObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const card = entry.target;
-        if (entry.isIntersecting) {
-          /* card is inside the pop zone */
-          card.classList.add('scroll-pop');
-          card.classList.remove('scroll-past');
-        } else if (entry.boundingClientRect.bottom < window.innerHeight * 0.40) {
-          /* card has scrolled above the zone */
-          card.classList.remove('scroll-pop');
-          card.classList.add('scroll-past');
-        } else {
-          /* card hasn't reached the zone yet */
-          card.classList.remove('scroll-pop', 'scroll-past');
+    function setupObserver() {
+      if (popObserver) popObserver.disconnect();
+      popObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('pop-hidden');
+            entry.target.classList.add('pop-visible');
+            popObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
+    }
+
+    function refresh() {
+      setupObserver();
+      /* Only operate on currently visible cards */
+      const visibleCards = allCards.filter(c => c.style.display !== 'none');
+      visibleCards.forEach((card, i) => {
+        card.classList.add('pop-hidden');
+        card.style.transitionDelay = (i * 50) + 'ms';
+        popObserver.observe(card);
+
+        if (!listenedCards.has(card)) {
+          listenedCards.add(card);
+          let t = null;
+          card.addEventListener('touchstart', () => {
+            if (t) clearTimeout(t);
+            card.classList.add('touch-active');
+          }, { passive: true });
+          ['touchend', 'touchcancel'].forEach(evt =>
+            card.addEventListener(evt, () => {
+              t = setTimeout(() => card.classList.remove('touch-active'), 200);
+            }, { passive: true })
+          );
         }
       });
-    }, {
-      rootMargin: '-40% 0px -40% 0px',
-      threshold: 0
-    });
+    }
 
-    allCards.forEach(c => popObserver.observe(c));
-  }
+    return { refresh };
+  })();
 
   /* ── INIT ── */
 
   render();
-  initScrollPop();
+  TouchCards.refresh();
 
   /* ══════════════════════════════════════════════════════════
      PLANT DETAIL POPUP

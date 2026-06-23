@@ -50,9 +50,26 @@ body.no-announcement .navbar {
     pointer-events:none; z-index:0;
 }
 .plants-catalog > * { position:relative; z-index:1; }
-.plants-catalog .section-header { text-align:center;max-width:680px;margin:0 auto var(--space-3xl); }
-.plants-catalog .section-header .section-label { justify-content:center;color:var(--clr-forest); }
-.plants-catalog .section-header p { color:var(--clr-text-muted);margin-top:var(--space-xs); }
+
+/* ── Section intro — mirrors services page style ── */
+.plants-catalog .svc-section-intro {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto var(--space-2xl);
+}
+.plants-catalog .svc-section-intro h2 {
+    font-family: var(--ff-heading);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    color: var(--clr-forest-deep);
+    margin-bottom: var(--space-xs);
+    line-height: 1.15;
+}
+.plants-catalog .svc-section-intro p {
+    color: var(--clr-text-muted);
+    font-size: var(--fs-md);
+    margin-top: var(--space-xs);
+}
 
 /* ══════════════════════════════════════════════════
    FILTER BAR
@@ -212,42 +229,48 @@ body.no-announcement .navbar {
 }
 .plant-card.hidden { display:none; }
 
-
-
 /* ══════════════════════════════════════════════════
-   SCROLL-POP  (touch devices — mobile + tablet)
+   TOUCH DEVICES — services-style pop-in + press lift
    ══════════════════════════════════════════════════ */
-@media (hover:none), (pointer:coarse) {
+@media (hover: none) and (pointer: coarse) {
 
-    /* GPU-composited transitions only (transform + box-shadow).
-       IntersectionObserver drives class changes — no scroll polling.
-       Pop-up: ease-out deceleration. Pop-down: smooth settle. */
-    .plant-card{
-        transform:translate3d(0,0,0) scale(1);
-        box-shadow:0 4px 16px rgba(0,0,0,.07);
-        backface-visibility:hidden;
-        -webkit-backface-visibility:hidden;
-        /* Override base transition for touch — extend timing slightly */
+    /* Entry animation — cards pop in from below on viewport entry */
+    .plant-card {
         transition:
-            opacity 0.4s ease,
-            transform .55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-            box-shadow .55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+            transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+            box-shadow 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
 
-    /* Card centered in viewport — pop up smoothly */
-    .plant-card.scroll-pop{
-        transform:translate3d(0,-14px,0) scale(1.025);
+    .plant-card.pop-hidden {
+        opacity: 0;
+        transform: translateY(32px) scale(0.94);
+    }
+
+    .plant-card.pop-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    /* Touch-press lift — mirrors .svc-card.touch-active */
+    .plant-card.touch-active {
+        transform: translateY(-6px) scale(1.015) !important;
         box-shadow:
-            0 24px 48px var(--shadow-clr, rgba(26,60,42,.30)),
-            0 8px 20px rgba(0,0,0,.10);
-        z-index:5;
+            0 20px 50px var(--shadow-clr, rgba(26,60,42,.28)),
+            0 6px 16px rgba(0,0,0,.10) !important;
+        border-color: rgba(26,60,42,0.18) !important;
+        transition:
+            transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+            box-shadow 0.18s ease,
+            border-color 0.18s ease !important;
+        z-index: 5;
     }
 
-    /* Card scrolled past viewport — settle back cleanly */
-    .plant-card.scroll-past{
-        transform:translate3d(0,0,0) scale(1);
-        box-shadow:0 4px 16px rgba(0,0,0,.07);
-        opacity:1;
+    .plant-card.touch-active .card-image img {
+        transform: scale(1.04);
+        transition: transform 0.35s ease !important;
     }
 }
 
@@ -756,7 +779,7 @@ body.no-announcement .navbar {
 }
 
 @media (max-width: 768px) {
-    .plants-catalog .section-header h2 {
+    .plants-catalog .svc-section-intro h2 {
         font-size: 1.8rem;
         line-height: 1.15;
     }
@@ -814,9 +837,6 @@ body.no-announcement .navbar {
     pointer-events:none; z-index:0;
 }
 .plants-catalog > * { position:relative; z-index:1; }
-.plants-catalog .section-header { text-align:center;max-width:680px;margin:0 auto var(--space-3xl); }
-.plants-catalog .section-header .section-label { justify-content:center;color:var(--clr-forest); }
-.plants-catalog .section-header p { color:var(--clr-text-muted);margin-top:var(--space-xs); }
 
 /* ══════════════════════════════════════════════════
    FILTER BAR
@@ -975,45 +995,6 @@ body.no-announcement .navbar {
     .plant-card .card-action:hover .card-action-icon { stroke:#fff; }
 }
 .plant-card.hidden { display:none; }
-
-
-
-/* ══════════════════════════════════════════════════
-   SCROLL-POP  (touch devices — mobile + tablet)
-   ══════════════════════════════════════════════════ */
-@media (hover:none), (pointer:coarse) {
-
-    /* GPU-composited transitions only (transform + box-shadow).
-       IntersectionObserver drives class changes — no scroll polling.
-       Pop-up: ease-out deceleration. Pop-down: smooth settle. */
-    .plant-card{
-        transform:translate3d(0,0,0) scale(1);
-        box-shadow:0 4px 16px rgba(0,0,0,.07);
-        backface-visibility:hidden;
-        -webkit-backface-visibility:hidden;
-        /* Override base transition for touch — extend timing slightly */
-        transition:
-            opacity 0.4s ease,
-            transform .55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-            box-shadow .55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    /* Card centered in viewport — pop up smoothly */
-    .plant-card.scroll-pop{
-        transform:translate3d(0,-14px,0) scale(1.025);
-        box-shadow:
-            0 24px 48px var(--shadow-clr, rgba(26,60,42,.30)),
-            0 8px 20px rgba(0,0,0,.10);
-        z-index:5;
-    }
-
-    /* Card scrolled past viewport — settle back cleanly */
-    .plant-card.scroll-past{
-        transform:translate3d(0,0,0) scale(1);
-        box-shadow:0 4px 16px rgba(0,0,0,.07);
-        opacity:1;
-    }
-}
 
 /* ══════════════════════════════════════════════════
    CARE TIPS — redesigned, clean card layout
@@ -1520,19 +1501,19 @@ body.no-announcement .navbar {
 }
 
 @media (max-width: 768px) {
-    .plants-catalog .section-header h2 {
+    .plants-catalog .svc-section-intro h2 {
         font-size: 1.8rem;
         line-height: 1.15;
     }
 }
 
-.plants-catalog .section-header {
+.plants-catalog .svc-section-intro {
     text-align: center;
     max-width: 560px;
     margin: 0 auto var(--space-2xl);
 }
 
-.plants-catalog .section-header h2 {
+.plants-catalog .svc-section-intro h2 {
     font-family: var(--ff-heading);
     font-size: clamp(1.8rem, 3.5vw, 2.8rem);
     font-weight: 800;
@@ -1541,7 +1522,7 @@ body.no-announcement .navbar {
     line-height: 1.15;
 }
 
-.plants-catalog .section-header p {
+.plants-catalog .svc-section-intro p {
     color: var(--clr-text-muted);
     font-size: var(--fs-md);
     margin-top: var(--space-xs);
