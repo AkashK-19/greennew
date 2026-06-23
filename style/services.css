@@ -1,88 +1,19 @@
-/* ── Page Hero ── */
-.svc-hero {
-  background: linear-gradient(150deg, var(--clr-forest-deep) 0%, #173b27 60%, #1f4d31 100%);
-  padding: calc(var(--nav-height) + var(--space-4xl)) 0 var(--space-3xl);
-  position: relative;
-  overflow: hidden;
-  color: var(--clr-white);
+/* ── No announcement bar — removes the 36px body offset set in header.css ── */
+body.no-announcement {
+  padding-top: 0;
+}
+body.no-announcement .navbar {
+  top: 0;
 }
 
-.svc-hero-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
 
-.svc-hero-orb--1 {
-  position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 380px;
-  height: 380px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(245,200,66,0.10) 0%, transparent 70%);
-}
-
-.svc-hero-orb--2 {
-  position: absolute;
-  bottom: -120px;
-  left: -60px;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(135,168,120,0.07) 0%, transparent 70%);
-}
-
-.svc-hero .container {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-}
-
-.svc-hero-breadcrumb {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: var(--fs-small);
-  color: rgba(255,255,255,0.5);
-  margin-bottom: var(--space-lg);
-  font-weight: 500;
-}
-
-.svc-hero-breadcrumb a {
-  color: rgba(255,255,255,0.5);
-  transition: color var(--transition);
-}
-
-.svc-hero-breadcrumb a:hover { color: var(--clr-amber); }
-
-.svc-hero-sep { opacity: 0.4; }
-
-.svc-hero-title {
-  font-family: 'Unbounded', var(--ff-heading);
-  font-size: clamp(2.6rem, 5vw, 4.2rem);
-  font-weight: 800;
-  letter-spacing: -1.5px;
-  line-height: 1.1;
-  margin-bottom: var(--space-md);
-  background: linear-gradient(160deg, #ffffff 30%, var(--clr-amber-light) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.svc-hero-title em {
-  font-style: italic;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: 400;
-  -webkit-text-fill-color: transparent;
-}
 
 /* ── Services Full Section ── */
 .services-full {
   background: var(--clr-cream);
   padding-block: var(--space-4xl);
+  /* Extra top clearance when no announcement bar — navbar height + breathing room */
+  padding-top: calc(var(--nav-height) + var(--space-3xl));
 }
 
 .svc-section-intro {
@@ -224,12 +155,17 @@
   transition: transform 0.32s cubic-bezier(0.34,1.56,0.64,1),
               box-shadow 0.32s ease,
               border-color 0.28s ease;
-  will-change: transform;
+  /* will-change removed from base — applied only on hover to avoid promoting
+     all cards to GPU layers on page load (wastes memory, causes jank) */
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   /* Ensure 3D tilt doesn't break border-radius */
   transform-style: flat;
   isolation: isolate;
+}
+
+.svc-card:hover {
+  will-change: transform;
 }
 
 .svc-card:hover {
@@ -312,10 +248,10 @@
   letter-spacing: 1.2px;
   text-transform: uppercase;
   color: var(--clr-forest-deep);
-  background: rgba(255,255,255,0.90);
+  background: rgba(255,255,255,0.96);
   padding: 5px 13px;
   border-radius: var(--radius-pill);
-  backdrop-filter: blur(6px);
+  /* backdrop-filter removed — too expensive when repeated across many cards */
   box-shadow: 0 2px 10px rgba(0,0,0,0.12);
 }
 
@@ -348,8 +284,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(13,35,24,0.5);
-  backdrop-filter: blur(6px);
+  background: rgba(13,35,24,0.78);
+  /* backdrop-filter removed — too expensive on many cards simultaneously */
   color: var(--clr-white);
   opacity: 0;
   transform: translateY(-4px);
@@ -462,7 +398,10 @@
   stroke-width: 3;
   stroke-linecap: round;
   stroke-dasharray: 8 6;
+  /* animation driven by JS IntersectionObserver — paused when off-screen */
   animation: waveDash 3s linear infinite;
+  animation-play-state: paused;
+  will-change: stroke-dashoffset;
 }
 
 @keyframes waveDash {
@@ -769,11 +708,12 @@
   flex-direction: column;
   gap: var(--space-sm);
   padding: var(--space-lg);
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.11);
+  border: 1px solid rgba(255,255,255,0.14);
   border-radius: 20px;
   transition: background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter removed — 4 simultaneous blur layers over a dark gradient
+     is extremely expensive on desktop GPUs and causes scroll jank */
   position: relative;
   overflow: hidden;
 }

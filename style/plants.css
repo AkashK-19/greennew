@@ -21,11 +21,20 @@ body { background: #f5f1e4; }
 .page-header h1 { font-size:clamp(2.8rem,5vw,4.4rem);line-height:1.05;margin-bottom:var(--space-md); }
 .page-header p  { max-width:740px;margin:0 auto;color:rgba(255,255,255,.78);font-size:1.05rem; }
 
+/* ── No announcement bar — removes the 36px body offset set in header.css ── */
+body.no-announcement {
+    padding-top: 0;
+}
+body.no-announcement .navbar {
+    top: 0;
+}
+
 /* ══════════════════════════════════════════════════
    CATALOG SECTION
    ══════════════════════════════════════════════════ */
 .plants-catalog {
-    padding: var(--space-4xl) 0 var(--space-3xl);
+    /* Extra top clearance — navbar height + breathing room */
+    padding: calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl);
     position:relative; overflow:hidden;
     /* Static gradient — no animation avoids continuous repaints that cause scroll lag */
     background: linear-gradient(160deg,
@@ -85,7 +94,8 @@ body { background: #f5f1e4; }
 .filter-bar-wrap { display:flex;justify-content:center;margin-bottom:var(--space-3xl);padding-inline:var(--container-pad); }
 .filter-bar {
     display:inline-flex;flex-wrap:nowrap;align-items:center;gap:6px;
-    background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    /* backdrop-filter removed — repaints this sticky bar on every scroll frame */
+    background:rgba(255,255,255,.97);
     border:1.5px solid rgba(34,80,35,.1);border-radius:999px;padding:7px;
     box-shadow:0 8px 32px rgba(38,77,36,.1),0 2px 6px rgba(0,0,0,.04);
     overflow-x:auto;overflow-y:hidden;scrollbar-width:none;max-width:100%;
@@ -131,11 +141,13 @@ body { background: #f5f1e4; }
         box-shadow .5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
         border-color .5s ease;
     position:relative;display:flex;flex-direction:column;
-    /* Promote to its own compositing layer for smoother GPU animation */
-    will-change:transform,opacity;
-    transform:translateZ(0);
+    /* will-change removed from base — 50+ GPU layers at page load wastes memory.
+       Applied on hover only so the browser promotes the card just-in-time. */
     /* Cards start hidden; JS adds card-visible to fade them in */
     opacity:0;
+}
+@media (hover:hover) and (pointer:fine) {
+    .plant-card:hover { will-change: transform, opacity; }
 }
 .plant-card.card-visible { opacity:1; }
 
@@ -414,9 +426,8 @@ body { background: #f5f1e4; }
 .plant-popup-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(10, 20, 14, 0.65);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(10, 20, 14, 0.78);
+    /* backdrop-filter removed — blur on a full-screen overlay is expensive */
     z-index: var(--z-modal);
     display: flex;
     align-items: center;

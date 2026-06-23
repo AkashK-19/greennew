@@ -448,26 +448,31 @@
       : { x: 0, y: 0 };
     let frameId = null;
     let isHovered = false;
+    // Cache rect on mouseenter — calling getBoundingClientRect() inside
+    // mousemove forces a layout recalculation on every pointer event.
+    let cachedRect = null;
 
-    card.addEventListener('mouseenter', () => { isHovered = true; });
+    card.addEventListener('mouseenter', () => {
+      isHovered = true;
+      cachedRect = card.getBoundingClientRect();
+    });
+
     card.addEventListener('mouseleave', () => {
       isHovered = false;
+      cachedRect = null;
       if (frameId) cancelAnimationFrame(frameId);
-      // Smoothly reset — keep the translateY(-8px) from hover but remove tilt
       card.style.transform = '';
     });
 
     card.addEventListener('mousemove', (e) => {
-      if (!isHovered) return;
+      if (!isHovered || !cachedRect) return;
       if (frameId) cancelAnimationFrame(frameId);
       frameId = requestAnimationFrame(() => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        const x = e.clientX - cachedRect.left;
+        const y = e.clientY - cachedRect.top;
         // Tighter tilt range (6deg max) to avoid clip-path issues
-        const rotateX = ((y / rect.height) - 0.5) * -6;
-        const rotateY = ((x / rect.width) - 0.5) * 6;
-        // Include the hover translateY so it works together
+        const rotateX = ((y / cachedRect.height) - 0.5) * -6;
+        const rotateY = ((x / cachedRect.width) - 0.5) * 6;
         card.style.transform = `translateY(-8px) perspective(900px) rotateX(${baseline.x + rotateX}deg) rotateY(${baseline.y + rotateY}deg)`;
       });
     });
@@ -553,13 +558,15 @@
   slideshow.addEventListener('mouseenter', stopAuto);
   slideshow.addEventListener('mouseleave', startAuto);
 
-  // Recalculate/reflow on window resize so slides stay aligned and progress restarts
+  // Debounced resize — without debounce this fires hundreds of times per
+  // resize drag, resetting the progress bar and restarting timers on each.
+  let _resizeTimer;
   window.addEventListener('resize', () => {
-    showSlide(current);
-    if (autoTimer) {
-      // restart auto to keep progress bar timing consistent
-      startAuto();
-    }
+    clearTimeout(_resizeTimer);
+    _resizeTimer = setTimeout(() => {
+      showSlide(current);
+      if (autoTimer) startAuto();
+    }, 150);
   });
 
   // Keyboard navigation
@@ -602,7 +609,9 @@
   }
 
   showSlide(current);
-  setInterval(() => showSlide(current + 1), 1000);
+  // Increased from 1000ms → 3500ms. Changing a section's backgroundColor
+  // every second forces a full repaint of that region on every tick.
+  setInterval(() => showSlide(current + 1), 3500);
 })();
 
 /* ═══════════════════════════════════════════
@@ -647,17 +656,17 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Card fully (or mostly) in view — pop visible
+        // Card in view — pop visible and stop observing.
+        // The "else" branch (re-hiding on scroll away) was removed:
+        // it triggered dozens of simultaneous box-shadow + transform
+        // transitions while scrolling, causing significant mobile jank.
         entry.target.classList.remove('pop-hidden');
         entry.target.classList.add('pop-visible');
-      } else {
-        // Card leaving viewport — settle back down (subtle)
-        entry.target.classList.remove('pop-visible');
-        entry.target.classList.add('pop-hidden');
+        observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.18,          // trigger when 18% of card is visible
+    threshold: 0.18,
     rootMargin: '0px 0px -30px 0px'
   });
 
@@ -677,17 +686,16 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Card in viewport — pop up with animation
+        // Card in viewport — pop up once, then stop watching.
+        // Re-animating on scroll-away caused mass concurrent transitions
+        // on the 50-card grid, which is the primary mobile lag source.
         entry.target.classList.add('scroll-pop');
         entry.target.classList.remove('scroll-past');
-      } else {
-        // Card leaving viewport — pop down
-        entry.target.classList.remove('scroll-pop');
-        entry.target.classList.add('scroll-past');
+        observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.12,          // trigger when 12% of card is visible
+    threshold: 0.12,
     rootMargin: '0px 0px -40px 0px'
   });
 
@@ -717,6 +725,24 @@
       }, { passive: true });
     });
   });
+})();
+
+/* ═══════════════════════════════════════════
+   WAVE DASH ANIMATION — pause when off-screen
+   The waveDash SVG animation runs on the desktop process section.
+   Animating it while it's scrolled out of view burns GPU for nothing.
+   ═══════════════════════════════════════════ */
+(function () {
+  const wavePath = document.querySelector('.process-wave path');
+  if (!wavePath) return;
+  const section = wavePath.closest('.work-flow-section');
+  if (!section) return;
+
+  const observer = new IntersectionObserver(([entry]) => {
+    wavePath.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+  }, { threshold: 0.05 });
+
+  observer.observe(section);
 })();
 
 console.log('%cGreenSpire Solutions', 'color: #1A3C2A; font-size: 1.2rem; font-weight: bold;');
