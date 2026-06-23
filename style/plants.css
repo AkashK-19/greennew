@@ -27,19 +27,13 @@ body { background: #f5f1e4; }
 .plants-catalog {
     padding: var(--space-4xl) 0 var(--space-3xl);
     position:relative; overflow:hidden;
-    background: linear-gradient(135deg,
-        #e8f5e9 0%, #fff8e1 16%, #fce4ec 32%,
-        #e1f5fe 48%, #f3e5f5 64%, #e0f2f1 80%, #fff9c4 100%);
-    background-size:400% 400%;
-    animation:catalogShift 18s ease infinite;
-    transition:background-position .4s ease;
-}
-@keyframes catalogShift {
-    0%   { background-position:0%   50%; }
-    25%  { background-position:100% 0%;  }
-    50%  { background-position:100% 100%;}
-    75%  { background-position:0%   100%;}
-    100% { background-position:0%   50%; }
+    /* Static gradient — no animation avoids continuous repaints that cause scroll lag */
+    background: linear-gradient(160deg,
+        #eef7ee 0%,
+        #fdf9ec 30%,
+        #fef2f8 60%,
+        #edf6fb 85%,
+        #f0faf0 100%);
 }
 .plants-catalog::before {
     content:''; position:absolute; inset:0; opacity:.03;
@@ -54,6 +48,40 @@ body { background: #f5f1e4; }
 /* ══════════════════════════════════════════════════
    FILTER BAR
    ══════════════════════════════════════════════════ */
+/* ── Filter scroll-hint arrow (mobile only) ── */
+.filter-scroll-hint {
+    display:none;
+}
+@media (max-width:767px) {
+    .filter-bar-wrap {
+        position:relative;
+    }
+    .filter-scroll-hint {
+        display:flex;
+        align-items:center;justify-content:center;
+        position:absolute;
+        right:0;top:50%;transform:translateY(-50%);
+        width:36px;height:36px;
+        background:linear-gradient(to left, rgba(232,245,233,.98) 60%, transparent);
+        padding-left:6px;
+        pointer-events:none;
+        z-index:4;
+        transition:opacity .3s ease;
+    }
+    .filter-scroll-hint .material-symbols-outlined {
+        font-size:22px;
+        color:var(--clr-forest);
+        animation:hintBounce 1.4s ease-in-out infinite;
+    }
+    .filter-scroll-hint.hidden {
+        opacity:0;
+    }
+    @keyframes hintBounce {
+        0%,100% { transform:translateX(0); }
+        50%      { transform:translateX(4px); }
+    }
+}
+
 .filter-bar-wrap { display:flex;justify-content:center;margin-bottom:var(--space-3xl);padding-inline:var(--container-pad); }
 .filter-bar {
     display:inline-flex;flex-wrap:nowrap;align-items:center;gap:6px;
@@ -96,23 +124,43 @@ body { background: #f5f1e4; }
     background:#ffffff;border-radius:20px;overflow:hidden;
     border:1px solid rgba(0,0,0,.06);
     box-shadow:0 4px 16px rgba(0,0,0,.07);
-    transition:transform .38s cubic-bezier(.34,1.56,.64,1), box-shadow .4s ease;
-    position:relative;display:flex;flex-direction:column;will-change:transform;
+    /* Smooth deceleration — no overshoot/bounce, feels premium */
+    transition:
+        opacity 0.4s ease,
+        transform .5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow .5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        border-color .5s ease;
+    position:relative;display:flex;flex-direction:column;
+    /* Promote to its own compositing layer for smoother GPU animation */
+    will-change:transform,opacity;
+    transform:translateZ(0);
+    /* Cards start hidden; JS adds card-visible to fade them in */
+    opacity:0;
 }
+.plant-card.card-visible { opacity:1; }
 
 /* Desktop hover — only real mouse */
 @media (hover:hover) and (pointer:fine) {
     .plant-card:hover {
-        transform:translateY(-10px);
-        box-shadow:0 24px 60px var(--shadow-clr,rgba(26,60,42,.25)),0 8px 20px rgba(0,0,0,.08);
+        transform:translateY(-12px) translateZ(0) scale(1.02);
+        box-shadow:
+            0 32px 64px var(--shadow-clr,rgba(26,60,42,.22)),
+            0 8px 24px rgba(0,0,0,.08),
+            0 0 0 1px rgba(26,60,42,.06);
+        border-color:rgba(26,60,42,.12);
         z-index:2;
     }
     .plant-card:hover .card-image img {
-        transform:scale(1.1) rotate(-0.5deg);
-        filter:saturate(1.15) brightness(1.04);
+        transform:scale(1.08);
+        filter:saturate(1.12) brightness(1.03);
     }
-    .plant-card .card-action:hover { background:var(--clr-forest);transform:scale(1.1); }
-    .plant-card .card-action:hover .material-symbols-outlined { color:#fff; }
+    .plant-card:hover .plant-category { color:var(--clr-forest); }
+    .plant-card:hover .price { color:var(--clr-forest-light); }
+    .plant-card .card-action:hover {
+        background:var(--clr-forest);
+        transform:scale(1.12) rotate(8deg);
+    }
+    .plant-card .card-action:hover .card-action-icon { stroke:#fff; }
 }
 
 .plant-card .card-image { height:220px;overflow:hidden;position:relative;background:#f5f5f5; }
@@ -133,39 +181,57 @@ body { background: #f5f1e4; }
 .plant-card .price { font-family:var(--ff-heading);font-size:1.12rem;font-weight:800;color:#1a3c2a;transition:color .35s ease; }
 
 .plant-card .card-action {
-    width:36px;height:36px;border-radius:50%;background:#f2f7f2;
+    width:34px;height:34px;border-radius:10px;background:#f2f7f2;
     display:flex;align-items:center;justify-content:center;
-    transition:all .3s ease;cursor:pointer;border:none;flex-shrink:0;
+    transition:all .25s ease;cursor:pointer;border:none;flex-shrink:0;
 }
-.plant-card .card-action .material-symbols-outlined { font-size:18px;color:#3e6441;transition:color .3s ease; }
+.card-action-icon {
+    width:16px;height:16px;
+    stroke:#3e6441;
+    transition:stroke .2s ease;
+    display:block;
+}
+@media (hover:hover) and (pointer:fine) {
+    .plant-card .card-action:hover {
+        background:#1a3c2a;
+        transform:scale(1.08);
+    }
+    .plant-card .card-action:hover .card-action-icon { stroke:#fff; }
+}
 .plant-card.hidden { display:none; }
+
+
 
 /* ══════════════════════════════════════════════════
    SCROLL-POP  (touch devices — mobile + tablet)
    ══════════════════════════════════════════════════ */
 @media (hover:none), (pointer:coarse) {
 
-    /* Only `transform` is animated here — it's GPU-composited (cheap).
-       box-shadow is a paint property (expensive to animate, the main
-       cause of scroll lag), so it switches instantly alongside the
-       smooth transform instead of fading/growing over time. */
+    /* GPU-composited transitions only (transform + box-shadow).
+       IntersectionObserver drives class changes — no scroll polling.
+       Pop-up: ease-out deceleration. Pop-down: smooth settle. */
     .plant-card{
         transform:translate3d(0,0,0) scale(1);
         box-shadow:0 4px 16px rgba(0,0,0,.07);
-        opacity:1;
         backface-visibility:hidden;
         -webkit-backface-visibility:hidden;
-        transition:transform .42s cubic-bezier(0.22,1,0.36,1);
+        /* Override base transition for touch — extend timing slightly */
+        transition:
+            opacity 0.4s ease,
+            transform .55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+            box-shadow .55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
+    /* Card centered in viewport — pop up smoothly */
     .plant-card.scroll-pop{
-        transform:translate3d(0,-10px,0) scale(1.015);
+        transform:translate3d(0,-14px,0) scale(1.025);
         box-shadow:
-            0 16px 34px var(--shadow-clr, rgba(26,60,42,.28)),
-            0 5px 14px rgba(0,0,0,.10);
+            0 24px 48px var(--shadow-clr, rgba(26,60,42,.30)),
+            0 8px 20px rgba(0,0,0,.10);
         z-index:5;
     }
 
+    /* Card scrolled past viewport — settle back cleanly */
     .plant-card.scroll-past{
         transform:translate3d(0,0,0) scale(1);
         box-shadow:0 4px 16px rgba(0,0,0,.07);
@@ -269,7 +335,7 @@ body { background: #f5f1e4; }
 .page-btn.disabled { opacity:.35;cursor:not-allowed; }
 .page-btn--prev .material-symbols-outlined, .page-btn--next .material-symbols-outlined { font-size:20px; }
 .page-dots { color:#9ca3af;font-size:1rem;padding:0 4px;line-height:42px; }
-.pagination-info { font-size:.82rem;color:var(--clr-text-muted);font-family:var(--ff-heading); }
+.pagination-info { font-size:.82rem;color:var(--clr-text-muted);font-family:var(--ff-heading);display: none !important; }
 
 /* ══════════════════════════════════════════════════
    RESPONSIVE — TABLET  768 – 1024px
@@ -317,8 +383,8 @@ body { background: #f5f1e4; }
     .plant-card .botanical-name { font-size:.68rem;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
     .plant-card .card-footer { padding-top:6px;margin-top:0; }
     .plant-card .price       { font-size:.95rem;font-weight:800; }
-    .plant-card .card-action { width:30px;height:30px; }
-    .plant-card .card-action .material-symbols-outlined { font-size:15px; }
+    .plant-card .card-action { width:28px;height:28px;border-radius:8px; }
+    .plant-card .card-action .card-action-icon { width:13px;height:13px; }
 
     /* Care tips: horizontal card layout on mobile */
     .care-tips-grid { grid-template-columns:1fr;max-width:440px; }
@@ -339,4 +405,341 @@ body { background: #f5f1e4; }
     .plant-card .card-image { height:140px; }
     .plant-card h3  { font-size:.78rem; }
     .plant-card .price { font-size:.88rem; }
+}
+
+/* ══════════════════════════════════════════════════
+   PLANT DETAIL POPUP — clean & professional
+   ══════════════════════════════════════════════════ */
+
+.plant-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 20, 14, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease, visibility .25s ease;
+    isolation: isolate;
+}
+.plant-popup-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ── Modal card ── */
+.plant-popup {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 420px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 24px 64px rgba(0,0,0,.28), 0 4px 16px rgba(0,0,0,.10);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform .3s cubic-bezier(0.22,1,0.36,1), opacity .25s ease;
+    position: relative;
+}
+.plant-popup-overlay.open .plant-popup {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ── Drag handle — hidden on desktop ── */
+.plant-popup-handle {
+    display: none;
+    width: 36px;
+    height: 4px;
+    background: rgba(0,0,0,.10);
+    border-radius: 2px;
+    margin: 10px auto 0;
+    flex-shrink: 0;
+}
+
+/* ── Close button ── */
+.plant-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.9);
+    border: 1px solid rgba(0,0,0,.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 1px 6px rgba(0,0,0,.12);
+    transition: background .2s ease, transform .2s ease;
+    color: #1a3c2a;
+}
+.plant-popup-close:hover {
+    background: #1a3c2a;
+    color: #fff;
+    transform: rotate(90deg);
+}
+.plant-popup-close .material-symbols-outlined { font-size: 17px; }
+
+/* ── Image ── */
+.plant-popup-image {
+    width: 100%;
+    height: 240px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: #f0f5f0;
+    position: relative;
+}
+.plant-popup-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform .5s ease;
+}
+.plant-popup-overlay.open .plant-popup-image img {
+    transform: scale(1.04);
+}
+
+/* ── Body ── */
+.plant-popup-body {
+    padding: 1.25rem 1.4rem 1.5rem;
+    overflow-y: auto;
+    flex: 1;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ── Category label ── */
+.plant-popup-category {
+    font-size: .68rem;
+    font-weight: 700;
+    color: #4d794c;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    margin-bottom: 5px;
+}
+
+/* ── Name ── */
+.plant-popup-name {
+    font-family: var(--ff-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0d2318;
+    line-height: 1.15;
+    margin-bottom: 3px;
+}
+
+/* ── Botanical ── */
+.plant-popup-botanical {
+    font-style: italic;
+    font-size: .8rem;
+    color: #9aaa9a;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* ── Divider ── */
+.plant-popup-divider {
+    height: 1px;
+    background: #ebebeb;
+    margin-bottom: .9rem;
+}
+
+/* ── Badges ── */
+.plant-popup-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1rem;
+}
+.plant-popup-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 600;
+    line-height: 1;
+    background: #f0f5f0;
+    color: #2a5a3f;
+    border: 1px solid rgba(42,90,63,.12);
+}
+.plant-popup-badge .material-symbols-outlined {
+    font-size: 13px;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+
+/* ── Price + CTA row ── */
+.plant-popup-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    padding-top: .9rem;
+    border-top: 1px solid #ebebeb;
+}
+
+.plant-popup-price {
+    font-family: var(--ff-heading);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1a3c2a;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+/* ── Fade-up entry for body elements ── */
+.plant-popup-overlay.open .plant-popup-category { animation: ppFade .3s .07s both; }
+.plant-popup-overlay.open .plant-popup-name     { animation: ppFade .3s .12s both; }
+.plant-popup-overlay.open .plant-popup-botanical{ animation: ppFade .3s .16s both; }
+.plant-popup-overlay.open .plant-popup-badges   { animation: ppFade .3s .20s both; }
+.plant-popup-overlay.open .plant-popup-price-row{ animation: ppFade .3s .24s both; }
+
+@keyframes ppFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════════════════
+   POPUP — MOBILE ≤ 540px  
+   ══════════════════════════════════════════════════ */
+
+@media (max-width: 540px) {
+
+    .plant-popup-overlay {
+        align-items: center;
+        justify-content: center;
+        padding: .85rem;
+    }
+
+    .plant-popup {
+        width: min(88vw, 320px);
+        max-width: 320px;
+        max-height: 85vh;
+
+        border-radius: 18px;
+
+        transform: translateY(20px);
+
+        box-shadow:
+            0 24px 60px rgba(0,0,0,.22),
+            0 8px 24px rgba(0,0,0,.10);
+    }
+
+    .plant-popup-overlay.open .plant-popup {
+        transform: translateY(0);
+    }
+
+    /* Hide bottom-sheet handle */
+    .plant-popup-handle {
+        display: none;
+    }
+
+    /* Image */
+    .plant-popup-image {
+        height: 190px;
+    }
+
+    /* Content */
+    .plant-popup-body {
+        padding: .95rem;
+    }
+
+    .plant-popup-category {
+        font-size: .62rem;
+        margin-bottom: 3px;
+    }
+
+    .plant-popup-name {
+        font-size: 1.25rem;
+        line-height: 1.2;
+        margin-bottom: 2px;
+    }
+
+    .plant-popup-botanical {
+        font-size: .72rem;
+        margin-bottom: .75rem;
+    }
+
+    .plant-popup-divider {
+        margin-bottom: .6rem;
+    }
+
+    /* Badges */
+    .plant-popup-badges {
+        gap: 5px;
+        margin-bottom: .75rem;
+    }
+
+    .plant-popup-badge {
+        padding: 4px 8px;
+        font-size: .65rem;
+    }
+
+    .plant-popup-badge .material-symbols-outlined {
+        font-size: 11px;
+    }
+
+    /* Price Row */
+    .plant-popup-price-row {
+        padding-top: .65rem;
+    }
+
+    .plant-popup-price {
+        font-size: 1.5rem;
+    }
+
+    /* Close Button */
+    .plant-popup-close {
+        top: 8px;
+        right: 8px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .plant-popup-close .material-symbols-outlined {
+        font-size: 15px;
+    }
+}
+
+/* Extra-small phones */
+@media (max-width: 360px) {
+
+    .plant-popup {
+        width: min(90vw, 290px);
+        max-width: 290px;
+    }
+
+    .plant-popup-image {
+        height: 170px;
+    }
+
+    .plant-popup-body {
+        padding: .85rem;
+    }
+
+    .plant-popup-name {
+        font-size: 1.1rem;
+    }
+
+    .plant-popup-price {
+        font-size: 1.35rem;
+    }
+
+    .plant-popup-badge {
+        font-size: .62rem;
+        padding: 3px 7px;
+    }
 }

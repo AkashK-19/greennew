@@ -9,7 +9,7 @@
   <title>Plants Catalog — GreenSpire Solutions</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://ik.imagekit.io/greenspire/images/logo.webp?updatedAt=1776152708262">
+  <link rel="icon" type="image/png" href="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/logo.png">
 
   <!-- Open Graph / Social Share -->
   <meta property="og:type" content="website">
@@ -61,7 +61,7 @@
   <nav class="navbar navbar--white" id="navbar" role="navigation" aria-label="Main Navigation">
     <div class="container">
       <a href="index.html" class="nav-logo" aria-label="GreenSpire Home">
-        <img src="https://ik.imagekit.io/greenspire/images/logo.webp?updatedAt=1776152708262" alt="GreenSpire Solutions Logo" style="height:40px;width:auto;">
+        <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/logo.png" alt="GreenSpire Solutions Logo" style="height:40px;width:auto;">
         <span class="nav-logo-text">GreenSpire Solutions</span>
       </a>
       <div class="nav-links" id="navLinks">
@@ -93,7 +93,10 @@
       </div>
 
       <div class="filter-bar-wrap reveal">
-        <div class="filter-bar">
+        <div class="filter-scroll-hint" id="filterScrollHint" aria-hidden="true">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </div>
+        <div class="filter-bar" id="filterBar">
           <button class="filter-pill active" data-filter="all">
             <span class="pill-icon material-symbols-outlined">forest</span>
             <span class="pill-label">All Plants</span>
@@ -128,158 +131,158 @@
         <!-- 1 -->
         <div class="plant-card reveal" data-category="indoor">
           <div class="card-image">
-            <img src="https://ik.imagekit.io/greenspire/images/plants/money-plant.webp?updatedAt=1776152659560" loading="lazy" alt="Money Plant">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/money-plant.webp?updatedAt=1776152659560&tr=w-500,h-500" loading="lazy" decoding="async" alt="Money Plant">
           </div>
           <div class="card-body">
             <p class="plant-category">Indoor</p>
             <h3>Money Plant</h3>
             <p class="botanical-name">Epipremnum aureum</p>
-            <div class="card-footer"><span class="price">&#8377;149</span></div>
+            <div class="card-footer"><span class="price">&#8377;149</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 2 -->
         <div class="plant-card reveal" data-category="indoor">
           <div class="card-image">
-            <img src="https://ik.imagekit.io/greenspire/images/plants/snake-plant.webp?updatedAt=1776152659241" loading="lazy" alt="Snake Plant">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/snake-plant.webp?updatedAt=1776152659241&tr=w-500,h-500" loading="lazy" decoding="async" alt="Snake Plant">
             <span class="card-badge">Air Purifier</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Indoor</p>
             <h3>Snake Plant</h3>
             <p class="botanical-name">Sansevieria trifasciata</p>
-            <div class="card-footer"><span class="price">&#8377;249</span></div>
+            <div class="card-footer"><span class="price">&#8377;249</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 3 -->
         <div class="plant-card reveal" data-category="indoor">
           <div class="card-image">
-            <img src="https://ik.imagekit.io/greenspire/images/plants/Peace_Lily.webp?updatedAt=1776152659532" loading="lazy" alt="Peace Lily">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/Peace_Lily.webp?updatedAt=1776152659532&tr=w-500,h-500" loading="lazy" decoding="async" alt="Peace Lily">
           </div>
           <div class="card-body">
             <p class="plant-category">Indoor</p>
             <h3>Peace Lily</h3>
             <p class="botanical-name">Spathiphyllum wallisii</p>
-            <div class="card-footer"><span class="price">&#8377;399</span></div>
+            <div class="card-footer"><span class="price">&#8377;399</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 4 -->
         <div class="plant-card reveal" data-category="indoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1632207691143-643e2a9a9361?w=400&q=80" loading="lazy" alt="Spider Plant">
+            <img src="https://images.unsplash.com/photo-1632207691143-643e2a9a9361?w=400&q=80" loading="lazy" decoding="async" alt="Spider Plant">
           </div>
           <div class="card-body">
             <p class="plant-category">Indoor</p>
             <h3>Spider Plant</h3>
             <p class="botanical-name">Chlorophytum comosum</p>
-            <div class="card-footer"><span class="price">&#8377;179</span></div>
+            <div class="card-footer"><span class="price">&#8377;179</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 5 -->
         <div class="plant-card reveal" data-category="indoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400&q=80" loading="lazy" alt="ZZ Plant">
+            <img src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400&q=80" loading="lazy" decoding="async" alt="ZZ Plant">
           </div>
           <div class="card-body">
             <p class="plant-category">Indoor</p>
             <h3>ZZ Plant</h3>
             <p class="botanical-name">Zamioculcas zamiifolia</p>
-            <div class="card-footer"><span class="price">&#8377;349</span></div>
+            <div class="card-footer"><span class="price">&#8377;349</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 6 -->
         <div class="plant-card reveal" data-category="indoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1611048268330-53de574cae3b?w=400&q=80" loading="lazy" alt="Pothos">
+            <img src="https://images.unsplash.com/photo-1611048268330-53de574cae3b?w=400&q=80" loading="lazy" decoding="async" alt="Pothos">
           </div>
           <div class="card-body">
             <p class="plant-category">Indoor</p>
             <h3>Golden Pothos</h3>
             <p class="botanical-name">Scindapsus aureus</p>
-            <div class="card-footer"><span class="price">&#8377;129</span></div>
+            <div class="card-footer"><span class="price">&#8377;129</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 7 -->
         <div class="plant-card reveal" data-category="indoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb?w=400&q=80" loading="lazy" alt="Rubber Plant">
+            <img src="https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb?w=400&q=80" loading="lazy" decoding="async" alt="Rubber Plant">
             <span class="card-badge">Trending</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Indoor</p>
             <h3>Rubber Plant</h3>
             <p class="botanical-name">Ficus elastica</p>
-            <div class="card-footer"><span class="price">&#8377;499</span></div>
+            <div class="card-footer"><span class="price">&#8377;499</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 8 -->
         <div class="plant-card reveal" data-category="indoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1459156212016-c812468e2115?w=400&q=80" loading="lazy" alt="Monstera">
+            <img src="https://images.unsplash.com/photo-1459156212016-c812468e2115?w=400&q=80" loading="lazy" decoding="async" alt="Monstera">
           </div>
           <div class="card-body">
             <p class="plant-category">Indoor</p>
             <h3>Monstera</h3>
             <p class="botanical-name">Monstera deliciosa</p>
-            <div class="card-footer"><span class="price">&#8377;599</span></div>
+            <div class="card-footer"><span class="price">&#8377;599</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 9 -->
         <div class="plant-card reveal" data-category="indoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1598880940080-ff9a29891b85?w=400&q=80" loading="lazy" alt="Philodendron">
+            <img src="https://images.unsplash.com/photo-1598880940080-ff9a29891b85?w=400&q=80" loading="lazy" decoding="async" alt="Philodendron">
           </div>
           <div class="card-body">
             <p class="plant-category">Indoor</p>
             <h3>Philodendron</h3>
             <p class="botanical-name">Philodendron hederaceum</p>
-            <div class="card-footer"><span class="price">&#8377;279</span></div>
+            <div class="card-footer"><span class="price">&#8377;279</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 10 -->
         <div class="plant-card reveal" data-category="indoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=400&q=80" loading="lazy" alt="Chinese Evergreen">
+            <img src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=400&q=80" loading="lazy" decoding="async" alt="Chinese Evergreen">
           </div>
           <div class="card-body">
             <p class="plant-category">Indoor</p>
             <h3>Chinese Evergreen</h3>
             <p class="botanical-name">Aglaonema commutatum</p>
-            <div class="card-footer"><span class="price">&#8377;219</span></div>
+            <div class="card-footer"><span class="price">&#8377;219</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 11 -->
         <div class="plant-card reveal" data-category="indoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1572688484438-313a6e50c333?w=400&q=80" loading="lazy" alt="Boston Fern">
+            <img src="https://images.unsplash.com/photo-1572688484438-313a6e50c333?w=400&q=80" loading="lazy" decoding="async" alt="Boston Fern">
           </div>
           <div class="card-body">
             <p class="plant-category">Indoor</p>
             <h3>Boston Fern</h3>
             <p class="botanical-name">Nephrolepis exaltata</p>
-            <div class="card-footer"><span class="price">&#8377;199</span></div>
+            <div class="card-footer"><span class="price">&#8377;199</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 12 -->
         <div class="plant-card reveal" data-category="indoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&q=80" loading="lazy" alt="Dracaena">
+            <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&q=80" loading="lazy" decoding="async" alt="Dracaena">
           </div>
           <div class="card-body">
             <p class="plant-category">Indoor</p>
             <h3>Dracaena</h3>
             <p class="botanical-name">Dracaena marginata</p>
-            <div class="card-footer"><span class="price">&#8377;329</span></div>
+            <div class="card-footer"><span class="price">&#8377;329</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
@@ -288,160 +291,160 @@
         <!-- 13 -->
         <div class="plant-card reveal" data-category="flowering">
           <div class="card-image">
-            <img src="https://ik.imagekit.io/greenspire/images/plants/Hibiscus.webp?updatedAt=1776152659584" loading="lazy" alt="Hibiscus">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/Hibiscus.webp?updatedAt=1776152659584&tr=w-500,h-500" loading="lazy" decoding="async" alt="Hibiscus">
           </div>
           <div class="card-body">
             <p class="plant-category">Flowering</p>
             <h3>Hibiscus</h3>
             <p class="botanical-name">Hibiscus rosa-sinensis</p>
-            <div class="card-footer"><span class="price">&#8377;199</span></div>
+            <div class="card-footer"><span class="price">&#8377;199</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 14 -->
         <div class="plant-card reveal" data-category="flowering">
           <div class="card-image">
-            <img src="https://ik.imagekit.io/greenspire/images/plants/Jasmine.webp?updatedAt=1776152659475" loading="lazy" alt="Jasmine">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/Jasmine.webp?updatedAt=1776152659475&tr=w-500,h-500" loading="lazy" decoding="async" alt="Jasmine">
             <span class="card-badge">Fragrant</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Flowering</p>
             <h3>Jasmine</h3>
             <p class="botanical-name">Jasminum sambac</p>
-            <div class="card-footer"><span class="price">&#8377;179</span></div>
+            <div class="card-footer"><span class="price">&#8377;179</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 15 -->
         <div class="plant-card reveal" data-category="flowering">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1490750967868-88df5691cc4c?w=400&q=80" loading="lazy" alt="Marigold">
+            <img src="https://images.unsplash.com/photo-1490750967868-88df5691cc4c?w=400&q=80" loading="lazy" decoding="async" alt="Marigold">
           </div>
           <div class="card-body">
             <p class="plant-category">Flowering</p>
             <h3>Marigold</h3>
             <p class="botanical-name">Tagetes erecta</p>
-            <div class="card-footer"><span class="price">&#8377;89</span></div>
+            <div class="card-footer"><span class="price">&#8377;89</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 16 -->
         <div class="plant-card reveal" data-category="flowering">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" loading="lazy" alt="Rose">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" loading="lazy" decoding="async" alt="Rose">
             <span class="card-badge">Best Seller</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Flowering</p>
             <h3>Rose</h3>
             <p class="botanical-name">Rosa hybrida</p>
-            <div class="card-footer"><span class="price">&#8377;249</span></div>
+            <div class="card-footer"><span class="price">&#8377;249</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 17 -->
         <div class="plant-card reveal" data-category="flowering">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1598335375395-5961b6ee8ddd?w=400&q=80" loading="lazy" alt="Dahlia">
+            <img src="https://images.unsplash.com/photo-1598335375395-5961b6ee8ddd?w=400&q=80" loading="lazy" decoding="async" alt="Dahlia">
           </div>
           <div class="card-body">
             <p class="plant-category">Flowering</p>
             <h3>Dahlia</h3>
             <p class="botanical-name">Dahlia pinnata</p>
-            <div class="card-footer"><span class="price">&#8377;159</span></div>
+            <div class="card-footer"><span class="price">&#8377;159</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 18 -->
         <div class="plant-card reveal" data-category="flowering">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?w=400&q=80" loading="lazy" alt="Sunflower">
+            <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?w=400&q=80" loading="lazy" decoding="async" alt="Sunflower">
           </div>
           <div class="card-body">
             <p class="plant-category">Flowering</p>
             <h3>Sunflower</h3>
             <p class="botanical-name">Helianthus annuus</p>
-            <div class="card-footer"><span class="price">&#8377;119</span></div>
+            <div class="card-footer"><span class="price">&#8377;119</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 19 -->
         <div class="plant-card reveal" data-category="flowering">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?w=400&q=80" loading="lazy" alt="Lavender">
+            <img src="https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?w=400&q=80" loading="lazy" decoding="async" alt="Lavender">
             <span class="card-badge">Fragrant</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Flowering</p>
             <h3>Lavender</h3>
             <p class="botanical-name">Lavandula angustifolia</p>
-            <div class="card-footer"><span class="price">&#8377;229</span></div>
+            <div class="card-footer"><span class="price">&#8377;229</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 20 -->
         <div class="plant-card reveal" data-category="flowering">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1589123053646-4e8b5493f439?w=400&q=80" loading="lazy" alt="Anthurium">
+            <img src="https://images.unsplash.com/photo-1589123053646-4e8b5493f439?w=400&q=80" loading="lazy" decoding="async" alt="Anthurium">
           </div>
           <div class="card-body">
             <p class="plant-category">Flowering</p>
             <h3>Anthurium</h3>
             <p class="botanical-name">Anthurium andraeanum</p>
-            <div class="card-footer"><span class="price">&#8377;449</span></div>
+            <div class="card-footer"><span class="price">&#8377;449</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 21 -->
         <div class="plant-card reveal" data-category="flowering">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1468327768560-75b778cbb551?w=400&q=80" loading="lazy" alt="Bird of Paradise">
+            <img src="https://images.unsplash.com/photo-1468327768560-75b778cbb551?w=400&q=80" loading="lazy" decoding="async" alt="Bird of Paradise">
           </div>
           <div class="card-body">
             <p class="plant-category">Flowering</p>
             <h3>Bird of Paradise</h3>
             <p class="botanical-name">Strelitzia reginae</p>
-            <div class="card-footer"><span class="price">&#8377;699</span></div>
+            <div class="card-footer"><span class="price">&#8377;699</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 22 -->
         <div class="plant-card reveal" data-category="flowering">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1598870783697-2346a57b43ab?w=400&q=80" loading="lazy" alt="Chrysanthemum">
+            <img src="https://images.unsplash.com/photo-1598870783697-2346a57b43ab?w=400&q=80" loading="lazy" decoding="async" alt="Chrysanthemum">
           </div>
           <div class="card-body">
             <p class="plant-category">Flowering</p>
             <h3>Chrysanthemum</h3>
             <p class="botanical-name">Chrysanthemum morifolium</p>
-            <div class="card-footer"><span class="price">&#8377;139</span></div>
+            <div class="card-footer"><span class="price">&#8377;139</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 23 -->
         <div class="plant-card reveal" data-category="flowering">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=400&q=80" loading="lazy" alt="Plumeria">
+            <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=400&q=80" loading="lazy" decoding="async" alt="Plumeria">
             <span class="card-badge">Exotic</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Flowering</p>
             <h3>Plumeria</h3>
             <p class="botanical-name">Plumeria rubra</p>
-            <div class="card-footer"><span class="price">&#8377;299</span></div>
+            <div class="card-footer"><span class="price">&#8377;299</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 24 -->
         <div class="plant-card reveal" data-category="flowering">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1591189824344-9f6a04979a56?w=400&q=80" loading="lazy" alt="Ixora">
+            <img src="https://images.unsplash.com/photo-1591189824344-9f6a04979a56?w=400&q=80" loading="lazy" decoding="async" alt="Ixora">
           </div>
           <div class="card-body">
             <p class="plant-category">Flowering</p>
             <h3>Ixora</h3>
             <p class="botanical-name">Ixora coccinea</p>
-            <div class="card-footer"><span class="price">&#8377;169</span></div>
+            <div class="card-footer"><span class="price">&#8377;169</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
@@ -450,107 +453,107 @@
         <!-- 25 -->
         <div class="plant-card reveal" data-category="outdoor">
           <div class="card-image">
-            <img src="https://ik.imagekit.io/greenspire/images/plants/Bougainvillea.webp?updatedAt=1776152659436" loading="lazy" alt="Bougainvillea">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/Bougainvillea.webp?updatedAt=1776152659436&tr=w-500,h-500" loading="lazy" decoding="async" alt="Bougainvillea">
             <span class="card-badge">Best Seller</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Outdoor</p>
             <h3>Bougainvillea</h3>
             <p class="botanical-name">Bougainvillea glabra</p>
-            <div class="card-footer"><span class="price">&#8377;299</span></div>
+            <div class="card-footer"><span class="price">&#8377;299</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 26 -->
         <div class="plant-card reveal" data-category="outdoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1611843467160-25afb8df1074?w=400&q=80" loading="lazy" alt="Bamboo">
+            <img src="https://images.unsplash.com/photo-1611843467160-25afb8df1074?w=400&q=80" loading="lazy" decoding="async" alt="Bamboo">
           </div>
           <div class="card-body">
             <p class="plant-category">Outdoor</p>
             <h3>Lucky Bamboo</h3>
             <p class="botanical-name">Dracaena sanderiana</p>
-            <div class="card-footer"><span class="price">&#8377;189</span></div>
+            <div class="card-footer"><span class="price">&#8377;189</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 27 -->
         <div class="plant-card reveal" data-category="outdoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=400&q=80" loading="lazy" alt="Areca Palm">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=400&q=80" loading="lazy" decoding="async" alt="Areca Palm">
             <span class="card-badge">Popular</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Outdoor</p>
             <h3>Areca Palm</h3>
             <p class="botanical-name">Dypsis lutescens</p>
-            <div class="card-footer"><span class="price">&#8377;549</span></div>
+            <div class="card-footer"><span class="price">&#8377;549</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 28 -->
         <div class="plant-card reveal" data-category="outdoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=400&q=80" loading="lazy" alt="Croton">
+            <img src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=400&q=80" loading="lazy" decoding="async" alt="Croton">
           </div>
           <div class="card-body">
             <p class="plant-category">Outdoor</p>
             <h3>Croton</h3>
             <p class="botanical-name">Codiaeum variegatum</p>
-            <div class="card-footer"><span class="price">&#8377;229</span></div>
+            <div class="card-footer"><span class="price">&#8377;229</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 29 -->
         <div class="plant-card reveal" data-category="outdoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&q=80" loading="lazy" alt="Lantana">
+            <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&q=80" loading="lazy" decoding="async" alt="Lantana">
           </div>
           <div class="card-body">
             <p class="plant-category">Outdoor</p>
             <h3>Lantana</h3>
             <p class="botanical-name">Lantana camara</p>
-            <div class="card-footer"><span class="price">&#8377;149</span></div>
+            <div class="card-footer"><span class="price">&#8377;149</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 30 -->
         <div class="plant-card reveal" data-category="outdoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1600411833114-f4b04e15ede5?w=400&q=80" loading="lazy" alt="Heliconia">
+            <img src="https://images.unsplash.com/photo-1600411833114-f4b04e15ede5?w=400&q=80" loading="lazy" decoding="async" alt="Heliconia">
             <span class="card-badge">Exotic</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Outdoor</p>
             <h3>Heliconia</h3>
             <p class="botanical-name">Heliconia psittacorum</p>
-            <div class="card-footer"><span class="price">&#8377;379</span></div>
+            <div class="card-footer"><span class="price">&#8377;379</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 31 -->
         <div class="plant-card reveal" data-category="outdoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&q=80" loading="lazy" alt="Tulsi">
+            <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&q=80" loading="lazy" decoding="async" alt="Tulsi">
           </div>
           <div class="card-body">
             <p class="plant-category">Outdoor</p>
             <h3>Tulsi (Holy Basil)</h3>
             <p class="botanical-name">Ocimum tenuiflorum</p>
-            <div class="card-footer"><span class="price">&#8377;79</span></div>
+            <div class="card-footer"><span class="price">&#8377;79</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 32 -->
         <div class="plant-card reveal" data-category="outdoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1593442100753-7d4c74f2a9a1?w=400&q=80" loading="lazy" alt="Curry Leaf">
+            <img src="https://images.unsplash.com/photo-1593442100753-7d4c74f2a9a1?w=400&q=80" loading="lazy" decoding="async" alt="Curry Leaf">
           </div>
           <div class="card-body">
             <p class="plant-category">Outdoor</p>
             <h3>Curry Leaf Plant</h3>
             <p class="botanical-name">Murraya koenigii</p>
-            <div class="card-footer"><span class="price">&#8377;99</span></div>
+            <div class="card-footer"><span class="price">&#8377;99</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
@@ -559,107 +562,107 @@
         <!-- 33 -->
         <div class="plant-card reveal" data-category="succulent">
           <div class="card-image">
-            <img src="https://ik.imagekit.io/greenspire/images/plants/aloe-vera.webp?updatedAt=1776152659064" loading="lazy" alt="Aloe Vera">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/aloe-vera.webp?updatedAt=1776152659064&tr=w-500,h-500" loading="lazy" decoding="async" alt="Aloe Vera">
             <span class="card-badge">Medicinal</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Succulent</p>
             <h3>Aloe Vera</h3>
             <p class="botanical-name">Aloe barbadensis miller</p>
-            <div class="card-footer"><span class="price">&#8377;129</span></div>
+            <div class="card-footer"><span class="price">&#8377;129</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 34 -->
         <div class="plant-card reveal" data-category="succulent">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1513614835788-b56ec8a28a67?w=400&q=80" loading="lazy" alt="Jade Plant">
+            <img src="https://images.unsplash.com/photo-1513614835788-b56ec8a28a67?w=400&q=80" loading="lazy" decoding="async" alt="Jade Plant">
           </div>
           <div class="card-body">
             <p class="plant-category">Succulent</p>
             <h3>Jade Plant</h3>
             <p class="botanical-name">Crassula ovata</p>
-            <div class="card-footer"><span class="price">&#8377;189</span></div>
+            <div class="card-footer"><span class="price">&#8377;189</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 35 -->
         <div class="plant-card reveal" data-category="succulent">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1585314614250-d213876625e4?w=400&q=80" loading="lazy" alt="Echeveria">
+            <img src="https://images.unsplash.com/photo-1585314614250-d213876625e4?w=400&q=80" loading="lazy" decoding="async" alt="Echeveria">
             <span class="card-badge">Cute</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Succulent</p>
             <h3>Echeveria</h3>
             <p class="botanical-name">Echeveria elegans</p>
-            <div class="card-footer"><span class="price">&#8377;149</span></div>
+            <div class="card-footer"><span class="price">&#8377;149</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 36 -->
         <div class="plant-card reveal" data-category="succulent">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1487700160041-babef9c3cb55?w=400&q=80" loading="lazy" alt="Cactus Mix">
+            <img src="https://images.unsplash.com/photo-1487700160041-babef9c3cb55?w=400&q=80" loading="lazy" decoding="async" alt="Cactus Mix">
           </div>
           <div class="card-body">
             <p class="plant-category">Succulent</p>
             <h3>Cactus Mix</h3>
             <p class="botanical-name">Cactaceae family</p>
-            <div class="card-footer"><span class="price">&#8377;199</span></div>
+            <div class="card-footer"><span class="price">&#8377;199</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 37 -->
         <div class="plant-card reveal" data-category="succulent">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400&q=80" loading="lazy" alt="Haworthia">
+            <img src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400&q=80" loading="lazy" decoding="async" alt="Haworthia">
           </div>
           <div class="card-body">
             <p class="plant-category">Succulent</p>
             <h3>Haworthia</h3>
             <p class="botanical-name">Haworthia fasciata</p>
-            <div class="card-footer"><span class="price">&#8377;159</span></div>
+            <div class="card-footer"><span class="price">&#8377;159</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 38 -->
         <div class="plant-card reveal" data-category="succulent">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1534985753095-37cdaf90c6a4?w=400&q=80" loading="lazy" alt="Sedum">
+            <img src="https://images.unsplash.com/photo-1534985753095-37cdaf90c6a4?w=400&q=80" loading="lazy" decoding="async" alt="Sedum">
           </div>
           <div class="card-body">
             <p class="plant-category">Succulent</p>
             <h3>Sedum</h3>
             <p class="botanical-name">Sedum morganianum</p>
-            <div class="card-footer"><span class="price">&#8377;139</span></div>
+            <div class="card-footer"><span class="price">&#8377;139</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 39 -->
         <div class="plant-card reveal" data-category="succulent">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1457530378978-8bac673b8062?w=400&q=80" loading="lazy" alt="Kalanchoe">
+            <img src="https://images.unsplash.com/photo-1457530378978-8bac673b8062?w=400&q=80" loading="lazy" decoding="async" alt="Kalanchoe">
             <span class="card-badge">Flowering</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Succulent</p>
             <h3>Kalanchoe</h3>
             <p class="botanical-name">Kalanchoe blossfeldiana</p>
-            <div class="card-footer"><span class="price">&#8377;179</span></div>
+            <div class="card-footer"><span class="price">&#8377;179</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 40 -->
         <div class="plant-card reveal" data-category="succulent">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1604762511048-00c82e2e8afe?w=400&q=80" loading="lazy" alt="Agave">
+            <img src="https://images.unsplash.com/photo-1604762511048-00c82e2e8afe?w=400&q=80" loading="lazy" decoding="async" alt="Agave">
           </div>
           <div class="card-body">
             <p class="plant-category">Succulent</p>
             <h3>Agave</h3>
             <p class="botanical-name">Agave americana</p>
-            <div class="card-footer"><span class="price">&#8377;219</span></div>
+            <div class="card-footer"><span class="price">&#8377;219</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
@@ -668,139 +671,139 @@
         <!-- 41 -->
         <div class="plant-card reveal" data-category="tree">
           <div class="card-image">
-            <img src="https://ik.imagekit.io/greenspire/images/plants/Neem_Tree.webp?updatedAt=1776152659601" loading="lazy" alt="Neem Tree">
+            <img src="https://ik.imagekit.io/greenspire/images/plants/Neem_Tree.webp?updatedAt=1776152659601&tr=w-500,h-500" loading="lazy" decoding="async" alt="Neem Tree">
             <span class="card-badge">Medicinal</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Tree</p>
             <h3>Neem Tree</h3>
             <p class="botanical-name">Azadirachta indica</p>
-            <div class="card-footer"><span class="price">&#8377;349</span></div>
+            <div class="card-footer"><span class="price">&#8377;349</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 42 -->
         <div class="plant-card reveal" data-category="tree">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?w=400&q=80" loading="lazy" alt="Mango Tree">
+            <img src="https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?w=400&q=80" loading="lazy" decoding="async" alt="Mango Tree">
             <span class="card-badge">Fruit Tree</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Tree</p>
             <h3>Mango Tree</h3>
             <p class="botanical-name">Mangifera indica</p>
-            <div class="card-footer"><span class="price">&#8377;499</span></div>
+            <div class="card-footer"><span class="price">&#8377;499</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 43 -->
         <div class="plant-card reveal" data-category="tree">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1474557157379-8aa74a6ef541?w=400&q=80" loading="lazy" alt="Coconut Palm">
+            <img src="https://images.unsplash.com/photo-1474557157379-8aa74a6ef541?w=400&q=80" loading="lazy" decoding="async" alt="Coconut Palm">
           </div>
           <div class="card-body">
             <p class="plant-category">Tree</p>
             <h3>Coconut Palm</h3>
             <p class="botanical-name">Cocos nucifera</p>
-            <div class="card-footer"><span class="price">&#8377;649</span></div>
+            <div class="card-footer"><span class="price">&#8377;649</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 44 -->
         <div class="plant-card reveal" data-category="tree">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1601758003122-53c40e686a19?w=400&q=80" loading="lazy" alt="Guava Tree">
+            <img src="https://images.unsplash.com/photo-1601758003122-53c40e686a19?w=400&q=80" loading="lazy" decoding="async" alt="Guava Tree">
           </div>
           <div class="card-body">
             <p class="plant-category">Tree</p>
             <h3>Guava Tree</h3>
             <p class="botanical-name">Psidium guajava</p>
-            <div class="card-footer"><span class="price">&#8377;389</span></div>
+            <div class="card-footer"><span class="price">&#8377;389</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 45 -->
         <div class="plant-card reveal" data-category="tree">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1516205651411-aef33a44f7c2?w=400&q=80" loading="lazy" alt="Ficus Bonsai">
+            <img src="https://images.unsplash.com/photo-1516205651411-aef33a44f7c2?w=400&q=80" loading="lazy" decoding="async" alt="Ficus Bonsai">
             <span class="card-badge">Bonsai</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Tree</p>
             <h3>Ficus Bonsai</h3>
             <p class="botanical-name">Ficus retusa</p>
-            <div class="card-footer"><span class="price">&#8377;799</span></div>
+            <div class="card-footer"><span class="price">&#8377;799</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 46 -->
         <div class="plant-card reveal" data-category="tree">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1542223189-67a03fa0f0bd?w=400&q=80" loading="lazy" alt="Lemon Tree">
+            <img src="https://images.unsplash.com/photo-1542223189-67a03fa0f0bd?w=400&q=80" loading="lazy" decoding="async" alt="Lemon Tree">
           </div>
           <div class="card-body">
             <p class="plant-category">Tree</p>
             <h3>Lemon Tree</h3>
             <p class="botanical-name">Citrus limon</p>
-            <div class="card-footer"><span class="price">&#8377;429</span></div>
+            <div class="card-footer"><span class="price">&#8377;429</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 47 -->
         <div class="plant-card reveal" data-category="tree">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1603912699214-92627f304eb6?w=400&q=80" loading="lazy" alt="Banana Plant">
+            <img src="https://images.unsplash.com/photo-1603912699214-92627f304eb6?w=400&q=80" loading="lazy" decoding="async" alt="Banana Plant">
           </div>
           <div class="card-body">
             <p class="plant-category">Tree</p>
             <h3>Banana Plant</h3>
             <p class="botanical-name">Musa acuminata</p>
-            <div class="card-footer"><span class="price">&#8377;299</span></div>
+            <div class="card-footer"><span class="price">&#8377;299</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 48 -->
         <div class="plant-card reveal" data-category="tree">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1592503254549-d83d24a4dfab?w=400&q=80" loading="lazy" alt="Pomegranate Tree">
+            <img src="https://images.unsplash.com/photo-1592503254549-d83d24a4dfab?w=400&q=80" loading="lazy" decoding="async" alt="Pomegranate Tree">
             <span class="card-badge">Fruit Tree</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Tree</p>
             <h3>Pomegranate</h3>
             <p class="botanical-name">Punica granatum</p>
-            <div class="card-footer"><span class="price">&#8377;449</span></div>
+            <div class="card-footer"><span class="price">&#8377;449</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 49 -->
         <div class="plant-card reveal" data-category="tree">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&q=80" loading="lazy" alt="Ashoka Tree">
+            <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&q=80" loading="lazy" decoding="async" alt="Ashoka Tree">
           </div>
           <div class="card-body">
             <p class="plant-category">Tree</p>
             <h3>Ashoka Tree</h3>
             <p class="botanical-name">Saraca asoca</p>
-            <div class="card-footer"><span class="price">&#8377;379</span></div>
+            <div class="card-footer"><span class="price">&#8377;379</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
         <!-- 50 -->
         <div class="plant-card reveal" data-category="tree">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400&q=80" loading="lazy" alt="Bottle Palm">
+            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400&q=80" loading="lazy" decoding="async" alt="Bottle Palm">
             <span class="card-badge">Ornamental</span>
           </div>
           <div class="card-body">
             <p class="plant-category">Tree</p>
             <h3>Bottle Palm</h3>
             <p class="botanical-name">Hyophorbe lagenicaulis</p>
-            <div class="card-footer"><span class="price">&#8377;899</span></div>
+            <div class="card-footer"><span class="price">&#8377;899</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
-      </div><!-- /plants-grid -->
+      </div>
 
       <!-- Pagination -->
       <div class="pagination-wrap" id="paginationWrap">
@@ -922,24 +925,7 @@
           </div>
         </div>
       </div><!-- /footer-grid -->
-      <div class="footer-bottom">
-        <div class="footer-social">
-          <!-- TODO: Replace with your real Facebook page URL -->
-          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon social-facebook">
-            <i class="fa-brands fa-facebook-f"></i>
-          </a>
-          <!-- TODO: Replace with your real Instagram profile URL -->
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon social-instagram">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-          <a href="https://wa.me/919403400841" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon social-whatsapp">
-            <i class="fa-brands fa-whatsapp"></i>
-          </a>
-          <a href="mailto:akashkapare2005@gmail.com" aria-label="Email" class="social-icon social-mail">
-            <i class="fa-solid fa-envelope"></i>
-          </a>
-        </div>
-      </div>
+      
     </div>
   </footer>
 
@@ -948,14 +934,33 @@
     <span class="material-symbols-outlined">arrow_upward</span>
   </button>
 
+  <!-- PLANT DETAIL POPUP MODAL -->
+  <div class="plant-popup-overlay" id="plantPopupOverlay" role="dialog" aria-modal="true" aria-label="Plant details">
+    <div class="plant-popup">
+      <div class="plant-popup-handle" aria-hidden="true"></div>
+      <button class="plant-popup-close" id="plantPopupClose" aria-label="Close">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <div class="plant-popup-image">
+        <img id="popupImg" src="" alt="">
+      </div>
+      <div class="plant-popup-body">
+        <p class="plant-popup-category" id="popupCategory"></p>
+        <h3 class="plant-popup-name" id="popupName"></h3>
+        <span class="plant-popup-botanical" id="popupBotanical"></span>
+        <div class="plant-popup-divider"></div>
+        <div class="plant-popup-badges" id="popupBadges"></div>
+        <div class="plant-popup-price-row">
+          <span class="plant-popup-price" id="popupPrice"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="js/main.js"></script>
   <script>
   /* ══════════════════════════════════════════════════════════
-     GREENSPIRE — PLANTS PAGE JS
-     1. Filter + Pagination (15 per page)
-     2. Scroll → catalog background shift
-     3. Multicolour hover shadows (desktop)
-     4. Scroll-pop effect (touch / mobile / tablet)
+     GREENSPIRE —
   ══════════════════════════════════════════════════════════ */
 
   const pills      = document.querySelectorAll('.filter-pill');
@@ -995,16 +1000,16 @@
     const start = (currentPage - 1) * PER_PAGE;
     const end   = start + PER_PAGE;
 
-    /* show/hide cards */
+    /* show/hide cards — use class-based fade to avoid inline style fighting CSS transitions */
     allCards.forEach(c => {
       c.style.display = 'none';
-      c.style.opacity = '0';
-      c.classList.remove('scroll-pop', 'scroll-past');
+      c.classList.remove('card-visible', 'scroll-pop', 'scroll-past');
     });
     filtered.forEach((c, i) => {
       if (i >= start && i < end) {
         c.style.display = '';
-        setTimeout(() => { c.style.opacity = '1'; }, i % PER_PAGE * 40);
+        const delay = (i % PER_PAGE) * 40;
+        setTimeout(() => c.classList.add('card-visible'), delay);
       }
     });
 
@@ -1015,9 +1020,7 @@
 
     buildPagination(totalPages, filtered.length);
 
-    /* re-run scroll-pop after layout settles */
-    setTimeout(applyScrollPop, 120);
-  }
+    }
 
   /* ── BUILD PAGINATION ── */
   function buildPagination(totalPages, total) {
@@ -1085,82 +1088,155 @@
     });
   });
 
-  /* ══════════════════════════════════════════════════════════
-     SCROLL-POP  (touch / coarse pointer — tablet + mobile)
+  /* ── FILTER SCROLL HINT — hide arrow once user scrolls near the end ── */
+  (function () {
+    const bar  = document.getElementById('filterBar');
+    const hint = document.getElementById('filterScrollHint');
+    if (!bar || !hint) return;
+    function checkHint() {
+      const atEnd = bar.scrollLeft + bar.clientWidth >= bar.scrollWidth - 16;
+      hint.classList.toggle('hidden', atEnd);
+    }
+    bar.addEventListener('scroll', checkHint, { passive: true });
+    window.addEventListener('resize', checkHint);
+    checkHint();
+  })();
 
-     Logic:
-       • Detect if device is touch (no real hover support).
-       • On every scroll frame, measure each visible card's
-         vertical centre against the viewport "pop zone"
-         (30%–75% of vh from top — the "front row" on screen).
-       • Cards inside the zone → .scroll-pop (rise up).
-       • Cards above the zone  → .scroll-past (sunk back).
-       • Cards below the zone  → neutral (waiting to arrive).
+  /* ══════════════════════════════════════════════════════════
+     SCROLL-POP  
   ══════════════════════════════════════════════════════════ */
   const isTouchDevice = () =>
     window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
-  function applyScrollPop() {
+  function initScrollPop() {
     if (!isTouchDevice()) return;
 
-    const vh = window.innerHeight;
-    const popTop = vh * 0.40;
-const popBottom = vh * 0.60;  
-
-    const visibleCards = allCards.filter(c => c.style.display !== 'none');
-
-    visibleCards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      const cardMid = rect.top + rect.height / 2;
-
-      if (cardMid >= popTop && cardMid <= popBottom) {
-        /* Card is in the sweet spot — pop it */
-        card.classList.add('scroll-pop');
-        card.classList.remove('scroll-past');
-      } else if (rect.bottom < popTop) {
-        /* Card has scrolled above the zone — sink it */
-        card.classList.remove('scroll-pop');
-        card.classList.add('scroll-past');
-      } else {
-        /* Card is below the zone — neutral, waiting */
-        card.classList.remove('scroll-pop', 'scroll-past');
-      }
+    const popObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const card = entry.target;
+        if (entry.isIntersecting) {
+          /* card is inside the pop zone */
+          card.classList.add('scroll-pop');
+          card.classList.remove('scroll-past');
+        } else if (entry.boundingClientRect.bottom < window.innerHeight * 0.40) {
+          /* card has scrolled above the zone */
+          card.classList.remove('scroll-pop');
+          card.classList.add('scroll-past');
+        } else {
+          /* card hasn't reached the zone yet */
+          card.classList.remove('scroll-pop', 'scroll-past');
+        }
+      });
+    }, {
+      rootMargin: '-40% 0px -40% 0px',
+      threshold: 0
     });
+
+    allCards.forEach(c => popObserver.observe(c));
   }
 
-  /* ── SCROLL HANDLER (merged, rAF-throttled for smoothness) ── */
-  let scrollTicking = false;
-  function onScrollFrame() {
-    /* catalog background parallax */
-    const progress = Math.min(window.scrollY / Math.max(document.body.scrollHeight - window.innerHeight, 1), 1);
-    if (catalog) catalog.style.backgroundPosition = `${progress * 100}% ${50 + progress * 20}%`;
-
-    /* scroll-pop on touch */
-    applyScrollPop();
-    scrollTicking = false;
-  }
-  window.addEventListener('scroll', () => {
-    if (!scrollTicking) {
-      scrollTicking = true;
-      requestAnimationFrame(onScrollFrame);
-    }
-  }, { passive: true });
-
-  /* ── INIT ──
-     Only set the opacity transition here (used for page/filter fades).
-     transform & box-shadow transitions are left to CSS so the correct
-     curve applies per device: bouncy hover on desktop, smooth ease-out
-     scroll-pop on touch (see plants.css). Setting them inline here was
-     overriding the CSS transition with a bouncy curve on mobile too,
-     which is why the pop looked janky. */
-  allCards.forEach(c => {
-    c.style.transition = 'opacity 0.35s ease';
-  });
+  /* ── INIT ── */
 
   render();
+  initScrollPop();
 
-  /* Run once on load for cards already in view */
-  window.addEventListener('load', applyScrollPop);
+  /* ══════════════════════════════════════════════════════════
+     PLANT DETAIL POPUP
+  ══════════════════════════════════════════════════════════ */
+  (function () {
+    const overlay      = document.getElementById('plantPopupOverlay');
+    const closeBtn     = document.getElementById('plantPopupClose');
+    const popupImg     = document.getElementById('popupImg');
+    const popupCat     = document.getElementById('popupCategory');
+    const popupName    = document.getElementById('popupName');
+    const popupBot     = document.getElementById('popupBotanical');
+    const popupBadges  = document.getElementById('popupBadges');
+    const popupPrice   = document.getElementById('popupPrice');
+    if (!overlay) return;
+
+    /* Category badge colours */
+    const catMeta = {
+      indoor:    { icon:'home',         bg:'#e3f2fd', clr:'#01579b' },
+      outdoor:   { icon:'yard',         bg:'#e8f5e9', clr:'#1a5c2a' },
+      flowering: { icon:'local_florist',bg:'#fce4ec', clr:'#880e4f' },
+      succulent: { icon:'eco',          bg:'#f3e5f5', clr:'#4a148c' },
+      tree:      { icon:'park',         bg:'#fbe9e7', clr:'#bf360c' },
+    };
+
+    function openPopup(card) {
+      const img     = card.querySelector('.card-image img');
+      const cat     = card.dataset.category || '';
+      const name    = card.querySelector('h3')?.textContent || '';
+      const bot     = card.querySelector('.botanical-name')?.textContent || '';
+      const price   = card.querySelector('.price')?.textContent || '';
+      const badge   = card.querySelector('.card-badge')?.textContent || '';
+
+      popupImg.src = img?.src || '';
+      popupImg.alt = name;
+      popupCat.textContent  = (cat.charAt(0).toUpperCase() + cat.slice(1));
+      popupName.textContent = name;
+      popupBot.textContent  = bot;
+      popupPrice.textContent = price;
+
+      /* Build badges */
+      popupBadges.innerHTML = '';
+      const meta = catMeta[cat] || { icon:'eco', bg:'#e8f5e9', clr:'#1a5c2a' };
+
+      const b1 = document.createElement('span');
+      b1.className = 'plant-popup-badge';
+      b1.style.cssText = `background:${meta.bg};color:${meta.clr}`;
+      b1.innerHTML = `<span class="material-symbols-outlined">${meta.icon}</span>${cat.charAt(0).toUpperCase() + cat.slice(1)}`;
+      popupBadges.appendChild(b1);
+
+      if (badge) {
+        const b2 = document.createElement('span');
+        b2.className = 'plant-popup-badge';
+        b2.style.cssText = 'background:#fff8e1;color:#b8860b';
+        b2.innerHTML = `<span class="material-symbols-outlined">star</span>${badge}`;
+        popupBadges.appendChild(b2);
+      }
+
+      /* Care hint badge based on category */
+      const careHints = {
+        indoor:'Low Maintenance', outdoor:'Full Sun', flowering:'Regular Watering',
+        succulent:'Drought Tolerant', tree:'Long Lifespan'
+      };
+      if (careHints[cat]) {
+        const b3 = document.createElement('span');
+        b3.className = 'plant-popup-badge';
+        b3.style.cssText = 'background:#e8f5e9;color:#2a5a3f';
+        b3.innerHTML = `<span class="material-symbols-outlined">spa</span>${careHints[cat]}`;
+        popupBadges.appendChild(b3);
+      }
+
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    /* Delegate click on card-action buttons */
+    document.getElementById('plantsGrid').addEventListener('click', (e) => {
+      const action = e.target.closest('.card-action');
+      if (!action) return;
+      const card = action.closest('.plant-card');
+      if (card) openPopup(card);
+    });
+
+    /* Also allow clicking anywhere on the card to open popup */
+    document.getElementById('plantsGrid').addEventListener('click', (e) => {
+      if (e.target.closest('.card-action')) return; /* handled above */
+      const card = e.target.closest('.plant-card');
+      if (card) openPopup(card);
+    });
+
+    closeBtn.addEventListener('click', closePopup);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closePopup(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopup(); });
+  })();
   </script>
 </body>
 </html>

@@ -629,7 +629,7 @@
 })();
 
 /* ═══════════════════════════════════════════
-   MOBILE SCROLL POP — 
+   MOBILE SCROLL POP — svc-card & eco-pillar
    ═══════════════════════════════════════════ */
 (function () {
   if (!window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
@@ -662,6 +662,36 @@
   });
 
   targets.forEach(el => observer.observe(el));
+})();
+
+/* ═══════════════════════════════════════════
+   MOBILE/TABLET SCROLL POP — PLANT CARDS
+   Smooth popup/popdown animation on scroll
+   ═══════════════════════════════════════════ */
+(function () {
+  if (!window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
+
+  const plantCards = document.querySelectorAll('.plant-card');
+  if (!plantCards.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Card in viewport — pop up with animation
+        entry.target.classList.add('scroll-pop');
+        entry.target.classList.remove('scroll-past');
+      } else {
+        // Card leaving viewport — pop down
+        entry.target.classList.remove('scroll-pop');
+        entry.target.classList.add('scroll-past');
+      }
+    });
+  }, {
+    threshold: 0.12,          // trigger when 12% of card is visible
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  plantCards.forEach(el => observer.observe(el));
 })();
 
 /* ═══════════════════════════════════════════
