@@ -194,15 +194,24 @@
   if (!scroll || !prevBtn || !nextBtn) return;
 
   const MOBILE_BP = 640;
-  const STEP = 240;
 
   function isMobile() { return window.innerWidth <= MOBILE_BP; }
 
+  /* ── Scroll exactly one pill at a time ── */
+  function getPillStep() {
+    const firstPill = scroll.querySelector('.cat-pill');
+    if (!firstPill) return 110; // fallback
+    // pill width + gap (gap is ~16px on mobile)
+    const style = window.getComputedStyle(scroll);
+    const gap = parseFloat(style.gap) || parseFloat(style.columnGap) || 16;
+    return firstPill.offsetWidth + gap;
+  }
+
   prevBtn.addEventListener('click', () => {
-    scroll.scrollBy({ left: -STEP, behavior: 'smooth' });
+    scroll.scrollBy({ left: -getPillStep(), behavior: 'smooth' });
   });
   nextBtn.addEventListener('click', () => {
-    scroll.scrollBy({ left: STEP, behavior: 'smooth' });
+    scroll.scrollBy({ left: getPillStep(), behavior: 'smooth' });
   });
 
   function updateBtns() {
@@ -247,7 +256,7 @@
 
   if (!lightbox) return;
 
-  const galleryItems = document.querySelectorAll('.gallery-item');
+  const galleryItems = document.querySelectorAll('.gallery-item, .pm-item');
   let currentImages = [];
   let currentIndex  = 0;
   let currentAlt    = '';
@@ -503,10 +512,28 @@
 (function () {
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
+      const href = a.getAttribute('href');
+      // For #get-quote, scroll to the form card itself, not the section header
+      const scrollTarget = (href === '#get-quote')
+        ? document.getElementById('quoteFormWrap') || document.querySelector(href)
+        : document.querySelector(href);
+
+      if (scrollTarget) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+        const navbar = document.getElementById('navbar');
+        const annBar = document.querySelector('.announcement-bar');
+        const navH   = navbar  ? navbar.offsetHeight  : 72;
+        const annH   = annBar  ? annBar.offsetHeight  : 0;
+        const offset = navH + annH + 16;
+        const top    = scrollTarget.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+        // Focus the first input for accessibility
+        if (href === '#get-quote') {
+          setTimeout(() => {
+            const firstInput = scrollTarget.querySelector('input, select, textarea');
+            if (firstInput) firstInput.focus({ preventScroll: true });
+          }, 600);
+        }
       }
     });
   });
@@ -736,9 +763,7 @@
 })();
 
 /* ═══════════════════════════════════════════
-   WAVE DASH ANIMATION — pause when off-screen
-   The waveDash SVG animation runs on the desktop process section.
-   Animating it while it's scrolled out of view burns GPU for nothing.
+   WAVE DASH ANIMATION —
    ═══════════════════════════════════════════ */
 (function () {
   const wavePath = document.querySelector('.process-wave path');
@@ -755,25 +780,3 @@
 console.log('%cGreenSpire Solutions', 'color: #1A3C2A; font-size: 1.2rem; font-weight: bold;');
 console.log('%cNature meets design — Built with ❤️', 'color: #87A878; font-size: 0.9rem;');
 
-
-
-(function(){
-
-  if(window.innerWidth > 768) return;
-
-  const gallery = document.querySelector('.gallery-fan');
-
-  if(!gallery) return;
-
-  setInterval(() => {
-
-      const cards =
-      gallery.querySelectorAll('.gallery-item');
-
-      gallery.prepend(
-        cards[cards.length - 1]
-      );
-
-  },3000);
-
-})();

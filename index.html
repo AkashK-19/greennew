@@ -22,8 +22,12 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preload critical font subset -->
+  <link rel="preload" href="https://fonts.gstatic.com/s/outfit/v11/QGYvz_MVcBeNP4NjuGObqx1XmO1I4TC1C4G-EiAou6Y.woff2" as="font" type="font/woff2" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
+  <!-- Preload hero image for LCP -->
+  <link rel="preload" as="image" href="https://ik.imagekit.io/greenspire/images/hero1.webp?updatedAt=1776152728259" fetchpriority="high">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Styles -->
@@ -102,8 +106,8 @@
         </h1>
 
         <p class="hero-desc-v2">
-          Science-backed landscaping, garden design &amp; eco-gifting —
-          trusted by 500+ clients across Boisar and beyond.
+          Garden design, landscaping &amp; green gifting —
+          500+ happy clients across Boisar.
         </p>
 
         <div class="hero-ctas-v2">
@@ -250,8 +254,9 @@
        ═══════════════════════════════════════ -->
   <section class="categories-section" id="categories" aria-label="Our Categories">
     <div class="container">
+      <p class="section-label categories-section-label">What We Offer</p>
       <h2 class="categories-main-title">
-        What We Offer
+        Explore Our Range
       </h2>
     </div>
 
@@ -318,7 +323,7 @@
           <span class="cat-name">Trees</span>
         </div>
 
-      </div><!-- /categories-scroll -->
+      </div><!-- 
 
       <button class="cat-nav-btn cat-nav-btn--next" id="catNext" aria-label="Scroll right">
         <span class="material-symbols-outlined">chevron_right</span>
@@ -351,7 +356,6 @@
           <img src="https://ik.imagekit.io/greenspire/images/service1.webp?updatedAt=1776152736994" loading="lazy" alt="Custom Garden Design">
           <div class="wwd-featured-overlay"></div>
           <div class="wwd-featured-body">
-            <span class="wwd-featured-tag">⭐ Most Popular</span>
             <h3>Custom Garden Design</h3>
             <p>Tailored layouts by our BSKKV-certified horticulturist — from your vision to lush, breathtaking reality.</p>
             <a href="#get-quote" class="btn btn--amber-solid" id="svcFeatureCta">
@@ -420,7 +424,7 @@
     <img class="why-bg-img" src="https://ik.imagekit.io/greenspire/images/3a68ea0f-f8fa-48de-a490-28f92edc816f.png?updatedAt=1781956686937" alt="GreenSpire potted plants on a sunlit table" loading="lazy">
     <div class="container">
       <div class="why-content reveal-left">
-        <p class="section-label section-label--dark">Why Choose Us</p>
+        <p class="section-label">Why Choose Us</p>
         <h2>Garden Services<br>by GreenSpire</h2>
         <p class="why-desc">
           Our end-to-end garden services cover everything from botanical styling and
@@ -465,19 +469,25 @@
      ═══════════════════════════════════════ -->
 <div class="brands-strip" id="brands" aria-label="Trusted by leading brands">
   <div class="brands-label">Our Esteemed Clients</div>
-  <p class="brands-desc">Over the years, we have forged partnerships with numerous individuals &amp; brands as plant collaborators, committed to delivering exceptional service</p>
+  <p class="brands-desc">Trusted by homes, corporates &amp; farms across Boisar and Palghar.</p>
   <div class="brands-marquee-wrap">
-    <div class="brands-marquee">
+    <div class="brands-marquee-track">
+      <!-- Set 1 -->
       <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/royal%20pharma.jpg" loading="lazy" alt="Royal Pharma"></div>
       <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/resonance.png" loading="lazy" alt="Resonance Specialties"></div>
-<div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/raghuvanshi.jpg" loading="lazy" alt="Raghuvanshi"></div>
-<div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/mango%20inn.jpg" loading="lazy" alt="The Mango Inn"></div>
-
-<div class="brand-row-break"></div>
-
-<div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/terracon.jpg" loading="lazy" alt="Terracon"></div>
-<div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/eastmen.png" loading="lazy" alt="Eastmen Chemicals"></div>
-<div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/chemical%20india.jpg" loading="lazy" alt="Sumitomo Chemical India"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/raghuvanshi.jpg" loading="lazy" alt="Raghuvanshi"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/mango%20inn.jpg" loading="lazy" alt="The Mango Inn"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/terracon.jpg" loading="lazy" alt="Terracon"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/eastmen.png" loading="lazy" alt="Eastmen Chemicals"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/images/chemical%20india.jpg" loading="lazy" alt="Sumitomo Chemical India"></div>
+      <!-- Set 2 — duplicate for seamless loop -->
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/images/royal%20pharma.jpg" loading="lazy" alt="Royal Pharma"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/images/resonance.png" loading="lazy" alt="Resonance Specialties"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/images/raghuvanshi.jpg" loading="lazy" alt="Raghuvanshi"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/images/mango%20inn.jpg" loading="lazy" alt="The Mango Inn"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/images/terracon.jpg" loading="lazy" alt="Terracon"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/images/eastmen.png" loading="lazy" alt="Eastmen Chemicals"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/images/chemical%20india.jpg" loading="lazy" alt="Sumitomo Chemical India"></div>
     </div>
   </div>
 </div>
@@ -585,18 +595,18 @@
 
               <div class="qf-row">
                 <div class="qf-group qf-group--name">
-                  <input type="text" id="qfName" name="name" placeholder=" " required>
                   <label for="qfName">Full Name</label>
+                  <input type="text" id="qfName" name="name" placeholder="Your full name" required>
                 </div>
                 <div class="qf-group qf-group--phone">
-                  <input type="tel" id="qfPhone" name="phone" placeholder=" " required>
                   <label for="qfPhone">Phone Number</label>
+                  <input type="tel" id="qfPhone" name="phone" placeholder="+91 XXXXX XXXXX" required>
                 </div>
               </div>
 
               <div class="qf-group qf-group--email">
-                <input type="email" id="qfEmail" name="email" placeholder=" " required>
                 <label for="qfEmail">Email Address</label>
+                <input type="email" id="qfEmail" name="email" placeholder="your@email.com" required>
               </div>
 
               <div class="qf-group qf-group--select">
@@ -615,12 +625,12 @@
               </div>
 
               <div class="qf-group qf-group--message">
-                <textarea id="qfMessage" name="message" placeholder=" " required></textarea>
                 <label for="qfMessage">Tell us about your project</label>
+                <textarea id="qfMessage" name="message" placeholder="Describe your garden vision, space size, and any specific requirements..." required></textarea>
               </div>
 
               <button type="submit" class="btn btn--primary qf-submit" id="quoteSubmitBtn">
-                <span class="material-symbols-outlined">local_florist</span> Get Quote
+                Get Quote
               </button>
             </form>
           </div>
@@ -642,26 +652,8 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       LET'S GO STRIP
-       ═══════════════════════════════════════ -->
-  <div class="letsgo-strip" aria-hidden="true">
-    <div class="letsgo-track">
-      <span class="letsgo-item">Let's Go <span class="material-symbols-outlined">eco</span></span>
-      <span class="letsgo-item letsgo-item--outline">Let's Go <span class="material-symbols-outlined">eco</span></span>
-      <span class="letsgo-item">Let's Go <span class="material-symbols-outlined">eco</span></span>
-      <span class="letsgo-item letsgo-item--outline">Let's Go <span class="material-symbols-outlined">eco</span></span>
-      <span class="letsgo-item">Let's Go <span class="material-symbols-outlined">eco</span></span>
-      <span class="letsgo-item letsgo-item--outline">Let's Go <span class="material-symbols-outlined">eco</span></span>
-      <!-- duplicate set for seamless loop -->
-      <span class="letsgo-item">Let's Go <span class="material-symbols-outlined">eco</span></span>
-      <span class="letsgo-item letsgo-item--outline">Let's Go <span class="material-symbols-outlined">eco</span></span>
-      <span class="letsgo-item">Let's Go <span class="material-symbols-outlined">eco</span></span>
-      <span class="letsgo-item letsgo-item--outline">Let's Go <span class="material-symbols-outlined">eco</span></span>
-      <span class="letsgo-item">Let's Go <span class="material-symbols-outlined">eco</span></span>
-      <span class="letsgo-item letsgo-item--outline">Let's Go <span class="material-symbols-outlined">eco</span></span>
-    </div>
-  </div>
+
+  <!-- LET'S GO STRIP — removed -->
 
   <!-- ═══════════════════════════════════════
        PORTFOLIO / OUR WORK
@@ -673,52 +665,81 @@
         <h2>View Our Work</h2>
         <p>A glimpse into the beautiful green spaces we've created for our clients.</p>
       </div>
-x
-      <div class="gallery-fan" role="list">
 
-        <div class="gallery-item tall reveal" role="listitem"
-          data-images="https://ik.imagekit.io/greenspire/images/work1.webp,https://ik.imagekit.io/greenspire/images/work2.webp?updatedAt=1776152711094,https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834">
-          <img src="https://ik.imagekit.io/greenspire/images/work1.webp"
-            loading="lazy" alt="Residential Garden Makeover">
+      <div class="portfolio-masonry" role="list">
+
+        <!-- Column 1 -->
+        <div class="pm-col pm-col--1">
+
+          <div class="pm-item pm-item--tall reveal" role="listitem"
+            data-images="https://ik.imagekit.io/greenspire/images/work1.webp,https://ik.imagekit.io/greenspire/images/work2.webp?updatedAt=1776152711094">
+            <img src="https://ik.imagekit.io/greenspire/images/work1.webp" loading="lazy" alt="Residential Garden Makeover">
+            <div class="pm-overlay">
+              <span class="pm-tag"><span class="material-symbols-outlined">yard</span> Residential Garden</span>
+            </div>
+          </div>
+
+          <div class="pm-item pm-item--short reveal" role="listitem"
+            data-images="https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795,https://ik.imagekit.io/greenspire/images/work5.webp?updatedAt=1776152709496">
+            <img src="https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795" loading="lazy" alt="Wedding Venue Decoration">
+            <div class="pm-overlay">
+              <span class="pm-tag"><span class="material-symbols-outlined">celebration</span> Event Styling</span>
+            </div>
+          </div>
+
         </div>
 
-        <div class="gallery-item medium reveal" role="listitem"
-          data-images="https://ik.imagekit.io/greenspire/images/work2.webp?updatedAt=1776152711094,https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834,https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795">
-          <img src="https://ik.imagekit.io/greenspire/images/work2.webp?updatedAt=1776152711094"
-            loading="lazy" alt="Corporate Office Greenery">
+        <!-- Column 2 -->
+        <div class="pm-col pm-col--2">
+
+          <div class="pm-item pm-item--short reveal" role="listitem"
+            data-images="https://ik.imagekit.io/greenspire/images/work2.webp?updatedAt=1776152711094,https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834">
+            <img src="https://ik.imagekit.io/greenspire/images/work2.webp?updatedAt=1776152711094" loading="lazy" alt="Corporate Office Greenery">
+            <div class="pm-overlay">
+              <span class="pm-tag"><span class="material-symbols-outlined">corporate_fare</span> Corporate Green</span>
+            </div>
+          </div>
+
+          <div class="pm-item pm-item--medium reveal" role="listitem"
+            data-images="https://ik.imagekit.io/greenspire/images/work5.webp?updatedAt=1776152709496,https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754">
+            <img src="https://ik.imagekit.io/greenspire/images/work5.webp?updatedAt=1776152709496" loading="lazy" alt="Terrace Garden Setup">
+            <div class="pm-overlay">
+              <span class="pm-tag"><span class="material-symbols-outlined">roofing</span> Terrace Garden</span>
+            </div>
+          </div>
+
+          <div class="pm-item pm-item--short reveal" role="listitem"
+            data-images="https://ik.imagekit.io/greenspire/images/work1.webp,https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795">
+            <img src="https://ik.imagekit.io/greenspire/images/work1.webp" loading="lazy" alt="Community Garden Project">
+            <div class="pm-overlay">
+              <span class="pm-tag"><span class="material-symbols-outlined">groups</span> Community Garden</span>
+            </div>
+          </div>
+
         </div>
 
-        <div class="gallery-item short reveal" role="listitem"
-          data-images="https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834,https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795,https://ik.imagekit.io/greenspire/images/work5.webp?updatedAt=1776152709496">
-          <img src="https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834"
-            loading="lazy" alt="Farm Landscape Design">
+        <!-- Column 3 -->
+        <div class="pm-col pm-col--3">
+
+          <div class="pm-item pm-item--medium reveal" role="listitem"
+            data-images="https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834,https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795">
+            <img src="https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834" loading="lazy" alt="Farm Landscape Design">
+            <div class="pm-overlay">
+              <span class="pm-tag"><span class="material-symbols-outlined">agriculture</span> Farm Landscape</span>
+            </div>
+          </div>
+
+          <div class="pm-item pm-item--tall reveal" role="listitem"
+            data-images="https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754,https://ik.imagekit.io/greenspire/images/work1.webp">
+            <img src="https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754" loading="lazy" alt="Public Park Renovation">
+            <div class="pm-overlay">
+              <span class="pm-tag"><span class="material-symbols-outlined">park</span> Park Renovation</span>
+            </div>
+          </div>
+
         </div>
 
-        <div class="gallery-item medium reveal" role="listitem"
-          data-images="https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795,https://ik.imagekit.io/greenspire/images/work5.webp?updatedAt=1776152709496,https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754">
-          <img src="https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795"
-            loading="lazy" alt="Wedding Venue Decoration">
-        </div>
-
-        <div class="gallery-item short reveal" role="listitem"
-          data-images="https://ik.imagekit.io/greenspire/images/work5.webp?updatedAt=1776152709496,https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754,https://ik.imagekit.io/greenspire/images/work1.webp">
-          <img src="https://ik.imagekit.io/greenspire/images/work5.webp?updatedAt=1776152709496"
-            loading="lazy" alt="Terrace Garden Setup">
-        </div>
-
-        <div class="gallery-item tall reveal" role="listitem"
-          data-images="https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754,https://ik.imagekit.io/greenspire/images/work1.webp,https://ik.imagekit.io/greenspire/images/work2.webp?updatedAt=1776152711094">
-          <img src="https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754"
-            loading="lazy" alt="Public Park Renovation">
-        </div>
-
-        <div class="gallery-item medium reveal" role="listitem"
-          data-images="https://ik.imagekit.io/greenspire/images/work1.webp,https://ik.imagekit.io/greenspire/images/work4.webp?updatedAt=1776152740795,https://ik.imagekit.io/greenspire/images/work6.webp?updatedAt=1776152711754">
-          <img src="https://ik.imagekit.io/greenspire/images/work1.webp"
-            loading="lazy" alt="Community Garden Project">
-        </div>
-
-      </div>
+      </div><!-- /portfolio-masonry -->
     </div>
   </section>
 
@@ -1074,7 +1095,7 @@ x
 
       function resetSubmitBtn() {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span class="material-symbols-outlined">local_florist</span> Get Quote';
+        submitBtn.innerHTML = 'Get Quote';
       }
 
       form.addEventListener('submit', async function (e) {
