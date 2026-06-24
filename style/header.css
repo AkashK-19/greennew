@@ -374,10 +374,48 @@ body {
   }
 }
 
-/* ── iPad Mini fix: shrink logo text to keep on one line ── */
-@media (min-width: 769px) and (max-width: 820px) {
+/* ─────────────────────────────
+   TABLET (768px–900px)
+   ───────────────────────────── */
+@media (min-width: 768px) and (max-width: 900px) {
+
+  .navbar .container {
+    gap: 12px;
+  }
+
+  /* Logo */
+  .nav-logo {
+    gap: 8px;
+  }
+
+  .nav-logo img {
+    height: 34px;
+  }
+
   .nav-logo-text {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     letter-spacing: -0.3px;
+  }
+
+  /* Navigation */
+  .nav-links {
+    gap: 0.9rem;
+  }
+
+  .nav-links a:not(.nav-cta) {
+    font-size: 0.82rem;
+    letter-spacing: 0;
+  }
+
+  /* Call button */
+  .nav-cta,
+  .nav-links a.nav-cta {
+    padding: 8px 16px !important;
+    font-size: 0.78rem !important;
+    gap: 5px !important;
+  }
+
+  .nav-cta .material-symbols-outlined {
+    font-size: 15px !important;
   }
 }
