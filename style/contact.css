@@ -169,7 +169,7 @@ body.no-announcement .navbar { top: 0; }
 
 .profile-image:hover::after { transform: translate(6px, 6px); }
 
-.profile-details .section-label { margin-bottom: var(--space-xs); }
+.profile-details .section-label { margin-bottom: var(--space-xs); font-size: var(--fs-md); }
 
 .profile-details h2 {
     font-family: var(--ff-heading);
@@ -262,6 +262,11 @@ body.no-announcement .navbar { top: 0; }
     z-index: 1;
 }
 
+.contact-reach-intro .section-label {
+    font-size: var(--fs-md);
+    color: var(--clr-text-muted);
+}
+
 .contact-reach-sub {
     color: var(--clr-text-muted);
     font-size: var(--fs-md);
@@ -288,71 +293,17 @@ body.no-announcement .navbar { top: 0; }
     background: var(--clr-white);
     border-radius: 20px;
     border: 1px solid var(--clr-border);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     text-decoration: none;
     color: inherit;
-    /* overflow:hidden REMOVED — it was clipping ::before accent bar & ::after shine */
-    transition:
-        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-        box-shadow 0.4s ease,
-        border-color 0.3s ease;
-}
-
-/* Left accent bar — grows up on hover */
-.contact-info-card::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    border-radius: 20px 0 0 20px;
-    background: linear-gradient(180deg, var(--clr-forest-light), var(--clr-sage));
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Shine sweep */
-.contact-info-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    background: linear-gradient(
-        120deg,
-        transparent 0%,
-        rgba(255,255,255,0) 35%,
-        rgba(255,255,255,0.55) 50%,
-        rgba(255,255,255,0) 65%,
-        transparent 100%
-    );
-    transform: translateX(-120%);
-    transition: transform 0.55s ease;
-    pointer-events: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
     .contact-info-card:hover {
-        transform: translateY(-8px) scale(1.015);
-        box-shadow:
-            0 20px 50px rgba(26,60,42,0.12),
-            0 6px 18px rgba(0,0,0,0.06);
-        border-color: var(--clr-sage);
+        transform: translateY(-6px);
+        box-shadow: 0 14px 32px rgba(0,0,0,0.18);
     }
-    .contact-info-card:hover::before { transform: scaleY(1); }
-    .contact-info-card:hover::after  { transform: translateX(120%); }
-    .contact-info-card:hover .cic-arrow {
-        transform: translateX(5px);
-        color: var(--clr-amber-dark);
-    }
-    .contact-info-card:hover .cic-icon-ring {
-        background: var(--clr-forest);
-        color: var(--clr-white);
-        transform: scale(1.1) rotate(-6deg);
-    }
-    .contact-info-card:hover .cic-index { color: var(--clr-sage); }
-    .contact-info-card:hover .cic-value { color: var(--clr-forest); }
 }
 
 /* ── Index number ── */

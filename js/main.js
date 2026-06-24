@@ -184,8 +184,59 @@
 })();
 
 /* ═══════════════════════════════════════════
-   GALLERY LIGHTBOX
+   CATEGORIES — Nav Arrows + Center Pill Highlight
+   Only active on mobile (≤640px scroll mode)
    ═══════════════════════════════════════════ */
+(function () {
+  const scroll   = document.getElementById('categoriesScroll');
+  const prevBtn  = document.getElementById('catPrev');
+  const nextBtn  = document.getElementById('catNext');
+  if (!scroll || !prevBtn || !nextBtn) return;
+
+  const MOBILE_BP = 640;
+  const STEP = 240;
+
+  function isMobile() { return window.innerWidth <= MOBILE_BP; }
+
+  prevBtn.addEventListener('click', () => {
+    scroll.scrollBy({ left: -STEP, behavior: 'smooth' });
+  });
+  nextBtn.addEventListener('click', () => {
+    scroll.scrollBy({ left: STEP, behavior: 'smooth' });
+  });
+
+  function updateBtns() {
+    if (!isMobile()) return;
+    const atStart = scroll.scrollLeft <= 10;
+    const atEnd   = scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 10;
+    prevBtn.style.opacity = atStart ? '0.35' : '1';
+    prevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
+    nextBtn.style.opacity = atEnd ? '0.35' : '1';
+    nextBtn.style.pointerEvents = atEnd ? 'none' : 'auto';
+  }
+
+  // Center pill highlight — only for mobile scroll mode
+  function updateCenter() {
+    const pills = scroll.querySelectorAll('.cat-pill');
+    pills.forEach(p => p.classList.remove('is-center'));
+    if (!isMobile()) return;
+    const cx = scroll.scrollLeft + scroll.clientWidth / 2;
+    let closest = null, minDist = Infinity;
+    pills.forEach(pill => {
+      const pillCx = pill.offsetLeft + pill.offsetWidth / 2;
+      const d = Math.abs(pillCx - cx);
+      if (d < minDist) { minDist = d; closest = pill; }
+    });
+    if (closest) closest.classList.add('is-center');
+  }
+
+  scroll.addEventListener('scroll', () => { updateBtns(); updateCenter(); }, { passive: true });
+  window.addEventListener('resize', () => { updateBtns(); updateCenter(); }, { passive: true });
+
+  // Init
+  updateBtns();
+  updateCenter();
+})();
 (function () {
   const lightbox = document.getElementById('lightbox');
   const lbClose  = document.getElementById('lightboxClose');
