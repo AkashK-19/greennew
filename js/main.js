@@ -234,6 +234,10 @@
   // Init
   updateBtns();
 })();
+
+/* ═══════════════════════════════════════════
+   LIGHTBOX
+   ═══════════════════════════════════════════ */
 (function () {
   const lightbox = document.getElementById('lightbox');
   const lbClose  = document.getElementById('lightboxClose');
@@ -241,6 +245,9 @@
   const lbPrev   = document.getElementById('lightboxPrev');
   const lbNext   = document.getElementById('lightboxNext');
   const lbThumbs = document.getElementById('lightboxThumbs');
+  const lbCaption     = document.getElementById('lightboxCaption');
+  const lbCaptionIcon = document.getElementById('lightboxCaptionIcon');
+  const lbCaptionText = document.getElementById('lightboxCaptionText');
 
   if (!lightbox) return;
 
@@ -248,6 +255,28 @@
   let currentImages = [];
   let currentIndex  = 0;
   let currentAlt    = '';
+
+  // Pull the title/category straight from the card's own .pm-tag
+  // (icon + label) so the same text shown on hover/desktop is also
+  // shown — together with the photo — when the card is tapped.
+  function setCaption(item) {
+    if (!lbCaption) return;
+    const tagEl = item.querySelector('.pm-tag');
+    if (!tagEl) {
+      lbCaption.classList.add('is-hidden');
+      return;
+    }
+    const clone = tagEl.cloneNode(true);
+    const iconEl = clone.querySelector('.material-symbols-outlined');
+    let iconName = '';
+    if (iconEl) {
+      iconName = iconEl.textContent.trim();
+      iconEl.remove();
+    }
+    lbCaptionIcon.textContent = iconName;
+    lbCaptionText.textContent = clone.textContent.trim();
+    lbCaption.classList.remove('is-hidden');
+  }
 
   function showImage(index) {
     currentIndex = (index + currentImages.length) % currentImages.length;
@@ -292,6 +321,7 @@
         : [img.src];
       currentAlt = img.alt;
 
+      setCaption(item);
       buildThumbs();
       showImage(0);
 
@@ -761,6 +791,163 @@
   }, { threshold: 0.05 });
 
   observer.observe(section);
+})();
+
+/* ═══════════════════════════════════════════
+   MOBILE TESTIMONIALS SLIDER
+   ═══════════════════════════════════════════ */
+(function () {
+  const section = document.querySelector('.testimonials-section');
+  const track = document.querySelector('.testimonials-track');
+  const dotsContainer = document.getElementById('testimonialsDots');
+  const prevBtn = document.getElementById('testimonialsPrev');
+  const nextBtn = document.getElementById('testimonialsNext');
+
+  if (!track || !dotsContainer) return;
+
+  // Mobile breakpoint — matches home.css (<=750px)
+  function isMobile() { return window.matchMedia('(max-width: 750px)').matches; }
+
+  let currentIndex = 0;
+  let cards = [];
+  let dots = [];
+  let startX = 0, startY = 0, isDragging = false, dragDeltaX = 0;
+
+  function buildDots(count) {
+    dotsContainer.innerHTML = '';
+    dots = [];
+    for (let i = 0; i < count; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'testimonials-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Review ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+      dots.push(dot);
+    }
+  }
+
+  function updateDots() {
+    dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+  }
+
+  function updateNavBtns() {
+    if (!prevBtn || !nextBtn) return;
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === cards.length - 1;
+  }
+
+  // Use wrapper width for precise per-card responsive layout offset
+  function getOffset(index) {
+    if (!cards[index]) return 0;
+    const wrapper = track.parentElement;
+    return index * wrapper.offsetWidth;
+  }
+
+  function goTo(index, instant) {
+    currentIndex = Math.max(0, Math.min(index, cards.length - 1));
+    track.style.transition = instant ? 'none' : 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    track.style.transform = `translateX(-${getOffset(currentIndex)}px)`;
+    updateDots();
+    updateNavBtns();
+  }
+
+  function initSlider() {
+    // Only the original 8 cards — the duplicated set (aria-hidden="true")
+    // exists purely for the desktop marquee loop and must be excluded here,
+    // otherwise mobile ends up with 16 dots/slides instead of 8 and swiping
+    // drifts into the hidden duplicates (blank/repeated slides).
+    cards = Array.from(track.querySelectorAll('.testimonial-card:not([aria-hidden="true"])'));
+
+    if (!isMobile()) {
+      // Desktop: restore full marquee continuous loop settings
+      track.style.transform = '';
+      track.style.transition = '';
+      track.style.animation = '';
+      if (section) section.classList.remove('slider-active');
+      cards.forEach(c => {
+        c.style.width = '';
+        c.style.minWidth = '';
+      });
+      return;
+    }
+
+    // Mobile: disable CSS marquee so programmatic swipe transitions work smoothly
+    track.style.animation = 'none';
+
+    // Apply strict width wrappers to prevent flex percentage stretching anomalies
+    const wrapperWidth = track.parentElement.offsetWidth;
+    cards.forEach(c => {
+      c.style.width = (wrapperWidth - 32) + 'px';
+      c.style.minWidth = (wrapperWidth - 32) + 'px';
+    });
+
+    buildDots(cards.length);
+
+    if (section) section.classList.add('slider-active');
+
+    currentIndex = 0;
+    goTo(0, true);
+  }
+
+  function onDragStart(e) {
+    if (!isMobile()) return;
+    isDragging = true;
+    startX = e.touches ? e.touches[0].clientX : e.clientX;
+    startY = e.touches ? e.touches[0].clientY : e.clientY;
+    dragDeltaX = 0;
+    track.classList.add('is-dragging');
+  }
+
+  function onDragMove(e) {
+    if (!isDragging || !isMobile()) return;
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    const y = e.touches ? e.touches[0].clientY : e.clientY;
+    dragDeltaX = x - startX;
+
+    // Reject vertical scrolling drift
+    if (Math.abs(y - startY) > Math.abs(dragDeltaX)) {
+      isDragging = false;
+      track.classList.remove('is-dragging');
+      return;
+    }
+    if (e.cancelable) e.preventDefault();
+    track.style.transition = 'none';
+    track.style.transform = `translateX(-${getOffset(currentIndex) - dragDeltaX}px)`;
+  }
+
+  function onDragEnd() {
+    if (!isDragging || !isMobile()) return;
+    isDragging = false;
+    track.classList.remove('is-dragging');
+    document.removeEventListener('mousemove', onDragMove);
+    document.removeEventListener('mouseup', onDragEnd);
+    if (dragDeltaX < -50 && currentIndex < cards.length - 1) goTo(currentIndex + 1);
+    else if (dragDeltaX > 50 && currentIndex > 0) goTo(currentIndex - 1);
+    else goTo(currentIndex);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+
+  track.addEventListener('touchstart', onDragStart, { passive: true });
+  track.addEventListener('touchmove', onDragMove, { passive: false });
+  track.addEventListener('touchend', onDragEnd);
+
+  track.addEventListener('mousedown', (e) => {
+    onDragStart(e);
+    if (isDragging) {
+      document.addEventListener('mousemove', onDragMove);
+      document.addEventListener('mouseup', onDragEnd);
+    }
+  });
+
+  initSlider();
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(initSlider, 150);
+  });
 })();
 
 console.log('%cGreenSpire Solutions', 'color: #1A3C2A; font-size: 1.2rem; font-weight: bold;');

@@ -249,7 +249,7 @@ button {
 .section-label {
   display: inline-block;
   font-family: var(--ff-heading);
-  font-size: var(--fs-xs);
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -518,6 +518,46 @@ body::before {
 
 .lightbox-arrow--prev { left: var(--space-sm); }
 .lightbox-arrow--next { right: var(--space-sm); }
+
+/* ── Caption: shows the project title/category when a portfolio
+   photo is tapped, so the label that no longer fits on the small
+   mobile card is now readable together with the full-size image ── */
+.lightbox-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--radius-pill);
+  color: var(--clr-white);
+  font-family: var(--ff-heading);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.lightbox-caption .material-symbols-outlined {
+  color: var(--clr-amber);
+  font-size: 18px;
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20;
+}
+
+.lightbox-caption.is-hidden {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .lightbox-caption {
+    font-size: var(--fs-xs);
+    padding: 8px 16px;
+  }
+}
 
 /* Hidden automatically (via JS) when a project only has one photo */
 .lightbox-arrow.is-hidden,
