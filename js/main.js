@@ -141,6 +141,8 @@
 
 /* ═══════════════════════════════════════════
    HORIZONTAL SCROLL — Drag to Scroll
+   (mouse-drag everywhere; touch handled natively
+   on .categories-scroll to keep mobile scrolling smooth)
    ═══════════════════════════════════════════ */
 (function () {
   const containers = document.querySelectorAll('.svc-scroll-container, .categories-scroll');
@@ -169,7 +171,9 @@
       container.scrollLeft = scrollLeft - walk;
     });
 
-    // Touch support
+    // Touch support — skip for categories-scroll, let it scroll natively
+    if (container.classList.contains('categories-scroll')) return;
+
     let touchStartX;
     container.addEventListener('touchstart', (e) => {
       touchStartX = e.touches[0].pageX;
@@ -184,7 +188,7 @@
 })();
 
 /* ═══════════════════════════════════════════
-   CATEGORIES — Nav Arrows + Center Pill Highlight
+   CATEGORIES — Nav Arrows
    Only active on mobile (≤640px scroll mode)
    ═══════════════════════════════════════════ */
 (function () {
@@ -224,27 +228,11 @@
     nextBtn.style.pointerEvents = atEnd ? 'none' : 'auto';
   }
 
-  // Center pill highlight — only for mobile scroll mode
-  function updateCenter() {
-    const pills = scroll.querySelectorAll('.cat-pill');
-    pills.forEach(p => p.classList.remove('is-center'));
-    if (!isMobile()) return;
-    const cx = scroll.scrollLeft + scroll.clientWidth / 2;
-    let closest = null, minDist = Infinity;
-    pills.forEach(pill => {
-      const pillCx = pill.offsetLeft + pill.offsetWidth / 2;
-      const d = Math.abs(pillCx - cx);
-      if (d < minDist) { minDist = d; closest = pill; }
-    });
-    if (closest) closest.classList.add('is-center');
-  }
-
-  scroll.addEventListener('scroll', () => { updateBtns(); updateCenter(); }, { passive: true });
-  window.addEventListener('resize', () => { updateBtns(); updateCenter(); }, { passive: true });
+  scroll.addEventListener('scroll', updateBtns, { passive: true });
+  window.addEventListener('resize', updateBtns, { passive: true });
 
   // Init
   updateBtns();
-  updateCenter();
 })();
 (function () {
   const lightbox = document.getElementById('lightbox');
@@ -644,9 +632,7 @@
   }
 
   showSlide(current);
-  // Increased from 1000ms → 3500ms. Changing a section's backgroundColor
-  // every second forces a full repaint of that region on every tick.
-  setInterval(() => showSlide(current + 1), 3500);
+  setInterval(() => showSlide(current + 1), 1500);
 })();
 
 /* ═══════════════════════════════════════════
@@ -779,4 +765,3 @@
 
 console.log('%cGreenSpire Solutions', 'color: #1A3C2A; font-size: 1.2rem; font-weight: bold;');
 console.log('%cNature meets design — Built with ❤️', 'color: #87A878; font-size: 0.9rem;');
-
