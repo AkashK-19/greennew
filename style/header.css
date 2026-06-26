@@ -1,9 +1,4 @@
-/* ===================================================
-   GREENSPIRE — HEADER CSS
-   Navbar · Mobile Menu · Overlay
-   =================================================== */
 
-/* ── Navbar Base ── */
 .navbar {
   position: fixed;
   top: 0;
@@ -15,16 +10,12 @@
   background: transparent;
 }
 
-/* ── Announcement Bar above nav  ── */
 .announcement-bar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 36px;
-  /* Static gradient — gradientShift animation removed. It animated a fixed
-     element on every frame, forcing the browser to composite the entire
-     viewport continuously. Static bg costs nothing. */
   background: linear-gradient(90deg, var(--clr-forest) 0%, var(--clr-forest-light) 50%, var(--clr-forest) 100%);
   display: flex;
   align-items: center;
@@ -42,8 +33,6 @@
   gap: 3rem;
   animation: annScroll 18s linear infinite;
   white-space: nowrap;
-  /* will-change tells the browser to promote only the scrolling text strip
-     to its own GPU layer — keeps the bar repaint-free while scrolling */
   will-change: transform;
 }
 
@@ -58,7 +47,6 @@
   to   { transform: translateX(-50%); }
 }
 
-/* Push everything down so navbar sits below announcement bar */
 body {
   padding-top: 36px;
 }
@@ -82,7 +70,6 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-/* ── Pill Indicator — active page dot ── */
 .navbar::after {
   content: '';
   position: absolute;
@@ -101,7 +88,6 @@ body {
   opacity: 1;
 }
 
-/* ── Container ── */
 .navbar .container {
   display: flex;
   align-items: center;
@@ -109,7 +95,6 @@ body {
   height: 100%;
 }
 
-/* ── Logo ── */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -149,7 +134,6 @@ body {
   color: var(--clr-forest);
 }
 
-/* ── Nav Links ── */
 .nav-links {
   display: flex;
   align-items: center;
@@ -172,7 +156,6 @@ body {
   color: var(--clr-text);
 }
 
-/* Underline effect */
 .nav-links a:not(.nav-cta)::after {
   content: '';
   position: absolute;
@@ -180,7 +163,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--clr-amber);
+  background: var(--clr-forest);
   border-radius: var(--radius-pill);
   transition: width var(--transition-bounce);
 }
@@ -254,7 +237,6 @@ body {
   96%            { transform: rotate(-10deg); }
 }
 
-/* ── Hamburger Menu ── */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -304,7 +286,6 @@ body {
   width: 24px;
 }
 
-/* ── Overlay ── */
 .nav-overlay {
   position: fixed;
   inset: 0;
@@ -321,7 +302,6 @@ body {
   visibility: visible;
 }
 
-/* ── Responsive Mobile ── */
 @media (max-width: 768px) {
   .nav-hamburger {
     display: flex;
@@ -360,6 +340,13 @@ body {
     display: none;
   }
 
+  .nav-links a:not(.nav-cta).active {
+    color: var(--clr-forest) !important;
+    font-weight: 700;
+    padding-left: 12px;
+    border-left: 3px solid var(--clr-forest);
+  }
+
   .nav-cta,
   .nav-links a.nav-cta {
     margin-top: var(--space-md) !important;
@@ -374,9 +361,6 @@ body {
   }
 }
 
-/* ─────────────────────────────
-   TABLET (768px–900px)
-   ───────────────────────────── */
 @media (min-width: 768px) and (max-width: 900px) {
 
   .navbar .container {
@@ -397,7 +381,6 @@ body {
     letter-spacing: -0.3px;
   }
 
-  /* Navigation */
   .nav-links {
     gap: 0.9rem;
   }
@@ -407,7 +390,6 @@ body {
     letter-spacing: 0;
   }
 
-  /* Call button */
   .nav-cta,
   .nav-links a.nav-cta {
     padding: 8px 16px !important;

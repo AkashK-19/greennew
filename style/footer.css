@@ -20,8 +20,9 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: minmax(220px, 1.5fr) minmax(120px, 1fr) minmax(120px, 1fr) minmax(200px, 1.2fr) minmax(160px, 1fr);
-  gap: var(--space-3xl);
+  grid-template-columns: 1.6fr 0.9fr 0.9fr 1fr 1.3fr;
+  gap: var(--space-lg);
+  align-items: start;
 }
 
 .footer-brand p {

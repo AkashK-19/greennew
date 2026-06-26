@@ -730,3 +730,10 @@ body::before {
     --space-4xl: 3rem;
   }
 }
+
+/* ── Navbar logo image sizing ───────────────────── */
+.nav-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}

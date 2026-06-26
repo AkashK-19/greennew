@@ -1,10 +1,5 @@
-/* ══════════════════════════════════════════════════
-   PLANTS PAGE CSS — GreenSpire  (updated)
-   ══════════════════════════════════════════════════ */
 
 body { background: #f5f1e4; }
-
-/* ── Page Header ── */
 .page-header {
     padding: clamp(5rem,7vw,7rem) 0 3rem;
     background: radial-gradient(circle at top center,rgba(33,70,37,.96) 0%,rgba(14,28,18,.98) 55%,#0b1e12 100%);
@@ -20,8 +15,6 @@ body { background: #f5f1e4; }
 .page-header .breadcrumb a { color:rgba(255,255,255,.82); }
 .page-header h1 { font-size:clamp(2.8rem,5vw,4.4rem);line-height:1.05;margin-bottom:var(--space-md); }
 .page-header p  { max-width:740px;margin:0 auto;color:rgba(255,255,255,.78);font-size:1.05rem; }
-
-/* ── No announcement bar — removes the 36px body offset set in header.css ── */
 body.no-announcement {
     padding-top: 0;
 }
@@ -51,7 +44,6 @@ body.no-announcement .navbar {
 }
 .plants-catalog > * { position:relative; z-index:1; }
 
-/* ── Section intro — mirrors services page style ── */
 .plants-catalog .svc-section-intro {
     text-align: center;
     max-width: 560px;
@@ -158,9 +150,6 @@ body.no-announcement .navbar {
         box-shadow .5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
         border-color .5s ease;
     position:relative;display:flex;flex-direction:column;
-    /* will-change removed from base — 50+ GPU layers at page load wastes memory.
-       Applied on hover only so the browser promotes the card just-in-time. */
-    /* Cards start hidden; JS adds card-visible to fade them in */
     opacity:0;
 }
 @media (hover:hover) and (pointer:fine) {
@@ -1526,4 +1515,46 @@ body.no-announcement .navbar {
     color: var(--clr-text-muted);
     font-size: var(--fs-md);
     margin-top: var(--space-xs);
+}
+
+/* ── More plants note ───────────────────────────── */
+.more-plants-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2.5rem auto 0.5rem;
+  padding: 0.75rem 2rem;
+  width: fit-content;
+  background: var(--clr-forest-deep, #1b3a2d);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: var(--ff-body);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.more-plants-note .material-symbols-outlined {
+  font-size: 1.1rem;
+  color: var(--clr-amber, #e6a817);
+  flex-shrink: 0;
+  font-variation-settings: 'FILL' 1;
+}
+
+.more-plants-note p {
+  margin: 0;
+  line-height: 1;
+}
+
+.more-plants-note a {
+  color: var(--clr-amber, #e6a817);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.more-plants-note a:hover {
+  color: #fff;
 }
