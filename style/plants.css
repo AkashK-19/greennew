@@ -431,7 +431,11 @@ body.no-announcement .navbar {
 }
 
 /* ══════════════════════════════════════════════════
-   PLANT DETAIL POPUP — vertical 2:1 (image top, text bottom)
+   PLANT DETAIL POPUP
+   Strategy: body has a FIXED height that snugly wraps
+   its content — zero blank gap. Image gets flex:1 1 auto
+   and fills whatever remains — always dominant.
+   Exact 2:1 ratio: card=525px, body=175px, image=350px.
    ══════════════════════════════════════════════════ */
 
 /* ── Overlay ── */
@@ -451,17 +455,18 @@ body.no-announcement .navbar {
 }
 .plant-popup-overlay.open { opacity: 1; visibility: visible; }
 
-/* ── Card — vertical column, exact 2:1 ratio via flex ── */
+/* ── Card ──
+   height = 3 × 175px = 525px  →  image 350 : body 175  =  2:1  */
 .plant-popup {
     background: #fff;
     border-radius: 22px;
     overflow: hidden;
     width: 100%;
-    max-width: 360px;           /* portrait card on desktop */
-    height: 560px;              /* fixed height — flex children split this */
+    max-width: 360px;
+    height: 525px;
     max-height: 90vh;
     display: flex;
-    flex-direction: column;     /* vertical: image on top, body below */
+    flex-direction: column;
     box-shadow: 0 24px 64px rgba(0,0,0,.32), 0 4px 16px rgba(0,0,0,.12);
     transform: translateY(28px) scale(0.96);
     opacity: 0;
@@ -493,9 +498,10 @@ body.no-announcement .navbar {
 .plant-popup-close:hover { background: #1a3c2a; color: #fff; transform: rotate(90deg); }
 .plant-popup-close .material-symbols-outlined { font-size: 17px; }
 
-/* ── Image — top 2/3 of card height (flex: 2) ── */
+/* ── Image — fills every pixel the body doesn't claim ──
+   flex:1 1 auto → grows to fill remaining card height perfectly */
 .plant-popup-image {
-    flex: 2 0 0;               /* grows to 2 shares, no shrink below 0 */
+    flex: 1 1 auto;
     min-height: 0;
     overflow: hidden;
     background: #f0f5f0;
@@ -511,20 +517,22 @@ body.no-announcement .navbar {
 }
 .plant-popup-overlay.open .plant-popup-image img { transform: scale(1.05); }
 
-/* ── Body — bottom 1/3 of card height (flex: 1) ── */
+/* ── Body — FIXED at exact content height, never shrinks/grows ──
+   Content measured: category 15 + name 24 + botanical 22 + divider 8
+                   + badges 22 + price-row 30 + price-note 17 + padding 27 ≈ 165px
+   We use 175px for a small intentional breath; 525-175 = 350px image → 2:1 ✓ */
 .plant-popup-body {
-    flex: 1 0 0;               /* grows to 1 share */
-    min-height: 0;
-    padding: .85rem 1.1rem .8rem;
+    flex: 0 0 175px;
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
+    padding: .85rem 1.1rem .75rem;
     display: flex;
     flex-direction: column;
     gap: 0;
 }
 
-/* ── Text — tight spacing ── */
+/* ── Text ── */
 .plant-popup-category {
     font-size: .6rem; font-weight: 700; color: #4d794c;
     text-transform: uppercase; letter-spacing: .22em;
@@ -537,12 +545,12 @@ body.no-announcement .navbar {
 }
 .plant-popup-botanical {
     font-style: italic; font-size: .7rem; color: #9aaa9a;
-    margin: 0 0 .4rem; display: block;
+    margin: 0 0 .38rem; display: block;
 }
-.plant-popup-divider { height: 1px; background: #ebebeb; margin: 0 0 .4rem; }
+.plant-popup-divider { height: 1px; background: #ebebeb; margin: 0 0 .38rem; }
 
 /* ── Badges ── */
-.plant-popup-badges  { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 .4rem; }
+.plant-popup-badges  { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 .38rem; }
 .plant-popup-badge {
     display: inline-flex; align-items: center; gap: 3px;
     padding: 3px 8px; border-radius: 999px;
@@ -555,10 +563,11 @@ body.no-announcement .navbar {
     font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
 }
 
-/* ── Price — pinned to bottom ── */
+/* ── Price — margin-top:auto works safely here because body is fixed-height
+   with only ~10px of slack; price sits snug at the bottom ── */
 .plant-popup-price-row {
     display: flex; align-items: center; justify-content: space-between;
-    gap: .4rem; padding-top: .4rem;
+    gap: .4rem; padding-top: .38rem;
     border-top: 1px solid #ebebeb;
     margin-top: auto;
 }
@@ -570,7 +579,7 @@ body.no-announcement .navbar {
 /* ── Price vary note ── */
 .plant-popup-price-note {
     display: flex; align-items: center; gap: 4px;
-    margin-top: .25rem;
+    margin-top: .22rem;
     font-size: .62rem; color: #3a5e3c; font-style: italic; line-height: 1.3;
 }
 .plant-popup-price-note .material-symbols-outlined {
@@ -592,81 +601,65 @@ body.no-announcement .navbar {
 }
 
 /* ══════════════════════════════════════════════════
-   POPUP — MOBILE ≤ 600px
-   Full-width bottom sheet, same 2:1 flex ratio
+   POPUP — MOBILE  ≤ 600px
+   Card clears the fixed navbar; body fixed at 158px
+   → image fills rest → ~2.2:1 ratio on a 500px card
    ══════════════════════════════════════════════════ */
 @media (max-width: 600px) {
 
-    /* overlay anchors to bottom */
+    /* Push content below the fixed navbar */
     .plant-popup-overlay {
-        align-items: flex-end;
-        justify-content: stretch;
-        padding: 0;
+        align-items: center;
+        justify-content: center;
+        padding: calc(var(--nav-height, 72px) + 10px) 1rem 1rem;
     }
 
-    /* card stretches full width, uses 88vh total height */
+    /* Card height = available viewport below navbar, capped at 500px */
     .plant-popup {
-        width: 100%;
-        max-width: 100%;
-        height: 88vh;
-        max-height: 88vh;
-        border-radius: 20px 20px 0 0;
-        transform: translateY(100%);  /* slide in from below */
+        width: calc(100vw - 2rem);
+        max-width: 360px;
+        height: min(500px, calc(100dvh - var(--nav-height, 72px) - 22px));
+        max-height: calc(100dvh - var(--nav-height, 72px) - 22px);
+        border-radius: 20px;
+        transform: translateY(22px) scale(0.96);
     }
-    .plant-popup-overlay.open .plant-popup { transform: translateY(0); }
-
-    /* show drag handle */
-    .plant-popup-handle {
-        display: block;
-        width: 36px; height: 4px;
-        background: rgba(0,0,0,.12);
-        border-radius: 2px;
-        margin: 10px auto 0;
-        flex-shrink: 0;
+    .plant-popup-overlay.open .plant-popup {
+        transform: translateY(0) scale(1);
     }
 
-    /* image: flex: 2  →  ~59vh  (2/3 of 88vh) */
-    .plant-popup-image {
-        flex: 2 0 0;
-        min-height: 0;
-    }
+    .plant-popup-handle { display: none; }
 
-    /* body: flex: 1  →  ~29vh  (1/3 of 88vh) */
+    /* Body fixed at 158px — content fits with no gap
+       Image on 500px card = 342px → 342:158 ≈ 2.16:1 ✓ */
     .plant-popup-body {
-        flex: 1 0 0;
-        min-height: 0;
-        padding: .8rem 1rem .75rem;
-        overflow-y: auto;
+        flex: 0 0 158px;
+        padding: .7rem .9rem .6rem;
     }
 
-    /* tighten text even more on mobile */
-    .plant-popup-category  { font-size: .58rem; margin-bottom: 2px; }
-    .plant-popup-name      { font-size: 1.1rem; margin-bottom: 2px; }
-    .plant-popup-botanical { font-size: .68rem; margin-bottom: .32rem; }
-    .plant-popup-divider   { margin-bottom: .32rem; }
-    .plant-popup-badges    { gap: 4px; margin-bottom: .32rem; }
-    .plant-popup-badge     { padding: 3px 7px; font-size: .6rem; }
-    .plant-popup-price-row { padding-top: .35rem; }
-    .plant-popup-price     { font-size: 1.3rem; }
-    .plant-popup-price-note{ font-size: .6rem; margin-top: .2rem; }
-
-    .plant-popup-close { top: 10px; right: 10px; width: 30px; height: 30px; }
-    .plant-popup-close .material-symbols-outlined { font-size: 15px; }
+    /* Tighten spacing to fit 158px body */
+    .plant-popup-category  { margin-bottom: 2px; }
+    .plant-popup-name      { font-size: 1.05rem; margin-bottom: 1px; }
+    .plant-popup-botanical { margin-bottom: .26rem; }
+    .plant-popup-divider   { margin-bottom: .26rem; }
+    .plant-popup-badges    { margin-bottom: .26rem; }
+    .plant-popup-price-row { padding-top: .28rem; }
+    .plant-popup-price     { font-size: 1.28rem; }
+    .plant-popup-price-note{ margin-top: .14rem; font-size: .6rem; }
 }
 
 /* ── Extra-small phones ≤ 360px ── */
 @media (max-width: 360px) {
-    .plant-popup         { height: 90vh; max-height: 90vh; }
-    .plant-popup-name    { font-size: 1rem; }
-    .plant-popup-price   { font-size: 1.2rem; }
-    .plant-popup-badge   { font-size: .58rem; padding: 3px 6px; }
-}
-
-@media (max-width: 768px) {
-    .plants-catalog .svc-section-intro h2 {
-        font-size: 1.8rem;
-        line-height: 1.15;
+    .plant-popup-overlay {
+        padding: calc(var(--nav-height, 72px) + 8px) .75rem .75rem;
     }
+    .plant-popup {
+        height: min(460px, calc(100dvh - var(--nav-height, 72px) - 16px));
+        max-height: calc(100dvh - var(--nav-height, 72px) - 16px);
+    }
+    /* Body stays 158px → image ≈ 302px on 460px card → 1.91:1, close to 2:1 */
+    .plant-popup-name  { font-size: .95rem; }
+    .plant-popup-price { font-size: 1.15rem; }
+    .plant-popup-badge { font-size: .57rem; padding: 2px 6px; }
 }
 
 /* ══════════════════════════════════════════════════
@@ -1046,306 +1039,4 @@ body.no-announcement .navbar {
     .plant-card .card-image { height:140px; }
     .plant-card h3  { font-size:.78rem; }
     .plant-card .price { font-size:.88rem; }
-}
-
-/* ══════════════════════════════════════════════════
-   PLANT DETAIL POPUP — vertical 2:1 (image top, text bottom)
-   ══════════════════════════════════════════════════ */
-
-/* ── Overlay ── */
-.plant-popup-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(10, 20, 14, 0.72);
-    z-index: var(--z-modal);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.2rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .25s ease, visibility .25s ease;
-    isolation: isolate;
-}
-.plant-popup-overlay.open { opacity: 1; visibility: visible; }
-
-/* ── Card — vertical column, exact 2:1 ratio via flex ── */
-.plant-popup {
-    background: #fff;
-    border-radius: 22px;
-    overflow: hidden;
-    width: 100%;
-    max-width: 360px;           /* portrait card on desktop */
-    height: 560px;              /* fixed height — flex children split this */
-    max-height: 90vh;
-    display: flex;
-    flex-direction: column;     /* vertical: image on top, body below */
-    box-shadow: 0 24px 64px rgba(0,0,0,.32), 0 4px 16px rgba(0,0,0,.12);
-    transform: translateY(28px) scale(0.96);
-    opacity: 0;
-    transition: transform .32s cubic-bezier(0.22,1,0.36,1), opacity .26s ease;
-    position: relative;
-}
-.plant-popup-overlay.open .plant-popup {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-}
-
-/* ── Drag handle — hidden on desktop ── */
-.plant-popup-handle { display: none; }
-
-/* ── Close button ── */
-.plant-popup-close {
-    position: absolute;
-    top: 12px; right: 12px;
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.92);
-    border: 1px solid rgba(0,0,0,.08);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; z-index: 10;
-    box-shadow: 0 2px 8px rgba(0,0,0,.15);
-    transition: background .2s ease, transform .2s ease;
-    color: #1a3c2a;
-}
-.plant-popup-close:hover { background: #1a3c2a; color: #fff; transform: rotate(90deg); }
-.plant-popup-close .material-symbols-outlined { font-size: 17px; }
-
-/* ── Image — top 2/3 of card height (flex: 2) ── */
-.plant-popup-image {
-    flex: 2 0 0;               /* grows to 2 shares, no shrink below 0 */
-    min-height: 0;
-    overflow: hidden;
-    background: #f0f5f0;
-    position: relative;
-}
-.plant-popup-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    display: block;
-    transition: transform .6s ease;
-}
-.plant-popup-overlay.open .plant-popup-image img { transform: scale(1.05); }
-
-/* ── Body — bottom 1/3 of card height (flex: 1) ── */
-.plant-popup-body {
-    flex: 1 0 0;               /* grows to 1 share */
-    min-height: 0;
-    padding: .85rem 1.1rem .8rem;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-}
-
-/* ── Text — tight spacing ── */
-.plant-popup-category {
-    font-size: .6rem; font-weight: 700; color: #4d794c;
-    text-transform: uppercase; letter-spacing: .22em;
-    margin: 0 0 3px;
-}
-.plant-popup-name {
-    font-family: var(--ff-heading); font-size: 1.18rem; font-weight: 800;
-    color: #0d2318; line-height: 1.15;
-    margin: 0 0 2px;
-}
-.plant-popup-botanical {
-    font-style: italic; font-size: .7rem; color: #9aaa9a;
-    margin: 0 0 .4rem; display: block;
-}
-.plant-popup-divider { height: 1px; background: #ebebeb; margin: 0 0 .4rem; }
-
-/* ── Badges ── */
-.plant-popup-badges  { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 .4rem; }
-.plant-popup-badge {
-    display: inline-flex; align-items: center; gap: 3px;
-    padding: 3px 8px; border-radius: 999px;
-    font-size: .63rem; font-weight: 600; line-height: 1;
-    background: #f0f5f0; color: #2a5a3f;
-    border: 1px solid rgba(42,90,63,.12);
-}
-.plant-popup-badge .material-symbols-outlined {
-    font-size: 11px;
-    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
-}
-
-/* ── Price — pinned to bottom ── */
-.plant-popup-price-row {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: .4rem; padding-top: .4rem;
-    border-top: 1px solid #ebebeb;
-    margin-top: auto;
-}
-.plant-popup-price {
-    font-family: var(--ff-heading); font-size: 1.45rem; font-weight: 800;
-    color: #1a3c2a; line-height: 1; flex-shrink: 0;
-}
-
-/* ── Price vary note ── */
-.plant-popup-price-note {
-    display: flex; align-items: center; gap: 4px;
-    margin-top: .25rem;
-    font-size: .62rem; color: #3a5e3c; font-style: italic; line-height: 1.3;
-}
-.plant-popup-price-note .material-symbols-outlined {
-    font-size: 11px; flex-shrink: 0; color: #2a5a3f;
-    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
-}
-
-/* ── Fade-up entry animations ── */
-.plant-popup-overlay.open .plant-popup-category  { animation: ppFade .28s .07s both; }
-.plant-popup-overlay.open .plant-popup-name      { animation: ppFade .28s .12s both; }
-.plant-popup-overlay.open .plant-popup-botanical { animation: ppFade .28s .15s both; }
-.plant-popup-overlay.open .plant-popup-badges    { animation: ppFade .28s .18s both; }
-.plant-popup-overlay.open .plant-popup-price-row { animation: ppFade .28s .22s both; }
-.plant-popup-overlay.open .plant-popup-price-note{ animation: ppFade .28s .26s both; }
-
-@keyframes ppFade {
-    from { opacity: 0; transform: translateY(6px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ══════════════════════════════════════════════════
-   POPUP — MOBILE ≤ 600px
-   Full-width bottom sheet, same 2:1 flex ratio
-   ══════════════════════════════════════════════════ */
-@media (max-width: 600px) {
-
-    /* overlay anchors to bottom */
-    .plant-popup-overlay {
-        align-items: flex-end;
-        justify-content: stretch;
-        padding: 0;
-    }
-
-    /* card stretches full width, uses 88vh total height */
-    .plant-popup {
-        width: 100%;
-        max-width: 100%;
-        height: 88vh;
-        max-height: 88vh;
-        border-radius: 20px 20px 0 0;
-        transform: translateY(100%);  /* slide in from below */
-    }
-    .plant-popup-overlay.open .plant-popup { transform: translateY(0); }
-
-    /* show drag handle */
-    .plant-popup-handle {
-        display: block;
-        width: 36px; height: 4px;
-        background: rgba(0,0,0,.12);
-        border-radius: 2px;
-        margin: 10px auto 0;
-        flex-shrink: 0;
-    }
-
-    /* image: flex: 2  →  ~59vh  (2/3 of 88vh) */
-    .plant-popup-image {
-        flex: 2 0 0;
-        min-height: 0;
-    }
-
-    /* body: flex: 1  →  ~29vh  (1/3 of 88vh) */
-    .plant-popup-body {
-        flex: 1 0 0;
-        min-height: 0;
-        padding: .8rem 1rem .75rem;
-        overflow-y: auto;
-    }
-
-    /* tighten text even more on mobile */
-    .plant-popup-category  { font-size: .58rem; margin-bottom: 2px; }
-    .plant-popup-name      { font-size: 1.1rem; margin-bottom: 2px; }
-    .plant-popup-botanical { font-size: .68rem; margin-bottom: .32rem; }
-    .plant-popup-divider   { margin-bottom: .32rem; }
-    .plant-popup-badges    { gap: 4px; margin-bottom: .32rem; }
-    .plant-popup-badge     { padding: 3px 7px; font-size: .6rem; }
-    .plant-popup-price-row { padding-top: .35rem; }
-    .plant-popup-price     { font-size: 1.3rem; }
-    .plant-popup-price-note{ font-size: .6rem; margin-top: .2rem; }
-
-    .plant-popup-close { top: 10px; right: 10px; width: 30px; height: 30px; }
-    .plant-popup-close .material-symbols-outlined { font-size: 15px; }
-}
-
-/* ── Extra-small phones ≤ 360px ── */
-@media (max-width: 360px) {
-    .plant-popup         { height: 90vh; max-height: 90vh; }
-    .plant-popup-name    { font-size: 1rem; }
-    .plant-popup-price   { font-size: 1.2rem; }
-    .plant-popup-badge   { font-size: .58rem; padding: 3px 6px; }
-}
-
-@media (max-width: 768px) {
-    .plants-catalog .svc-section-intro h2 {
-        font-size: 1.8rem;
-        line-height: 1.15;
-    }
-}
-
-.plants-catalog .svc-section-intro {
-    text-align: center;
-    max-width: 560px;
-    margin: 0 auto var(--space-2xl);
-}
-
-.plants-catalog .svc-section-intro h2 {
-    font-family: var(--ff-heading);
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 800;
-    color: var(--clr-forest-deep);
-    margin-bottom: var(--space-xs);
-    line-height: 1.15;
-}
-
-.plants-catalog .svc-section-intro p {
-    color: var(--clr-text-muted);
-    font-size: var(--fs-md);
-    margin-top: var(--space-xs);
-}
-
-/* ── More plants note ───────────────────────────── */
-.more-plants-note {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin: 2.5rem auto 0.5rem;
-  padding: 0.75rem 2rem;
-  width: fit-content;
-  background: var(--clr-forest-deep, #1b3a2d);
-  border-radius: 50px;
-  color: #fff;
-  font-size: 0.95rem;
-  font-family: var(--ff-body);
-  font-weight: 500;
-  letter-spacing: 0.01em;
-}
-
-.more-plants-note .material-symbols-outlined {
-  font-size: 1.1rem;
-  color: var(--clr-amber, #e6a817);
-  flex-shrink: 0;
-  font-variation-settings: 'FILL' 1;
-}
-
-.more-plants-note p {
-  margin: 0;
-  line-height: 1;
-}
-
-.more-plants-note a {
-  color: var(--clr-amber, #e6a817);
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-}
-
-.more-plants-note a:hover {
-  color: #fff;
 }
