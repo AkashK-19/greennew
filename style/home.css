@@ -88,15 +88,42 @@
   50%       { -webkit-text-stroke-color: rgba(245, 200, 66, 0.5); }
 }
 
-.hero-display-title em {
-  font-style: normal;
-  color: var(--clr-sage);
-  position: relative;
-  -webkit-text-stroke: 1px rgba(255,255,255,.1);
-  text-shadow:
-    0 0 10px rgba(135,168,120,.55),
-    0 0 22px rgba(135,168,120,.35),
-    0 4px 10px rgba(0,0,0,.3);
+.hero-display-title em{
+    display: inline-block;
+
+    /* Prevent clipping */
+    padding-right: .12em;
+    margin-right: -.12em;
+
+    font-style: italic;
+    font-weight: 900;
+
+    background: linear-gradient(
+        90deg,
+        #7A9B6D,
+        #D7E9CB,
+        #87A878,
+        #D7E9CB,
+        #7A9B6D
+    );
+
+    background-size: 250% 100%;
+    background-position: 0% center;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: shine 5s linear infinite;
+}
+
+@keyframes shine{
+    from{
+        background-position: 0% center;
+    }
+    to{
+        background-position: 250% center;
+    }
 }
 
 .hero-display-title em::after {
