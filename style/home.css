@@ -758,9 +758,11 @@
 }
 
 .brand-item img {
-  width: 100%;
+  width: auto;
   height: 100%;
+  max-width: 100%;
   object-fit: contain;
+  display: block;
   transition: filter 0.25s ease, transform 0.25s ease;
 }
 
@@ -1229,7 +1231,7 @@
   inset: 0;
   z-index: 0;
   
-  background-image: url('https://ik.imagekit.io/greenspire/images/3a68ea0f-f8fa-48de-a490-28f92edc816f.png?updatedAt=1781956686937');
+  background-image: url('https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/why2.avif?updatedAt=1782443890837');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1466,9 +1468,6 @@
     color: var(--clr-forest-deep);
     border-bottom-color: rgba(26, 60, 42, 0.18);
     font-size: 0.85rem;
-    background: rgba(255,255,255,0.65);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
     border-radius: 8px;
     padding: 0.5rem 0.6rem;
     border-bottom: none;
@@ -2988,13 +2987,6 @@
   background: linear-gradient(to right, transparent, var(--clr-amber), transparent);
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.6fr 0.9fr 0.9fr 1fr 1.3fr;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-3xl);
-  align-items: start;
-}
 
 .footer-brand p {
   color: rgba(255,255,255,0.5);
@@ -3226,56 +3218,56 @@
    OUR ESTEEMED CLIENTS — CUSTOM LOGO SIZING
    ===================================================== */
 
-.brand-item:nth-child(1), .brand-item:nth-child(9)  { width: 208px; height: 104px; padding: 0.5rem 0.75rem; }
+.brand-item:nth-child(1), .brand-item:nth-child(9)  { height: 60px; padding: 0rem 2rem; }
 
-.brand-item:nth-child(2), .brand-item:nth-child(10) { width: 169px; height: 104px; padding: 0.5rem 0.75rem; }
+.brand-item:nth-child(2), .brand-item:nth-child(10) { height: 150px; padding: 0rem 2rem; }
 
-.brand-item:nth-child(3), .brand-item:nth-child(11) { width: 195px; height: 104px; padding: 0.5rem 0.75rem; }
+.brand-item:nth-child(3), .brand-item:nth-child(11) { height: 130px; padding: 0rem 2rem; }
 
-.brand-item:nth-child(4), .brand-item:nth-child(12) { width: 156px; height: 104px; padding: 0.5rem 0.75rem; }
+.brand-item:nth-child(4), .brand-item:nth-child(12) { height: 104px; padding: 0rem 2rem; }
 
-.brand-item:nth-child(5), .brand-item:nth-child(13) { width: 195px; height: 104px; padding: 0.5rem 0.75rem; }
+.brand-item:nth-child(5), .brand-item:nth-child(13) { height: 104px; padding: 0rem 2rem; }
 
-.brand-item:nth-child(6), .brand-item:nth-child(14) { width: 221px; height: 104px; padding: 0.5rem 0.75rem; }
+.brand-item:nth-child(6), .brand-item:nth-child(14) { height: 200px; padding: 0rem 2rem; }
 
-.brand-item:nth-child(7), .brand-item:nth-child(15) { width: 182px; height: 104px; padding: 0.5rem 0.75rem; }
+.brand-item:nth-child(7), .brand-item:nth-child(15) { height: 155px; padding: 0rem 2rem; }
 
-.brand-item:nth-child(8), .brand-item:nth-child(16) { width: 189px; height: 104px; padding: 0.5rem 0.75rem; }
+.brand-item:nth-child(8), .brand-item:nth-child(16) { height: 115px; padding: 0rem 2rem; }
 
-@media (max-width: 768px) {
-  
-  .brand-item:nth-child(1), .brand-item:nth-child(9)  { width: 177px; height: 88px; padding: 0.4rem 0.6rem; }
-  
-  .brand-item:nth-child(2), .brand-item:nth-child(10) { width: 143px; height: 88px; padding: 0.4rem 0.6rem; }
-  
-  .brand-item:nth-child(3), .brand-item:nth-child(11) { width: 166px; height: 88px; padding: 0.4rem 0.6rem; }
-  
-  .brand-item:nth-child(4), .brand-item:nth-child(12) { width: 133px; height: 88px; padding: 0.4rem 0.6rem; }
-  
-  .brand-item:nth-child(5), .brand-item:nth-child(13) { width: 166px; height: 88px; padding: 0.4rem 0.6rem; }
-  
-  .brand-item:nth-child(6), .brand-item:nth-child(14) { width: 187px; height: 88px; padding: 0.4rem 0.6rem; }
-  
-  .brand-item:nth-child(7), .brand-item:nth-child(15) { width: 153px; height: 88px; padding: 0.4rem 0.6rem; }
-  
-  .brand-item:nth-child(8), .brand-item:nth-child(16) { width: 159px; height: 88px; padding: 0.4rem 0.6rem; }
+@media (max-width: 769px) {
+
+  .brand-item:nth-child(1), .brand-item:nth-child(9)  { height: 60px; padding: 0.2rem 0.8rem; }
+
+  .brand-item:nth-child(2), .brand-item:nth-child(10) { height: 140px; padding: 0.2rem 0.8rem; }
+
+  .brand-item:nth-child(3), .brand-item:nth-child(11) { height: 140px; padding: 0.2rem 0.8rem; }
+
+  .brand-item:nth-child(4), .brand-item:nth-child(12) { height: 100px; padding: 0.2rem 0.8rem; }
+
+  .brand-item:nth-child(5), .brand-item:nth-child(13) { height: 100px; padding: 0.2rem 0.8rem; }
+
+  .brand-item:nth-child(6), .brand-item:nth-child(14) { height: 180px; padding: 0.2rem 0.8rem; }
+
+  .brand-item:nth-child(7), .brand-item:nth-child(15) { height: 140px; padding: 0.2rem 0.8rem; }
+
+  .brand-item:nth-child(8), .brand-item:nth-child(16) { height: 120px; padding: 0.2rem 0.8rem; }
 }
 
 @media (max-width: 480px) {
-  
-  .brand-item:nth-child(1), .brand-item:nth-child(9)  { width: 151px; height: 75px; padding: 0.3rem 0.5rem; }
-  
-  .brand-item:nth-child(2), .brand-item:nth-child(10) { width: 122px; height: 75px; padding: 0.3rem 0.5rem; }
-  
-  .brand-item:nth-child(3), .brand-item:nth-child(11) { width: 140px; height: 75px; padding: 0.3rem 0.5rem; }
-  
-  .brand-item:nth-child(4), .brand-item:nth-child(12) { width: 112px; height: 75px; padding: 0.3rem 0.5rem; }
-  
-  .brand-item:nth-child(5), .brand-item:nth-child(13) { width: 140px; height: 75px; padding: 0.3rem 0.5rem; }
-  
-  .brand-item:nth-child(6), .brand-item:nth-child(14) { width: 159px; height: 75px; padding: 0.3rem 0.5rem; }
-  
-  .brand-item:nth-child(7), .brand-item:nth-child(15) { width: 130px; height: 75px; padding: 0.3rem 0.5rem; }
-  
-  .brand-item:nth-child(8), .brand-item:nth-child(16) { width: 135px; height: 75px; padding: 0.3rem 0.5rem; }
+
+  .brand-item:nth-child(1), .brand-item:nth-child(9)  { height: 50px; padding: 0.2rem 0.5rem; }
+
+  .brand-item:nth-child(2), .brand-item:nth-child(10) { height: 115px; padding: 0.2rem 0.5rem; }
+
+  .brand-item:nth-child(3), .brand-item:nth-child(11) { height: 100px; padding: 0.2rem 0.5rem; }
+
+  .brand-item:nth-child(4), .brand-item:nth-child(12) { height: 75px; padding: 0.2rem 0.5rem; }
+
+  .brand-item:nth-child(5), .brand-item:nth-child(13) { height: 78px; padding: 0.2rem 0.5rem; }
+
+  .brand-item:nth-child(6), .brand-item:nth-child(14) { height: 135px; width:170px ; padding: 0.2rem 0.1rem; }
+
+  .brand-item:nth-child(7), .brand-item:nth-child(15) { height: 140px; padding: 0.2rem 0.5rem; }
+
+  .brand-item:nth-child(8), .brand-item:nth-child(16) { height: 110px; padding: 0.2rem 0.5rem; }
 }
