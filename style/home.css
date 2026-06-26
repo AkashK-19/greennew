@@ -90,18 +90,13 @@
 
 .hero-display-title em {
   font-style: normal;
-  background: linear-gradient(
-    180deg,
-    #D6E8D0 0%,
-    #AFCB9C 45%,
-    #87A878 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--clr-sage);
+  position: relative;
+  -webkit-text-stroke: 1px rgba(255,255,255,.1);
   text-shadow:
-    0 0 12px rgba(135,168,120,.35),
-    0 4px 10px rgba(0,0,0,.25);
+    0 0 10px rgba(135,168,120,.55),
+    0 0 22px rgba(135,168,120,.35),
+    0 4px 10px rgba(0,0,0,.3);
 }
 
 .hero-display-title em::after {
