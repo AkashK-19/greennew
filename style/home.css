@@ -197,7 +197,7 @@
   height: 100%;
   object-fit: cover;
   transform: scale(1.06);
-  transition: transform 6s ease;
+  transition: transform 4s ease;
 }
 
 .hero-slide--active img {
@@ -3302,4 +3302,20 @@
   .brand-item:nth-child(7), .brand-item:nth-child(15) { height: 140px; padding: 0.2rem 0.5rem; }
 
   .brand-item:nth-child(8), .brand-item:nth-child(16) { height: 110px; padding: 0.2rem 0.5rem; }
+}
+
+/* ADD inside your @media (max-width: 1024px) or create new one */
+@media (max-width: 1024px) {
+  .hero-editorial::before {
+    animation: none;        /* kill gridDrift on tablet */
+  }
+  .hero-panel--dark::after {
+    animation: none;    
+  }
+  .hero-blob-1, .hero-blob-2 {
+    display: none;      
+  }
+  .hero-display-title .title-outline {
+    animation: none;       
+  }
 }

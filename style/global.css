@@ -1,9 +1,3 @@
-/* ===================================================
-   GREENSPIRE — GLOBAL CSS
-   Design System · Tokens · Resets · Utilities
-   =================================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* ── CSS Custom Properties ── */
 :root {
@@ -363,6 +357,9 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 9998;
+  will-change: transform;       
+  transform: translateZ(0);     
+  backface-visibility: hidden;  
 }
 
 /* ── Go Top Button ── */
@@ -645,8 +642,8 @@ body::before {
 
 /* Logo image — spins smoothly */
 .loader-image {
-  width: 52px;
-  height: 52px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   animation: imgSpin 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   filter: drop-shadow(0 4px 10px rgba(26, 60, 42, 0.18));
@@ -661,14 +658,14 @@ body::before {
 /* Brand name below */
 .loader-logo {
   font-family: var(--ff-heading);
-  font-size: 0.85rem;
+  font-size: 1.3rem;
   font-weight: 800;
-  color: var(--clr-forest-deep);
+  color: #3c2524;
   letter-spacing: 0.3px;
 }
 
 .loader-logo span {
-  color: var(--clr-amber-dark);
+  color: #3c2524;
 }
 
 /* ── Utilities ── */

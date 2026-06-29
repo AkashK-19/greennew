@@ -1,5 +1,4 @@
 'use strict';
-
 /* ═══════════════════════════════════════════
    PAGE LOADER
    ═══════════════════════════════════════════ */
@@ -11,12 +10,10 @@
     loader.classList.add('loaded');
   }
 
-  // Hide after page loads
   window.addEventListener('load', () => {
     setTimeout(hideLoader, 400);
   });
 
-  // Safety fallback — always hide after 3s no matter what
   setTimeout(hideLoader, 3000);
 })();
 
@@ -85,7 +82,7 @@
 })();
 
 /* ═══════════════════════════════════════════
-   REVEAL ON SCROLL (Intersection Observer)
+   REVEAL ON SCROLL
    ═══════════════════════════════════════════ */
 (function () {
   const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
@@ -110,15 +107,20 @@
   const counters = document.querySelectorAll('.counter');
   if (!counters.length) return;
 
+  // Skip animation on low-end devices — just show final number instantly
+  if (navigator.hardwareConcurrency <= 4) {
+    counters.forEach(el => { el.textContent = el.dataset.target; });
+    return;
+  }
+
   function animateCounter(el) {
     const target = parseInt(el.dataset.target, 10);
-    const duration = 2000;
+    const duration = 1500;
     const start = performance.now();
 
     function tick(now) {
       const elapsed = Math.min(now - start, duration);
       const progress = elapsed / duration;
-      // easeOutExpo
       const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       el.textContent = Math.round(eased * target);
       if (progress < 1) requestAnimationFrame(tick);
@@ -134,15 +136,13 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.3 });
 
   counters.forEach(c => observer.observe(c));
 })();
 
 /* ═══════════════════════════════════════════
-   HORIZONTAL SCROLL — Drag to Scroll
-   (mouse-drag everywhere; touch handled natively
-   on .categories-scroll to keep mobile scrolling smooth)
+   HORIZONTAL SCROLL —
    ═══════════════════════════════════════════ */
 (function () {
   const containers = document.querySelectorAll('.svc-scroll-container, .categories-scroll');
@@ -188,8 +188,7 @@
 })();
 
 /* ═══════════════════════════════════════════
-   CATEGORIES — Nav Arrows
-   Only active on mobile (≤640px scroll mode)
+   CATEGORIES 
    ═══════════════════════════════════════════ */
 (function () {
   const scroll   = document.getElementById('categoriesScroll');
@@ -205,7 +204,6 @@
   function getPillStep() {
     const firstPill = scroll.querySelector('.cat-pill');
     if (!firstPill) return 110; // fallback
-    // pill width + gap (gap is ~16px on mobile)
     const style = window.getComputedStyle(scroll);
     const gap = parseFloat(style.gap) || parseFloat(style.columnGap) || 16;
     return firstPill.offsetWidth + gap;
@@ -256,9 +254,6 @@
   let currentIndex  = 0;
   let currentAlt    = '';
 
-  // Pull the title/category straight from the card's own .pm-tag
-  // (icon + label) so the same text shown on hover/desktop is also
-  // shown — together with the photo — when the card is tapped.
   function setCaption(item) {
     if (!lbCaption) return;
     const tagEl = item.querySelector('.pm-tag');
@@ -311,7 +306,6 @@
     item.addEventListener('click', () => {
       const img = item.querySelector('img');
 
-      // Lift the clicked card forward, above its neighbours, before opening the lightbox
       galleryItems.forEach(i => i.classList.remove('is-active'));
       item.classList.add('is-active');
 
@@ -360,17 +354,15 @@
 })();
 
 /* ═══════════════════════════════════════════
-   PROCESS SECTION — Curved SVG connector on mobile
+   PROCESS SECTION —
    ═══════════════════════════════════════════ */
 (function () {
   const flow = document.querySelector('.process-flow');
   if (!flow) return;
 
   function buildCurve() {
-    // Inject on phones and tablets where the process section uses a vertical timeline.
     const isMobile = window.innerWidth <= 1024;
 
-    // Remove any existing SVG we injected
     const existing = flow.querySelector('.process-curve-svg');
     if (existing) existing.remove();
 
@@ -381,7 +373,6 @@
 
     const flowRect = flow.getBoundingClientRect();
 
-    // Collect centre points of each node relative to .process-flow
     const pts = nodes.map(node => {
       const r = node.getBoundingClientRect();
       return {
@@ -396,7 +387,6 @@
       const p0 = pts[i];
       const p1 = pts[i + 1];
       const midY = (p0.y + p1.y) / 2;
-      // Alternate the S-curve direction left/right for a snake feel
       const offset = (i % 2 === 0) ? 38 : -38;
       d += ` C ${p0.x + offset} ${midY}, ${p1.x - offset} ${midY}, ${p1.x} ${p1.y}`;
     }
@@ -420,12 +410,9 @@
       </defs>
       <path d="${d}"/>
     `;
-
-    // Insert as first child so it sits behind steps
     flow.insertBefore(svg, flow.firstChild);
   }
 
-  // Run on load and on resize
   window.addEventListener('DOMContentLoaded', buildCurve);
   window.addEventListener('load', buildCurve);
   let resizeTimer;
@@ -455,23 +442,28 @@
 })();
 
 /* ═══════════════════════════════════════════
-   PARALLAX — Hero image subtle parallax
+   PARALLAX — 
    ═══════════════════════════════════════════ */
 (function () {
   const heroImg = document.querySelector('.hero-main-img img');
   if (!heroImg) return;
 
+  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
+
+  let rafId = null;
   window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    heroImg.style.transform = `translateY(${scrollY * 0.15}px)`;
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => {
+      heroImg.style.transform = `translateY(${window.scrollY * 0.15}px)`;
+      rafId = null;
+    });
   }, { passive: true });
 })();
 
 /* ═══════════════════════════════════════════
-   TILT EFFECT — Service, Testimonial, and Hero Cards
+   TILT EFFECT —
    ═══════════════════════════════════════════ */
 (function () {
-  // Skip tilt entirely on touch devices — it causes border-radius flicker
   if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
 
   const cards = document.querySelectorAll('.svc-card, .testimonial-card, .hero-right-card');
@@ -483,8 +475,6 @@
       : { x: 0, y: 0 };
     let frameId = null;
     let isHovered = false;
-    // Cache rect on mouseenter — calling getBoundingClientRect() inside
-    // mousemove forces a layout recalculation on every pointer event.
     let cachedRect = null;
 
     card.addEventListener('mouseenter', () => {
@@ -505,7 +495,6 @@
       frameId = requestAnimationFrame(() => {
         const x = e.clientX - cachedRect.left;
         const y = e.clientY - cachedRect.top;
-        // Tighter tilt range (6deg max) to avoid clip-path issues
         const rotateX = ((y / cachedRect.height) - 0.5) * -6;
         const rotateY = ((x / cachedRect.width) - 0.5) * 6;
         card.style.transform = `translateY(-8px) perspective(900px) rotateX(${baseline.x + rotateX}deg) rotateY(${baseline.y + rotateY}deg)`;
@@ -515,7 +504,7 @@
 })();
 
 /* ═══════════════════════════════════════════
-   STAGGER ANIMATION on nav links (on page load)
+   STAGGER ANIMATION
    ═══════════════════════════════════════════ */
 (function () {
   const links = document.querySelectorAll('.nav-links a');
@@ -525,7 +514,7 @@
 })();
 
 /* ═══════════════════════════════════════════
-   SMOOTH SECTION HIGHLIGHT (subtle flash)
+   SMOOTH SECTION HIGHLIGHT
    ═══════════════════════════════════════════ */
 (function () {
   document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -545,7 +534,7 @@
         const offset = navH + annH + 16;
         const top    = scrollTarget.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top, behavior: 'smooth' });
-        // Focus the first input for accessibility
+        
         if (href === '#get-quote') {
           setTimeout(() => {
             const firstInput = scrollTarget.querySelector('input, select, textarea');
@@ -557,9 +546,6 @@
   });
 })();
 
-/* ═══════════════════════════════════════════
-   HERO — Automatic Slideshow (center panel)
-   ═══════════════════════════════════════════ */
 (function () {
   const slideshow = document.getElementById('heroSlideshow');
   if (!slideshow) return;
@@ -568,7 +554,7 @@
   const dots = Array.from(slideshow.querySelectorAll('.slide-dot'));
   const progressBar = document.getElementById('slideProgressBar');
   let current = 0;
-  const INTERVAL = 2000;
+  const INTERVAL = 4000;
   let autoTimer = null;
 
   function showSlide(index) {
@@ -579,24 +565,10 @@
     if (progressBar) {
       progressBar.style.transition = 'none';
       progressBar.style.width = '0%';
-      // force reflow
-      // eslint-disable-next-line no-unused-expressions
       progressBar.offsetWidth;
       progressBar.style.transition = `width ${INTERVAL}ms linear`;
       progressBar.style.width = '100%';
     }
-  }
-
-  function next() { showSlide(current + 1); }
-
-  function startAuto() {
-    stopAuto();
-    // ensure progress bar is visible and animated
-    if (progressBar) {
-      progressBar.style.transition = `width ${INTERVAL}ms linear`;
-      progressBar.style.width = '100%';
-    }
-    autoTimer = setInterval(next, INTERVAL);
   }
 
   function stopAuto() {
@@ -604,15 +576,27 @@
     if (progressBar) { progressBar.style.transition = 'none'; progressBar.style.width = '0%'; }
   }
 
-  // Dot controls
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(() => showSlide(current + 1), INTERVAL);
+    if (progressBar) {
+      progressBar.style.transition = `width ${INTERVAL}ms linear`;
+      progressBar.style.width = '100%';
+    }
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAuto();
+    } else {
+      startAuto();
+    }
+  });
+
   dots.forEach((dot, i) => dot.addEventListener('click', () => { showSlide(i); startAuto(); }));
 
-  // Pause on hover
   slideshow.addEventListener('mouseenter', stopAuto);
   slideshow.addEventListener('mouseleave', startAuto);
 
-  // Debounced resize — without debounce this fires hundreds of times per
-  // resize drag, resetting the progress bar and restarting timers on each.
   let _resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(_resizeTimer);
@@ -625,19 +609,16 @@
   // Keyboard navigation
   slideshow.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') { showSlide(current + 1); startAuto(); }
-    if (e.key === 'ArrowLeft') { showSlide(current - 1); startAuto(); }
+    if (e.key === 'ArrowLeft')  { showSlide(current - 1); startAuto(); }
   });
 
   // Init
   showSlide(0);
   startAuto();
-
 })();
 
 /* ═══════════════════════════════════════════
-   GET IN TOUCH — Quote Gallery Auto-rotate (1s per image)
-   Background color shifts with each slide so the image
-   blends into the section instead of sitting in a boxed card.
+   GET IN TOUCH 
    ═══════════════════════════════════════════ */
 (function () {
   const gallery = document.getElementById('quoteGallery');
@@ -647,7 +628,6 @@
   const slides = Array.from(gallery.querySelectorAll('.quote-slide'));
   if (slides.length === 0) return;
 
-  // One color per slide, in the same order as the images (one.webp → seven.webp)
   const bgColors = ['#fcebd7', '#fae8d5', '#fbe7d5', '#fae8d5', '#ffecd2', '#fee8cb', '#ffecd0'];
 
   let current = slides.findIndex((s) => s.classList.contains('is-active'));
@@ -662,11 +642,11 @@
   }
 
   showSlide(current);
-  setInterval(() => showSlide(current + 1), 1500);
+  setInterval(() => showSlide(current + 1), 3000);
 })();
 
 /* ═══════════════════════════════════════════
-   MOBILE TOUCH RIPPLE — eco-pillars
+   MOBILE TOUCH RIPPLE
    ═══════════════════════════════════════════ */
 (function () {
   // Only run on touch devices
@@ -689,7 +669,7 @@
 })();
 
 /* ═══════════════════════════════════════════
-   MOBILE SCROLL POP — svc-card & eco-pillar
+   MOBILE SCROLL POP
    ═══════════════════════════════════════════ */
 (function () {
   if (!window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
@@ -707,10 +687,6 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Card in view — pop visible and stop observing.
-        // The "else" branch (re-hiding on scroll away) was removed:
-        // it triggered dozens of simultaneous box-shadow + transform
-        // transitions while scrolling, causing significant mobile jank.
         entry.target.classList.remove('pop-hidden');
         entry.target.classList.add('pop-visible');
         observer.unobserve(entry.target);
@@ -725,8 +701,7 @@
 })();
 
 /* ═══════════════════════════════════════════
-   MOBILE/TABLET SCROLL POP — PLANT CARDS
-   Smooth popup/popdown animation on scroll
+   MOBILE/TABLET SCROLL
    ═══════════════════════════════════════════ */
 (function () {
   if (!window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
@@ -737,9 +712,6 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Card in viewport — pop up once, then stop watching.
-        // Re-animating on scroll-away caused mass concurrent transitions
-        // on the 50-card grid, which is the primary mobile lag source.
         entry.target.classList.add('scroll-pop');
         entry.target.classList.remove('scroll-past');
         observer.unobserve(entry.target);
@@ -754,8 +726,7 @@
 })();
 
 /* ═══════════════════════════════════════════
-   TOUCH PRESS FEEDBACK — svc-card & eco-pillar
-   Fires on touchstart/end, works alongside scroll-pop
+   TOUCH PRESS FEEDBACK —
    ═══════════════════════════════════════════ */
 (function () {
   if (!window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
@@ -779,7 +750,7 @@
 })();
 
 /* ═══════════════════════════════════════════
-   WAVE DASH ANIMATION —
+   WAVE DASH ANIMATION 
    ═══════════════════════════════════════════ */
 (function () {
   const wavePath = document.querySelector('.process-wave path');
@@ -805,7 +776,6 @@
 
   if (!track || !dotsContainer) return;
 
-  // Mobile breakpoint — matches home.css (<=750px)
   function isMobile() { return window.matchMedia('(max-width: 750px)').matches; }
 
   let currentIndex = 0;
@@ -836,7 +806,6 @@
     nextBtn.disabled = currentIndex === cards.length - 1;
   }
 
-  // Use wrapper width for precise per-card responsive layout offset
   function getOffset(index) {
     if (!cards[index]) return 0;
     const wrapper = track.parentElement;
@@ -852,14 +821,9 @@
   }
 
   function initSlider() {
-    // Only the original 8 cards — the duplicated set (aria-hidden="true")
-    // exists purely for the desktop marquee loop and must be excluded here,
-    // otherwise mobile ends up with 16 dots/slides instead of 8 and swiping
-    // drifts into the hidden duplicates (blank/repeated slides).
     cards = Array.from(track.querySelectorAll('.testimonial-card:not([aria-hidden="true"])'));
 
     if (!isMobile()) {
-      // Desktop: restore full marquee continuous loop settings
       track.style.transform = '';
       track.style.transition = '';
       track.style.animation = '';
@@ -870,11 +834,7 @@
       });
       return;
     }
-
-    // Mobile: disable CSS marquee so programmatic swipe transitions work smoothly
     track.style.animation = 'none';
-
-    // Apply strict width wrappers to prevent flex percentage stretching anomalies
     const wrapperWidth = track.parentElement.offsetWidth;
     cards.forEach(c => {
       c.style.width = (wrapperWidth - 32) + 'px';

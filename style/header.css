@@ -19,27 +19,35 @@
   background: linear-gradient(90deg, var(--clr-forest) 0%, var(--clr-forest-light) 50%, var(--clr-forest) 100%);
   display: flex;
   align-items: center;
-  justify-content: center;
   z-index: calc(var(--z-top) + 1);
   font-size: var(--fs-xs);
   font-weight: 600;
   color: var(--clr-white);
   letter-spacing: 1px;
-  overflow: hidden;
+  overflow: hidden;               
+  -webkit-transform: translateZ(0); 
+  transform: translateZ(0);
 }
 
 .announcement-bar .ann-inner {
   display: flex;
   gap: 3rem;
-  animation: annScroll 18s linear infinite;
   white-space: nowrap;
   will-change: transform;
+  width: max-content;
+  -webkit-animation: annScroll 18s linear infinite;
+  animation: annScroll 18s linear infinite;
 }
 
 .announcement-bar .ann-inner span {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+@-webkit-keyframes annScroll {
+  from { -webkit-transform: translateX(0); transform: translateX(0); }
+  to   { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
 }
 
 @keyframes annScroll {
@@ -208,6 +216,7 @@ body {
   transition: all 0.15s ease-out !important;
   box-shadow: 0 4px 16px rgba(245, 200, 66, 0.4) !important;
   position: relative !important;
+  will-change: transform;
 }
 
 .nav-cta::after,
@@ -227,7 +236,9 @@ body {
   color: var(--clr-white) !important;
   border-color: var(--clr-forest) !important;
   transform: translateY(-3px) scale(1.03) !important;
-  box-shadow: 0 10px 28px rgba(26, 60, 42, 0.30) !important;
+  /* REMOVE the box-shadow transition — use filter instead */
+  filter: drop-shadow(0 10px 20px rgba(26, 60, 42, 0.30)) !important;
+  box-shadow: none !important;
 }
 
 @keyframes ring {
@@ -352,6 +363,7 @@ body {
     margin-top: var(--space-md) !important;
     width: 100% !important;
     justify-content: center !important;
+    will-change: transform;
   }
 }
 
@@ -395,6 +407,7 @@ body {
     padding: 8px 16px !important;
     font-size: 0.78rem !important;
     gap: 5px !important;
+     will-change: transform;
   }
 
   .nav-cta .material-symbols-outlined {

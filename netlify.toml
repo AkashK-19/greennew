@@ -1,0 +1,71 @@
+[build]
+  publish = "."
+
+# ── HTML — always revalidate (never stale) ──
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ── CSS — 1-year cache (fix: was /*.css, didn't match /style/ subfolder) ──
+[[headers]]
+  for = "/style/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── JS — 1-year cache (fix: was /*.js, didn't match /js/ subfolder) ──
+[[headers]]
+  for = "/js/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── Images — 1 week cache (Netlify free serves from CDN, helps a lot) ──
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# ── Security headers — all pages ──
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# ── Pretty URLs — /contact instead of /contact.html (optional but nice) ──
+[[redirects]]
+  from = "/home"
+  to   = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/services"
+  to   = "/services.html"
+  status = 200
+
+[[redirects]]
+  from = "/plants"
+  to   = "/plants.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to   = "/contact.html"
+  status = 200

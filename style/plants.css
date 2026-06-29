@@ -1040,3 +1040,74 @@ body.no-announcement .navbar {
     .plant-card h3  { font-size:.78rem; }
     .plant-card .price { font-size:.88rem; }
 }
+/* ══════════════════════════════════════════════════
+   MORE PLANTS NOTE — below pagination
+   ══════════════════════════════════════════════════ */
+.more-plants-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: var(--space-2xl);
+    padding: 1rem 1.75rem;
+    background: linear-gradient(135deg, rgba(26,60,42,0.06) 0%, rgba(245,200,66,0.10) 100%);
+    border: 1.5px dashed rgba(26,60,42,0.22);
+    border-radius: var(--radius-pill);
+    width: fit-content;
+    margin-inline: auto;
+    transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.more-plants-note:hover {
+    border-color: rgba(26,60,42,0.45);
+    background: linear-gradient(135deg, rgba(26,60,42,0.09) 0%, rgba(245,200,66,0.15) 100%);
+}
+
+.more-plants-note .material-symbols-outlined {
+    font-size: 20px;
+    color: var(--clr-forest);
+    flex-shrink: 0;
+    animation: gentleSway 3s ease-in-out infinite;
+}
+
+@keyframes gentleSway {
+    0%, 100% { transform: rotate(-8deg); }
+    50%       { transform: rotate(8deg); }
+}
+
+.more-plants-note p {
+    font-family: var(--ff-heading);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--clr-text-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.more-plants-note p a {
+    color: var(--clr-forest);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(26,60,42,0.35);
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.more-plants-note p a:hover {
+    color: var(--clr-amber-dark);
+    text-decoration-color: var(--clr-amber-dark);
+}
+
+@media (max-width: 480px) {
+    .more-plants-note {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+        padding: 0.9rem 1.25rem;
+        border-radius: var(--radius-lg);
+    }
+
+    .more-plants-note p {
+        font-size: 0.85rem;
+    }
+}
