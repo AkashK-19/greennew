@@ -176,13 +176,13 @@
         <!-- 6 -->
         <div class="plant-card reveal" data-category="indoor">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1611048268330-53de574cae3b?w=400&q=80" loading="lazy" decoding="async" alt="Pothos">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/plants/english%20ivy.avif" loading="lazy" decoding="async" alt="English Ivy">
           </div>
           <div class="card-body">
             <p class="plant-category">Indoor</p>
-            <h3>Golden Pothos</h3>
-            <p class="botanical-name">Scindapsus aureus</p>
-            <div class="card-footer"><span class="price">&#8377;149</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+            <h3>English Ivy</h3>
+            <p class="botanical-name">Hedera helix</p>
+            <div class="card-footer"><span class="price">&#8377;199</span><button class="card-action" aria-label="View details"><svg class="card-action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 3H21M21 3V10.5M21 3L14 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H3M3 21V13.5M3 21L10 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
           </div>
         </div>
 
@@ -1003,7 +1003,7 @@
     /* show/hide cards — use class-based fade to avoid inline style fighting CSS transitions */
     allCards.forEach(c => {
       c.style.display = 'none';
-      c.classList.remove('card-visible', 'pop-hidden', 'pop-visible', 'touch-active');
+      c.classList.remove('card-visible', 'touch-active');
     });
     filtered.forEach((c, i) => {
       if (i >= start && i < end) {
@@ -1019,11 +1019,6 @@
     });
 
     buildPagination(totalPages, filtered.length);
-
-    /* Re-run touch pop-in for newly shown cards */
-    if (typeof TouchCards !== 'undefined') {
-      requestAnimationFrame(() => TouchCards.refresh());
-    }
   }
 
   /* ── BUILD PAGINATION ── */
@@ -1106,62 +1101,9 @@
     checkHint();
   })();
 
-  /* ══════════════════════════════════════════════════════════
-     TOUCH: POP-IN on viewport entry + press lift (like services page)
-  ══════════════════════════════════════════════════════════ */
-  /* ── Touch interactions — exposed as refreshable singleton ── */
-  const TouchCards = (() => {
-    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-    if (!isTouch) return { refresh: () => {} };
-
-    let popObserver = null;
-    const listenedCards = new WeakSet();
-
-    function setupObserver() {
-      if (popObserver) popObserver.disconnect();
-      popObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove('pop-hidden');
-            entry.target.classList.add('pop-visible');
-            popObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
-    }
-
-    function refresh() {
-      setupObserver();
-      /* Only operate on currently visible cards */
-      const visibleCards = allCards.filter(c => c.style.display !== 'none');
-      visibleCards.forEach((card, i) => {
-        card.classList.add('pop-hidden');
-        card.style.transitionDelay = (i * 50) + 'ms';
-        popObserver.observe(card);
-
-        if (!listenedCards.has(card)) {
-          listenedCards.add(card);
-          let t = null;
-          card.addEventListener('touchstart', () => {
-            if (t) clearTimeout(t);
-            card.classList.add('touch-active');
-          }, { passive: true });
-          ['touchend', 'touchcancel'].forEach(evt =>
-            card.addEventListener(evt, () => {
-              t = setTimeout(() => card.classList.remove('touch-active'), 200);
-            }, { passive: true })
-          );
-        }
-      });
-    }
-
-    return { refresh };
-  })();
-
   /* ── INIT ── */
 
   render();
-  TouchCards.refresh();
 
   /* ══════════════════════════════════════════════════════════
      PLANT DETAIL POPUP

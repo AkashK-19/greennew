@@ -528,10 +528,8 @@
       if (scrollTarget) {
         e.preventDefault();
         const navbar = document.getElementById('navbar');
-        const annBar = document.querySelector('.announcement-bar');
         const navH   = navbar  ? navbar.offsetHeight  : 72;
-        const annH   = annBar  ? annBar.offsetHeight  : 0;
-        const offset = navH + annH + 16;
+        const offset = navH + 16;
         const top    = scrollTarget.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top, behavior: 'smooth' });
         

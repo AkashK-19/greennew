@@ -127,7 +127,7 @@
       <div class="hero-slideshow" id="heroSlideshow">
 
         <div class="hero-slide hero-slide--active">
-          <img src="https://ik.imagekit.io/greenspire/images/hero1.webp?updatedAt=1776152728259"
+          <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif"
             alt="GreenSpire landscaping project" fetchpriority="high">
           <div class="slide-caption">
             <span class="slide-tag">Landscaping</span>
@@ -135,7 +135,7 @@
         </div>
 
         <div class="hero-slide">
-          <img src="https://ik.imagekit.io/greenspire/images/hero2.webp?updatedAt=1776152728259"
+          <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif"
             alt="GreenSpire garden design" loading="lazy">
           <div class="slide-caption">
             <span class="slide-tag">Garden Design</span>
@@ -143,7 +143,7 @@
         </div>
 
         <div class="hero-slide">
-          <img src="https://ik.imagekit.io/greenspire/images/service1.webp?updatedAt=1776152736994"
+          <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif"
             alt="GreenSpire terrace garden" loading="lazy">
           <div class="slide-caption">
             <span class="slide-tag">Terrace Garden</span>
@@ -351,7 +351,7 @@
 
         <!-- FEATURED: Custom Garden Design (col 1, spans 2 rows) -->
         <div class="wwd-card wwd-featured reveal">
-          <img src="https://ik.imagekit.io/greenspire/images/service1.webp?updatedAt=1776152736994" loading="lazy" alt="Custom Garden Design">
+          <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif" loading="lazy" alt="Custom Garden Design">
           <div class="wwd-featured-overlay"></div>
           <div class="wwd-featured-body">
             <h3>Custom Garden Design</h3>
@@ -1178,13 +1178,17 @@
 
         try {
           var formData = new FormData(form);
-          var data = Object.fromEntries(formData.entries());
-          data['form-name'] = 'quote';
+          /* Encode all FormData entries (includes bot-field) plus form-name */
+          var params = new URLSearchParams();
+          params.append('form-name', 'quote');
+          formData.forEach(function(value, key) {
+            params.append(key, value);
+          });
 
           var response = await fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: encode(data)
+            body: params.toString()
           });
 
           if (!response.ok) {
