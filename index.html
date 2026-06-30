@@ -18,7 +18,6 @@
   <meta property="og:title" content="GreenSpire Solutions — Landscaping &amp; Garden Development">
   <meta property="og:description" content="Professional landscaping, tree planting, and garden development services in Boisar.">
   <meta property="og:image" content="https://ik.imagekit.io/greenspire/images/hero1.webp?updatedAt=1776152728259">
-  <meta property="og:url" content="https://greenspiresolutions.co.in/">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Fonts -->
@@ -26,20 +25,73 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Preload critical font subset -->
   <link rel="preload" href="https://fonts.gstatic.com/s/outfit/v11/QGYvz_MVcBeNP4NjuGObqx1XmO1I4TC1C4G-EiAou6Y.woff2" as="font" type="font/woff2" crossorigin>
-  <!-- Trimmed: removed unused Playfair Display family entirely (not referenced in any CSS);
-       Unbounded reduced to weight 900 only (the only weight used, in .letsgo-item) -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Unbounded:wght@900&display=swap" rel="stylesheet">
-  <!-- Trimmed axis ranges to only what's used (FILL 0-1, wght 400-500, opsz 20-24, GRAD 0) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <!-- Preload hero image for LCP -->
-  <link rel="preload" as="image" href="https://ik.imagekit.io/greenspire/images/hero1.webp?updatedAt=1776152728259" fetchpriority="high">
-  <!-- Font Awesome removed: no fa-* icons found anywhere in this page, only material-symbols-outlined is used -->
+  <!-- Trimmed axis ranges, loaded asynchronously with display=swap -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Unbounded:wght@900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Unbounded:wght@900&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"></noscript>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="style/global.css">
-  <link rel="stylesheet" href="style/header.css">
-  <link rel="stylesheet" href="style/home.css">
-  <!-- footer.css loaded non-blocking: footer is below the fold, doesn't affect FCP/LCP -->
+  <!-- Preload critical active hero slide image for LCP -->
+  <link rel="preload" as="image" href="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1200,q-80" 
+    imagesrcset="
+      https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-412,q-40 412w,
+      https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-768,q-50 768w,
+      https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1024,q-65 1024w,
+      https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1200,q-80 1200w" 
+    imagesizes="(max-width: 767px) 100vw, 40vw" 
+    fetchpriority="high">
+
+  <!-- Critical Inline CSS to prevent layout shift and FOUC during async load -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #FAF8F2; color: #1A1A1A; overflow-x: hidden; line-height: 1.6; }
+    :root {
+      --clr-forest: #1A3C2A; --clr-forest-light: #2A5A3F; --clr-forest-deep: #0D2318; --clr-amber: #F5C842;
+      --clr-cream: #FAF8F2; --clr-white: #FFFFFF; --clr-black: #0A0A0A; --clr-text: #1A1A1A;
+      --ff-heading: 'Outfit', 'Inter', sans-serif; --nav-height: 72px; --z-top: 400; --shadow-md: 0 4px 20px rgba(0,0,0,0.10);
+      --space-xs: 0.5rem; --space-sm: 0.75rem; --space-md: 1rem; --space-lg: 1.5rem; --space-xl: 2rem;
+      --space-2xl: 3rem; --space-3xl: 4.5rem; --space-4xl: 6rem;
+    }
+    .page-loader {
+      position: fixed; inset: 0; background: #FAF8F2; z-index: 10000;
+      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .page-loader.loaded { opacity: 0; visibility: hidden; }
+    .loader-image {
+      width: 80px; height: 80px; object-fit: contain;
+      animation: imgSpin 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      filter: drop-shadow(0 4px 10px rgba(26, 60, 42, 0.18));
+    }
+    @keyframes imgSpin {
+      0%   { transform: rotate(0deg) scale(1); }
+      50%  { transform: rotate(180deg) scale(1.08); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+    .loader-logo { font-family: var(--ff-heading); font-size: 1.3rem; font-weight: 800; color: #3c2524; letter-spacing: 0.3px; }
+    .loader-logo span { color: #3c2524; }
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height); z-index: var(--z-top);
+      background: transparent; transition: background 0.3s, box-shadow 0.3s;
+    }
+    .navbar.navbar--white { background: #FFFFFF; box-shadow: var(--shadow-md); }
+    .container { max-width: 1280px; margin-inline: auto; padding-inline: clamp(1rem, 5vw, 3rem); }
+    .navbar > .container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .nav-logo { display: inline-flex; align-items: center; gap: 10px; }
+    .nav-logo-img { height: 40px; width: auto; object-fit: contain; }
+    .nav-logo-text { font-family: var(--ff-heading); font-size: 1.25rem; font-weight: 800; color: var(--clr-forest); }
+    .nav-links { display: flex; align-items: center; gap: 2.2rem; }
+    @media (max-width: 767px) { .nav-links { display: none; } }
+  </style>
+
+  <!-- Styles — Asynchronous Preload -->
+  <link rel="preload" href="style/global.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style/global.css"></noscript>
+  <link rel="preload" href="style/header.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style/header.css"></noscript>
+  <link rel="preload" href="style/home.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style/home.css"></noscript>
   <link rel="preload" href="style/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="style/footer.css"></noscript>
 </head>
@@ -79,6 +131,8 @@
   </nav>
   <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
+  <main id="main-content">
+
   <!-- ═══════════════════════════════════════
        HERO — 3-PANEL 
        ═══════════════════════════════════════ -->
@@ -117,12 +171,13 @@
     <!-- Slide 1 -->
     <div class="hero-slide hero-slide--active">
       <img
-        src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1200,q-60"
+        src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1200,q-80"
         srcset="
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-420,q-60 420w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-768,q-60 768w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1200,q-60 1200w"
-        sizes="100vw"
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-412,q-40 412w,
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-768,q-50 768w,
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1024,q-65 1024w,
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1200,q-80 1200w"
+        sizes="(max-width: 767px) 100vw, 40vw"
         fetchpriority="high"
         width="1200"
         height="800"
@@ -136,12 +191,13 @@
     <!-- Slide 2 -->
     <div class="hero-slide">
       <img
-        src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-1200,q-60"
+        src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-1200,q-80"
         srcset="
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-420,q-60 420w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-768,q-60 768w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-1200,q-60 1200w"
-        sizes="100vw"
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-412,q-40 412w,
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-768,q-50 768w,
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-1024,q-65 1024w,
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-1200,q-80 1200w"
+        sizes="(max-width: 767px) 100vw, 40vw"
         width="1200"
         height="800"
         alt="Garden Design">
@@ -154,12 +210,13 @@
     <!-- Slide 3 -->
     <div class="hero-slide">
       <img
-        src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-1200,q-60"
+        src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-1200,q-80"
         srcset="
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-420,q-60 420w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-768,q-60 768w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-1200,q-60 1200w"
-        sizes="100vw"
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-412,q-40 412w,
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-768,q-50 768w,
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-1024,q-65 1024w,
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-1200,q-80 1200w"
+        sizes="(max-width: 767px) 100vw, 40vw"
         width="1200"
         height="800"
         alt="Terrace Garden">
@@ -184,25 +241,25 @@
 
       <div class="hero-right-card hero-right-card--amber">
         <div class="right-card-body">
-          <h3>Book a <br>Garden Visit</h3>
+          <h2>Book a <br>Garden Visit</h2>
           <a href="contact.html" class="right-card-btn" id="heroBookBtn">
             Contact Us <span class="material-symbols-outlined">north_east</span>
           </a>
         </div>
         <div class="right-card-media">
           <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero2.avif?tr=w-200,q-60"
-            loading="lazy" alt="Garden consultation service">
+            loading="lazy" width="200" height="200" alt="Garden consultation service">
         </div>
       </div>
 
       <div class="hero-right-card hero-right-card--mint">
         <div class="right-card-media">
           <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero3.avif?tr=w-200,q-60"
-            loading="lazy" alt="Terrace garden project">
+            loading="lazy" width="200" height="200" alt="Terrace garden project">
         </div>
         <div class="right-card-media">
           <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero4.avif?tr=w-200,q-60"
-            loading="lazy" alt="Garden work project">
+            loading="lazy" width="200" height="200" alt="Garden work project">
         </div>
       </div>
 
@@ -370,7 +427,7 @@
 
         <!-- FEATURED: Custom Garden Design (col 1, spans 2 rows) -->
         <div class="wwd-card wwd-featured reveal">
-          <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-480,q-60" loading="lazy" alt="Custom Garden Design">
+          <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-480,q-60" loading="lazy" width="480" height="320" alt="Custom Garden Design">
           <div class="wwd-featured-overlay"></div>
           <div class="wwd-featured-body">
             <h3>Custom Garden Design</h3>
@@ -407,7 +464,7 @@
 
         <div class="wwd-card wwd-img-card wwd-card--amber wwd-img-amber reveal">
           <div class="wwd-img-card-photo">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/greengifts.avif?tr=w-450,q-60" loading="lazy" alt="Corporate Green Gifting">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/greengifts.avif?tr=w-450,q-60" loading="lazy" width="450" height="300" alt="Corporate Green Gifting">
           </div>
           <div class="wwd-img-card-body">
             <h4>Corporate Green Gifting</h4>
@@ -418,7 +475,7 @@
         <!-- PURPLE: Event Green Styling (col 3, row 3) -->
         <div class="wwd-card wwd-img-card wwd-img-purple wwd-card--purple reveal">
           <div class="wwd-img-card-photo">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/plants/event.avif?tr=w-450,q-60" loading="lazy" alt="Event Green Styling">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/plants/event.avif?tr=w-450,q-60" loading="lazy" width="450" height="300" alt="Event Green Styling">
           </div>
           <div class="wwd-img-card-body">
             <h4>Event Green Styling</h4>
@@ -489,23 +546,23 @@
   <div class="brands-marquee-wrap">
     <div class="brands-marquee-track">
       <!-- Set 1 -->
-      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/resonance.png?tr=w-180,q-80" loading="lazy" alt="The Mango Inn"></div>
-      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/royalpharma.png?tr=w-180,q-80" loading="lazy" alt="Raghuvanshi"></div>
-      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/eastmen.png?tr=w-180,q-80" loading="lazy" alt="Royal Pharma"></div>
-      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/earth.png?tr=w-180,q-80" loading="lazy" alt="Terracon"></div>
-      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/terracon.png?tr=w-180,q-80" loading="lazy" alt="Sumitomo Chemical India"></div>
-      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/sumitomo.png?tr=w-180,q-80" loading="lazy" alt="Eastmen Chemicals"></div>
-      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/mangoin.png?tr=w-180,q-80" loading="lazy" alt="Royal Pharma"></div>
-      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/raghuvanshi.png?tr=w-180,q-80" loading="lazy" alt="The Mango Inn"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/resonance.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="The Mango Inn"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/royalpharma.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="Raghuvanshi"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/eastmen.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="Royal Pharma"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/earth.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="Terracon"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/terracon.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="Sumitomo Chemical India"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/sumitomo.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="Eastmen Chemicals"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/mangoin.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="Royal Pharma"></div>
+      <div class="brand-item"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/raghuvanshi.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="The Mango Inn"></div>
       <!-- Set 2 — duplicate for seamless loop -->
-      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/resonance.png?tr=w-180,q-80" loading="lazy" alt="The Mango Inn"></div>
-      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/royalpharma.png?tr=w-180,q-80" loading="lazy" alt="Raghuvanshi"></div>
-      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/eastmen.png?tr=w-180,q-80" loading="lazy" alt="Royal Pharma"></div>
-      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/earth.png?tr=w-180,q-80" loading="lazy" alt="Terracon"></div>
-      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/terracon.png?tr=w-180,q-80" loading="lazy" alt="Sumitomo Chemical India"></div>
-      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/sumitomo.png?tr=w-180,q-80" loading="lazy" alt="Eastmen Chemicals"></div>
-      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/mangoin.png?tr=w-180,q-80" loading="lazy" alt="Royal Pharma"></div>
-      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/raghuvanshi.png?tr=w-180,q-80" loading="lazy" alt="The Mango Inn"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/resonance.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="The Mango Inn"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/royalpharma.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="Raghuvanshi"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/eastmen.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="Royal Pharma"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/earth.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="Terracon"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/terracon.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="Sumitomo Chemical India"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/sumitomo.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="Eastmen Chemicals"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/mangoin.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="Royal Pharma"></div>
+      <div class="brand-item" aria-hidden="true"><img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/raghuvanshi.png?tr=w-120,q-80" loading="lazy" width="120" height="120" alt="The Mango Inn"></div>
     </div>
   </div>
 </div>
@@ -801,7 +858,7 @@
         <div class="testimonial-author">
           <div class="avatar">R</div>
           <div class="author-info">
-            <h4>Sandeep baakre</h4>
+            <h3>Sandeep baakre</h3>
             <p>Homeowner, Mumbai</p>
           </div>
         </div>
@@ -818,7 +875,7 @@
         <div class="testimonial-author">
           <div class="avatar">S</div>
           <div class="author-info">
-            <h4>Sonavane Vijaya</h4>
+            <h3>Sonavane Vijaya</h3>
             <p>Bank Manager, Boisar</p>
           </div>
         </div>
@@ -835,7 +892,7 @@
         <div class="testimonial-author">
           <div class="avatar">A</div>
           <div class="author-info">
-            <h4>Yogesh Save</h4>
+            <h3>Yogesh Save</h3>
             <p> Tarapur</p>
           </div>
         </div>
@@ -852,7 +909,7 @@
         <div class="testimonial-author">
           <div class="avatar">P</div>
           <div class="author-info">
-            <h4>Hemant Sawant</h4>
+            <h3>Hemant Sawant</h3>
             <p>Resident, Kharghar</p>
           </div>
         </div>
@@ -869,7 +926,7 @@
         <div class="testimonial-author">
           <div class="avatar">V</div>
           <div class="author-info">
-            <h4>Bhushan Vartak</h4>
+            <h3>Bhushan Vartak</h3>
             <p>Trush President, Chatale(Saphale)</p>
           </div>
         </div>
@@ -886,7 +943,7 @@
         <div class="testimonial-author">
           <div class="avatar">N</div>
           <div class="author-info">
-            <h4>Pankaj bagade</h4>
+            <h3>Pankaj bagade</h3>
             <p>HomeOwner, Dhule</p>
           </div>
         </div>
@@ -903,7 +960,7 @@
         <div class="testimonial-author">
           <div class="avatar">M</div>
           <div class="author-info">
-            <h4>Bhargav Lohar</h4>
+            <h3>Bhargav Lohar</h3>
             <p>Vasai</p>
           </div>
         </div>
@@ -920,7 +977,7 @@
         <div class="testimonial-author">
           <div class="avatar">K</div>
           <div class="author-info">
-            <h4>Shubham Brid</h4>
+            <h3>Shubham Brid</h3>
             <p>Homeowner, Goregaon</p>
           </div>
         </div>
@@ -937,7 +994,7 @@
         <div class="testimonial-author">
           <div class="avatar">R</div>
           <div class="author-info">
-            <h4>Sandeep baakre</h4>
+            <h3>Sandeep baakre</h3>
             <p>Homeowner, Mumbai</p>
           </div>
         </div>
@@ -953,7 +1010,7 @@
         <div class="testimonial-author">
           <div class="avatar">S</div>
           <div class="author-info">
-            <h4>Sonavane Vijaya</h4>
+            <h3>Sonavane Vijaya</h3>
             <p>Bank Manager, Boisar</p>
           </div>
         </div>
@@ -969,7 +1026,7 @@
         <div class="testimonial-author">
           <div class="avatar">A</div>
           <div class="author-info">
-            <h4>Yogesh Save</h4>
+            <h3>Yogesh Save</h3>
             <p> Tarapur</p>
           </div>
         </div>
@@ -985,7 +1042,7 @@
         <div class="testimonial-author">
           <div class="avatar">P</div>
           <div class="author-info">
-            <h4>Hemant Sawant</h4>
+            <h3>Hemant Sawant</h3>
             <p>Resident, Kharghar</p>
           </div>
         </div>
@@ -1001,7 +1058,7 @@
         <div class="testimonial-author">
           <div class="avatar">V</div>
           <div class="author-info">
-            <h4>Bhushan Vartak</h4>
+            <h3>Bhushan Vartak</h3>
             <p>Trush President, Chatale(Saphale)</p>
           </div>
         </div>
@@ -1017,7 +1074,7 @@
         <div class="testimonial-author">
           <div class="avatar">N</div>
           <div class="author-info">
-            <h4>Pankaj bagade</h4>
+            <h3>Pankaj bagade</h3>
             <p>HomeOwner, Dhule</p>
           </div>
         </div>
@@ -1033,7 +1090,7 @@
         <div class="testimonial-author">
           <div class="avatar">M</div>
           <div class="author-info">
-            <h4>Bhargav Lohar</h4>
+            <h3>Bhargav Lohar</h3>
             <p>Vasai</p>
           </div>
         </div>
@@ -1049,7 +1106,7 @@
         <div class="testimonial-author">
           <div class="avatar">K</div>
           <div class="author-info">
-            <h4>Shubham Brid</h4>
+            <h3>Shubham Brid</h3>
             <p>Homeowner, Goregaon</p>
           </div>
         </div>
@@ -1090,6 +1147,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ═══════════════════════════════════════
        FOOTER
        ═══════════════════════════════════════ -->
@@ -1104,7 +1163,7 @@
             complete makeovers, we do it all.</p>
         </div>
         <div class="footer-col">
-          <h4>Quick Links</h4>
+          <h3>Quick Links</h3>
           <div class="footer-links">
             <a href="index.html"><span class="material-symbols-outlined">chevron_right</span> Home</a>
             <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Services</a>
@@ -1113,7 +1172,7 @@
           </div>
         </div>
         <div class="footer-col">
-          <h4>Services</h4>
+          <h3>Services</h3>
           <div class="footer-links">
             <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Garden Design</a>
             <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Landscaping</a>
@@ -1122,7 +1181,7 @@
           </div>
         </div>
         <div class="footer-col">
-          <h4>Nursery Location</h4>
+          <h3>Nursery Location</h3>
           <div class="footer-contact-item">
             <span class="material-symbols-outlined">location_on</span>
             <span>Uruli Kanchan, Pune</span>
@@ -1133,7 +1192,7 @@
           </div>
         </div>
         <div class="footer-col">
-          <h4>Contact Us</h4>
+          <h3>Contact Us</h3>
           <div class="footer-contact-item">
             <span class="material-symbols-outlined">location_on</span>
             <span>Shop No.18, Shivakala Arcade, Boisar - Tarapur Road, Boisar - 401501</span>

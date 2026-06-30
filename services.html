@@ -21,18 +21,48 @@
   <meta property="og:url" content="https://greenspiresolutions.co.in/services.html">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Fonts — global.css handles all body/heading fonts via @import.
-       Font Awesome removed (unused). Trimmed: removed unused Playfair Display,
-       Unbounded reduced to weight 900 only. -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Unbounded:wght@900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="preload" href="https://fonts.gstatic.com/s/outfit/v11/QGYvz_MVcBeNP4NjuGObqx1XmO1I4TC1C4G-EiAou6Y.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Unbounded:wght@900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Unbounded:wght@900&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"></noscript>
   
-  <!-- Styles -->
-  <link rel="stylesheet" href="style/global.css">
-  <link rel="stylesheet" href="style/header.css">
-  <link rel="stylesheet" href="style/services.css">
+  <!-- Critical Inline CSS to prevent layout shift and FOUC during async load -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #FAF8F2; color: #1A1A1A; overflow-x: hidden; line-height: 1.6; }
+    :root {
+      --clr-forest: #1A3C2A; --clr-forest-light: #2A5A3F; --clr-forest-deep: #0D2318; --clr-amber: #F5C842;
+      --clr-cream: #FAF8F2; --clr-white: #FFFFFF; --clr-black: #0A0A0A; --clr-text: #1A1A1A;
+      --ff-heading: 'Outfit', 'Inter', sans-serif; --nav-height: 72px; --z-top: 400; --shadow-md: 0 4px 20px rgba(0,0,0,0.10);
+      --space-xs: 0.5rem; --space-sm: 0.75rem; --space-md: 1rem; --space-lg: 1.5rem; --space-xl: 2rem;
+      --space-2xl: 3rem; --space-3xl: 4.5rem; --space-4xl: 6rem;
+    }
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height); z-index: var(--z-top);
+      background: transparent; transition: background 0.3s, box-shadow 0.3s;
+    }
+    .navbar.navbar--white { background: #FFFFFF; box-shadow: var(--shadow-md); }
+    .container { max-width: 1280px; margin-inline: auto; padding-inline: clamp(1rem, 5vw, 3rem); }
+    .navbar > .container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .nav-logo { display: inline-flex; align-items: center; gap: 10px; }
+    .nav-logo-img { height: 40px; width: auto; object-fit: contain; }
+    .nav-logo-text { font-family: var(--ff-heading); font-size: 1.25rem; font-weight: 800; color: var(--clr-forest); }
+    .nav-links { display: flex; align-items: center; gap: 2.2rem; }
+    @media (max-width: 767px) { .nav-links { display: none; } }
+  </style>
+
+  <!-- Styles — Asynchronous Preload -->
+  <link rel="preload" href="style/global.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style/global.css"></noscript>
+  <link rel="preload" href="style/header.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style/header.css"></noscript>
+  <link rel="preload" href="style/services.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style/services.css"></noscript>
   <!-- footer.css loaded non-blocking: below the fold, doesn't affect FCP/LCP -->
   <link rel="preload" href="style/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="style/footer.css"></noscript>
@@ -65,6 +95,8 @@
     </div>
   </nav>
   <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <main id="main-content">
 
   <!-- ═══════ ALL SERVICES ═══════ -->
   <section class="section services-full" id="all-services">
@@ -397,6 +429,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
   <footer class="footer" role="contentinfo">
     <div class="container">
@@ -409,7 +443,7 @@
             complete makeovers, we do it all.</p>
         </div>
         <div class="footer-col">
-          <h4>Quick Links</h4>
+          <h3>Quick Links</h3>
           <div class="footer-links">
             <a href="index.html"><span class="material-symbols-outlined">chevron_right</span> Home</a>
             <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Services</a>
@@ -418,7 +452,7 @@
           </div>
         </div>
         <div class="footer-col">
-          <h4>Services</h4>
+          <h3>Services</h3>
           <div class="footer-links">
             <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Garden Design</a>
             <a href="services.html"><span class="material-symbols-outlined">chevron_right</span> Landscaping</a>
@@ -427,7 +461,7 @@
           </div>
         </div>
         <div class="footer-col">
-          <h4>Nursery Location</h4>
+          <h3>Nursery Location</h3>
           <div class="footer-contact-item">
             <span class="material-symbols-outlined">location_on</span>
             <span>Uruli Kanchan, Pune</span>
@@ -438,7 +472,7 @@
           </div>
         </div>
         <div class="footer-col">
-          <h4>Contact Us</h4>
+          <h3>Contact Us</h3>
           <div class="footer-contact-item">
             <span class="material-symbols-outlined">location_on</span>
             <span>Shop No.18, Shivakala Arcade, Boisar - Tarapur Road, Boisar - 401501</span>
@@ -462,7 +496,7 @@
     <span class="material-symbols-outlined">arrow_upward</span>
   </button>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {

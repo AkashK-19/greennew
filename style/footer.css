@@ -34,7 +34,8 @@
   display: inline-flex;
 }
 
-.footer-col h4 {
+.footer-col h4,
+.footer-col h3 {
   font-family: var(--ff-heading);
   font-size: 0.875rem;
   font-weight: 700;
