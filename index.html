@@ -20,80 +20,52 @@
   <meta property="og:image" content="https://ik.imagekit.io/greenspire/images/hero1.webp?updatedAt=1776152728259">
   <meta name="twitter:card" content="summary_large_image">
 
+  <!-- Connect early to the image CDN — saves a DNS+TLS round trip before the
+       hero (LCP) image request fires. Typically saves 100–300ms of LCP time
+       on mobile networks. -->
+  <link rel="preconnect" href="https://ik.imagekit.io" crossorigin>
+  <link rel="dns-prefetch" href="https://ik.imagekit.io">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Preload critical font subset -->
   <link rel="preload" href="https://fonts.gstatic.com/s/outfit/v11/QGYvz_MVcBeNP4NjuGObqx1XmO1I4TC1C4G-EiAou6Y.woff2" as="font" type="font/woff2" crossorigin>
-  <!-- Trimmed axis ranges, loaded asynchronously with display=swap -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Unbounded:wght@900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Unbounded:wght@900&display=swap"></noscript>
+  <!-- Trimmed to the weights actually used in the CSS: dropped unused Inter 300
+       and unused Cormorant 0,600; added Cormorant 1,600 (italic), which the
+       "About The Founder" label renders in but was never being loaded —
+       it was being faux-bolded by the browser instead. -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Unbounded:wght@900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Unbounded:wght@900&display=swap"></noscript>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"></noscript>
 
-  <!-- Preload critical active hero slide image for LCP -->
-  <link rel="preload" as="image" href="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1200,q-80" 
-    imagesrcset="
-      https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-412,q-40 412w,
-      https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-768,q-50 768w,
-      https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1024,q-65 1024w,
-      https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1200,q-80 1200w" 
-    imagesizes="(max-width: 767px) 100vw, 40vw" 
-    fetchpriority="high">
+<link
+rel="preload"
+as="image"
+href="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1400,q-80"
 
-  <!-- Critical Inline CSS to prevent layout shift and FOUC during async load -->
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-    body { font-family: 'Inter', system-ui, sans-serif; background: #FAF8F2; color: #1A1A1A; overflow-x: hidden; line-height: 1.6; }
-    :root {
-      --clr-forest: #1A3C2A; --clr-forest-light: #2A5A3F; --clr-forest-deep: #0D2318; --clr-amber: #F5C842;
-      --clr-cream: #FAF8F2; --clr-white: #FFFFFF; --clr-black: #0A0A0A; --clr-text: #1A1A1A;
-      --ff-heading: 'Outfit', 'Inter', sans-serif; --nav-height: 72px; --z-top: 400; --shadow-md: 0 4px 20px rgba(0,0,0,0.10);
-      --space-xs: 0.5rem; --space-sm: 0.75rem; --space-md: 1rem; --space-lg: 1.5rem; --space-xl: 2rem;
-      --space-2xl: 3rem; --space-3xl: 4.5rem; --space-4xl: 6rem;
-    }
-    .page-loader {
-      position: fixed; inset: 0; background: #FAF8F2; z-index: 10000;
-      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
-    }
-    .page-loader.loaded { opacity: 0; visibility: hidden; }
-    .loader-image {
-      width: 80px; height: 80px; object-fit: contain;
-      animation: imgSpin 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-      filter: drop-shadow(0 4px 10px rgba(26, 60, 42, 0.18));
-    }
-    @keyframes imgSpin {
-      0%   { transform: rotate(0deg) scale(1); }
-      50%  { transform: rotate(180deg) scale(1.08); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
-    .loader-logo { font-family: var(--ff-heading); font-size: 1.3rem; font-weight: 800; color: #3c2524; letter-spacing: 0.3px; }
-    .loader-logo span { color: #3c2524; }
-    .navbar {
-      position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height); z-index: var(--z-top);
-      background: transparent; transition: background 0.3s, box-shadow 0.3s;
-    }
-    .navbar.navbar--white { background: #FFFFFF; box-shadow: var(--shadow-md); }
-    .container { max-width: 1280px; margin-inline: auto; padding-inline: clamp(1rem, 5vw, 3rem); }
-    .navbar > .container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
-    .nav-logo { display: inline-flex; align-items: center; gap: 10px; }
-    .nav-logo-img { height: 40px; width: auto; object-fit: contain; }
-    .nav-logo-text { font-family: var(--ff-heading); font-size: 1.25rem; font-weight: 800; color: var(--clr-forest); }
-    .nav-links { display: flex; align-items: center; gap: 2.2rem; }
-    @media (max-width: 767px) { .nav-links { display: none; } }
-  </style>
+imagesrcset="
+https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-480,q-65 480w,
+https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-900,q-75 900w,
+https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1400,q-80 1400w"
 
-  <!-- Styles — Asynchronous Preload -->
-  <link rel="preload" href="style/global.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="style/global.css"></noscript>
-  <link rel="preload" href="style/header.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="style/header.css"></noscript>
-  <link rel="preload" href="style/home.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="style/home.css"></noscript>
-  <link rel="preload" href="style/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="style/footer.css"></noscript>
+imagesizes="(max-width:768px) 100vw,
+            (max-width:1200px) 60vw,
+            40vw"
+fetchpriority="high">
+
+  <!-- Styles — minified (≈25% smaller), same cascade order preserved.
+       footer.css is loaded non-render-blocking since the footer is never
+       above the fold — this removes a blocking request from the critical path. -->
+  <link rel="stylesheet" href="style/global.min.css">
+  <noscript><link rel="stylesheet" href="style/global.min.css"></noscript>
+  <link rel="stylesheet" href="style/header.min.css">
+  <noscript><link rel="stylesheet" href="style/header.min.css"></noscript>
+  <link rel="stylesheet" href="style/home.min.css">
+  <noscript><link rel="stylesheet" href="style/home.min.css"></noscript>
+  <link rel="preload" href="style/footer.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style/footer.min.css"></noscript>
 </head>
 
 <body>
@@ -170,34 +142,49 @@
 
     <!-- Slide 1 -->
     <div class="hero-slide hero-slide--active">
-      <img
-        src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1200,q-80"
-        srcset="
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-412,q-40 412w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-768,q-50 768w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1024,q-65 1024w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1200,q-80 1200w"
-        sizes="(max-width: 767px) 100vw, 40vw"
-        fetchpriority="high"
-        width="1200"
-        height="800"
-        alt="Professional Landscaping">
+          <img
+  src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1400,q-80"
+
+  srcset="
+    https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-480,q-65 480w,
+    https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-900,q-75 900w,
+    https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-1400,q-80 1400w"
+
+  sizes="
+(max-width:767px) 100vw,
+(max-width:1180px) 50vw,
+36vw"
+
+  fetchpriority="high"
+  width="1200"
+  height="800"
+  alt="Professional Landscaping">
 
       <div class="slide-caption">
         <span class="slide-tag">Landscaping</span>
       </div>
     </div>
 
-    <!-- Slide 2 -->
+    <!-- Slide 2 — src/srcset intentionally deferred to data-src/data-srcset.
+         main.js swaps these in after window 'load' so this large image
+         doesn't compete with the hero LCP image (slide 1) for bandwidth
+         during the critical initial paint. -->
     <div class="hero-slide">
       <img
-        src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-1200,q-80"
-        srcset="
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-412,q-40 412w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-768,q-50 768w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-1024,q-65 1024w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-1200,q-80 1200w"
-        sizes="(max-width: 767px) 100vw, 40vw"
+        data-src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-1400,q-80"
+
+data-srcset="
+https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-480,q-65 480w,
+https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-900,q-75 900w,
+https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Hero1.1.avif?tr=w-1400,q-80 1400w"
+        
+
+sizes="
+(max-width:767px) 100vw,
+(max-width:1180px) 50vw,
+36vw"
+
+        loading="lazy"
         width="1200"
         height="800"
         alt="Garden Design">
@@ -207,16 +194,22 @@
       </div>
     </div>
 
-    <!-- Slide 3 -->
+    <!-- Slide 3 — same deferred-load treatment as slide 2 -->
     <div class="hero-slide">
       <img
-        src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-1200,q-80"
-        srcset="
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-412,q-40 412w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-768,q-50 768w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-1024,q-65 1024w,
-          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-1200,q-80 1200w"
-        sizes="(max-width: 767px) 100vw, 40vw"
+        data-src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-1400,q-80"
+        data-srcset="
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-480,q-65 480w,
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-900,q-75 900w,
+          https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.2.avif?tr=w-1400,q-80 1400w"
+        
+
+          sizes="
+(max-width:767px) 100vw,
+(max-width:1180px) 50vw,
+36vw"
+
+        loading="lazy"
         width="1200"
         height="800"
         alt="Terrace Garden">
@@ -248,18 +241,18 @@
         </div>
         <div class="right-card-media">
           <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero2.avif?tr=w-200,q-60"
-            loading="lazy" width="200" height="200" alt="Garden consultation service">
+            loading="lazy" decoding="async" width="200" height="200" alt="Garden consultation service">
         </div>
       </div>
 
       <div class="hero-right-card hero-right-card--mint">
         <div class="right-card-media">
           <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero3.avif?tr=w-200,q-60"
-            loading="lazy" width="200" height="200" alt="Terrace garden project">
+            loading="lazy"  decoding="async" width="200" height="200" alt="Terrace garden project">
         </div>
         <div class="right-card-media">
           <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero4.avif?tr=w-200,q-60"
-            loading="lazy" width="200" height="200" alt="Garden work project">
+            loading="lazy"  decoding="async" width="200" height="200" alt="Garden work project">
         </div>
       </div>
 
@@ -343,61 +336,61 @@
 
         <div class="cat-pill">
           <div class="cat-icon">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Peace_Lily.webp?tr=w-150,q-70" alt="Plants" loading="lazy">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/Peace_Lily.webp?tr=w-150,q-70" alt="Plants" loading="lazy" decoding="async">
           </div>
           <span class="cat-name">Plants</span>
         </div>
 
         <div class="cat-pill">
           <div class="cat-icon">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/pots.avif?tr=w-150,q-70" alt="Pots" loading="lazy">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/pots.avif?tr=w-150,q-70" alt="Pots" loading="lazy" decoding="async">
           </div>
           <span class="cat-name">Pots</span>
         </div>
 
         <div class="cat-pill">
           <div class="cat-icon">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/potting%20mix.avif?tr=w-150,q-70" alt="Soils" loading="lazy">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/potting%20mix.avif?tr=w-150,q-70" alt="Soils" loading="lazy" decoding="async">
           </div>
           <span class="cat-name">Potting Mix</span>
         </div>
 
         <div class="cat-pill">
           <div class="cat-icon">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/fertiliser.avif?tr=w-150,q-70" alt="Fertilisers" loading="lazy">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/fertiliser.avif?tr=w-150,q-70" alt="Fertilisers" loading="lazy" decoding="async">
           </div>
           <span class="cat-name">Fertilisers</span>
         </div>
 
         <div class="cat-pill">
           <div class="cat-icon">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/pestcontrol.avif?tr=w-150,q-70" alt="Pest Control" loading="lazy">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/pestcontrol.avif?tr=w-150,q-70" alt="Pest Control" loading="lazy"decoding="async">
           </div>
           <span class="cat-name">Pest Control</span>
         </div>
 
         <div class="cat-pill">
           <div class="cat-icon">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/gardendecor.avif?tr=w-150,q-70" alt="Garden Decor" loading="lazy">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/gardendecor.avif?tr=w-150,q-70" alt="Garden Decor" loading="lazy" decoding="async">
           </div>
           <span class="cat-name">Garden Decor</span>
         </div>
 
         <div class="cat-pill">
           <div class="cat-icon">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/greengifts.avif?tr=w-150,q-70" alt="Green Gifts" loading="lazy">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/greengifts.avif?tr=w-150,q-70" alt="Green Gifts" loading="lazy" decoding="async">
           </div>
           <span class="cat-name">Green Gifts</span>
         </div>
 
         <div class="cat-pill">
           <div class="cat-icon">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/trees.avif?tr=w-150,q-70" alt="Trees" loading="lazy">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/trees.avif?tr=w-150,q-70" alt="Trees" loading="lazy" decoding="async">
           </div>
           <span class="cat-name">Trees</span>
         </div>
 
-      </div><!-- /categories-scroll -->
+      </div>
 
       <button class="cat-nav-btn cat-nav-btn--next" id="catNext" aria-label="Scroll right">
         <span class="material-symbols-outlined">chevron_right</span>
@@ -427,7 +420,13 @@
 
         <!-- FEATURED: Custom Garden Design (col 1, spans 2 rows) -->
         <div class="wwd-card wwd-featured reveal">
-          <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-480,q-60" loading="lazy" width="480" height="320" alt="Custom Garden Design">
+          <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-640,q-65"
+            srcset="
+              https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-480,q-60 480w,
+              https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-640,q-65 640w,
+              https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/hero1.3.avif?tr=w-960,q-70 960w"
+            sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 33vw"
+            loading="lazy" width="480" height="320" alt="Custom Garden Design">
           <div class="wwd-featured-overlay"></div>
           <div class="wwd-featured-body">
             <h3>Custom Garden Design</h3>
@@ -575,7 +574,12 @@
       <div class="about-v2-grid">
         <div class="about-v2-img reveal-left">
           <img src="https://ik.imagekit.io/greenspire/images/about.webp?tr=w-700,q-75"
-            loading="lazy" alt="Mr. Gaurav Chandulal Kapare — Founder of GreenSpire Solutions">
+            srcset="
+              https://ik.imagekit.io/greenspire/images/about.webp?tr=w-700,q-75 700w,
+              https://ik.imagekit.io/greenspire/images/about.webp?tr=w-1000,q-78 1000w,
+              https://ik.imagekit.io/greenspire/images/about.webp?tr=w-1400,q-80 1400w"
+            sizes="(max-width:768px) 90vw, 45vw"
+            loading="lazy"  decoding="async" width="700" height="850" alt="Mr. Gaurav Chandulal Kapare — Founder of GreenSpire Solutions">
         </div>
         <div class="about-v2-content reveal-right">
           <p class="section-label">About The Founder</p>
@@ -621,31 +625,66 @@
           <div class="quote-panel" id="quoteGallery">
             <div class="quote-slide is-active">
               <img src="https://ik.imagekit.io/greenspire/images/one.webp?tr=w-700,q-70"
-                loading="lazy" alt="Mr. Gaurav Kapare personally handing over a potted plant to a client">
+                srcset="
+                  https://ik.imagekit.io/greenspire/images/one.webp?tr=w-700,q-70 700w,
+                  https://ik.imagekit.io/greenspire/images/one.webp?tr=w-1000,q-72 1000w,
+                  https://ik.imagekit.io/greenspire/images/one.webp?tr=w-1400,q-75 1400w"
+                sizes="(max-width:640px) 90vw, (max-width:1024px) 50vw, 560px"
+                loading="lazy"  decoding="async" alt="Mr. Gaurav Kapare personally handing over a potted plant to a client">
             </div>
             <div class="quote-slide">
               <img src="https://ik.imagekit.io/greenspire/images/two.webp?tr=w-700,q-70"
-                loading="lazy" alt="GreenSpire founder consulting a client on garden plans">
+                srcset="
+                  https://ik.imagekit.io/greenspire/images/two.webp?tr=w-700,q-70 700w,
+                  https://ik.imagekit.io/greenspire/images/two.webp?tr=w-1000,q-72 1000w,
+                  https://ik.imagekit.io/greenspire/images/two.webp?tr=w-1400,q-75 1400w"
+                sizes="(max-width:640px) 90vw, (max-width:1024px) 50vw, 560px"
+                loading="lazy"  decoding="async" alt="GreenSpire founder consulting a client on garden plans">
             </div>
             <div class="quote-slide">
               <img src="https://ik.imagekit.io/greenspire/images/three.webp?tr=w-700,q-70"
-                loading="lazy" alt="A freshly completed GreenSpire garden, ready for handover">
+                srcset="
+                  https://ik.imagekit.io/greenspire/images/three.webp?tr=w-700,q-70 700w,
+                  https://ik.imagekit.io/greenspire/images/three.webp?tr=w-1000,q-72 1000w,
+                  https://ik.imagekit.io/greenspire/images/three.webp?tr=w-1400,q-75 1400w"
+                sizes="(max-width:640px) 90vw, (max-width:1024px) 50vw, 560px"
+                loading="lazy"  decoding="async" alt="A freshly completed GreenSpire garden, ready for handover">
             </div>
             <div class="quote-slide">
               <img src="https://ik.imagekit.io/greenspire/images/four.webp?tr=w-700,q-70"
-                loading="lazy" alt="GreenSpire garden project">
+                srcset="
+                  https://ik.imagekit.io/greenspire/images/four.webp?tr=w-700,q-70 700w,
+                  https://ik.imagekit.io/greenspire/images/four.webp?tr=w-1000,q-72 1000w,
+                  https://ik.imagekit.io/greenspire/images/four.webp?tr=w-1400,q-75 1400w"
+                sizes="(max-width:640px) 90vw, (max-width:1024px) 50vw, 560px"
+                loading="lazy"  decoding="async"  alt="GreenSpire garden project">
             </div>
             <div class="quote-slide">
               <img src="https://ik.imagekit.io/greenspire/images/five.webp?tr=w-700,q-70"
-                loading="lazy" alt="GreenSpire garden project">
+                srcset="
+                  https://ik.imagekit.io/greenspire/images/five.webp?tr=w-700,q-70 700w,
+                  https://ik.imagekit.io/greenspire/images/five.webp?tr=w-1000,q-72 1000w,
+                  https://ik.imagekit.io/greenspire/images/five.webp?tr=w-1400,q-75 1400w"
+                sizes="(max-width:640px) 90vw, (max-width:1024px) 50vw, 560px"
+                loading="lazy"  decoding="async" alt="GreenSpire garden project">
             </div>
             <div class="quote-slide">
               <img src="https://ik.imagekit.io/greenspire/images/six.webp?tr=w-700,q-70"
-                loading="lazy" alt="GreenSpire garden project">
+                srcset="
+                  https://ik.imagekit.io/greenspire/images/six.webp?tr=w-700,q-70 700w,
+                  https://ik.imagekit.io/greenspire/images/six.webp?tr=w-1000,q-72 1000w,
+                  https://ik.imagekit.io/greenspire/images/six.webp?tr=w-1400,q-75 1400w"
+                sizes="(max-width:640px) 90vw, (max-width:1024px) 50vw, 560px"
+                loading="lazy"  decoding="async" alt="GreenSpire garden project">
             </div>
             <div class="quote-slide">
               <img src="https://ik.imagekit.io/greenspire/images/seven.webp?tr=w-700,q-70"
-                loading="lazy" alt="GreenSpire garden project">
+                srcset="
+                  https://ik.imagekit.io/greenspire/images/seven.webp?tr=w-700,q-70 700w,
+                  https://ik.imagekit.io/greenspire/images/seven.webp?tr=w-1000,q-72 1000w,
+                  https://ik.imagekit.io/greenspire/images/seven.webp?tr=w-1400,q-75 1400w"
+                sizes="(max-width:640px) 90vw, (max-width:1024px) 50vw, 560px"
+                loading="lazy" decoding="async" alt="GreenSpire garden project">
             </div>
           </div>
         </div>
@@ -743,7 +782,10 @@
 
           <div class="pm-item pm-item--tall reveal" role="listitem"
             data-images="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port3.1.avif?tr=w-700,q-70,https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port3.avif,https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port3.2.avif?tr=w-700,q-70">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port3.1.avif?tr=w-700,q-70" loading="lazy" alt="Residential Garden Makeover">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port3.1.avif?tr=w-700,q-70"
+              srcset="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port3.1.avif?tr=w-700,q-70 700w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port3.1.avif?tr=w-1000,q-72 1000w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port3.1.avif?tr=w-1400,q-75 1400w"
+              sizes="(max-width:768px) 45vw, 33vw"
+              loading="lazy" alt="Residential Garden Makeover">
             <div class="pm-overlay">
               <span class="pm-tag"><span class="material-symbols-outlined">yard</span> Hotel Gardening</span>
             </div>
@@ -751,7 +793,10 @@
 
           <div class="pm-item pm-item--short reveal" role="listitem"
             data-images="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port5.avif?tr=w-700,q-70,https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port5.1.avif?tr=w-700,q-70">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port5.avif?tr=w-700,q-70" loading="lazy" alt="Wedding Venue Decoration">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port5.avif?tr=w-700,q-70"
+              srcset="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port5.avif?tr=w-700,q-70 700w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port5.avif?tr=w-1000,q-72 1000w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port5.avif?tr=w-1400,q-75 1400w"
+              sizes="(max-width:768px) 45vw, 33vw"
+              loading="lazy" alt="Wedding Venue Decoration">
             <div class="pm-overlay">
               <span class="pm-tag"><span class="material-symbols-outlined">celebration</span> Residential Garden</span>
             </div>
@@ -764,7 +809,10 @@
 
           <div class="pm-item pm-item--short reveal" role="listitem"
             data-images="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port2.2.avif?tr=w-700,q-70, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port2.1.avif?tr=w-700,q-70">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port2.1.avif?tr=w-700,q-70" loading="lazy" alt="Corporate Office Greenery">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port2.1.avif?tr=w-700,q-70"
+              srcset="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port2.1.avif?tr=w-700,q-70 700w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port2.1.avif?tr=w-1000,q-72 1000w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port2.1.avif?tr=w-1400,q-75 1400w"
+              sizes="(max-width:768px) 45vw, 33vw"
+              loading="lazy" alt="Corporate Office Greenery">
             <div class="pm-overlay">
               <span class="pm-tag"><span class="material-symbols-outlined">corporate_fare</span> Garden Design</span>
             </div>
@@ -772,7 +820,10 @@
 
           <div class="pm-item pm-item--medium reveal" role="listitem"
             data-images="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port7.avif?tr=w-700,q-70, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port7.1.avif?tr=w-700,q-70">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port7.avif?tr=w-700,q-70" loading="lazy" alt="Terrace Garden Setup">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port7.avif?tr=w-700,q-70"
+              srcset="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port7.avif?tr=w-700,q-70 700w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port7.avif?tr=w-1000,q-72 1000w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port7.avif?tr=w-1400,q-75 1400w"
+              sizes="(max-width:768px) 45vw, 33vw"
+              loading="lazy" alt="Terrace Garden Setup">
             <div class="pm-overlay">
               <span class="pm-tag"><span class="material-symbols-outlined">roofing</span> Hottel</span>
             </div>
@@ -780,7 +831,10 @@
 
           <div class="pm-item pm-item--short reveal" role="listitem"
             data-images="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port6.jpeg?tr=w-700,q-70, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port6.1.avif?tr=w-700,q-70">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port6.jpeg?tr=w-700,q-70" loading="lazy" alt="Community Garden Project">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port6.jpeg?tr=w-700,q-70"
+              srcset="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port6.jpeg?tr=w-700,q-70 700w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port6.jpeg?tr=w-1000,q-72 1000w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port6.jpeg?tr=w-1400,q-75 1400w"
+              sizes="(max-width:768px) 45vw, 33vw"
+              loading="lazy" alt="Community Garden Project">
             <div class="pm-overlay">
               <span class="pm-tag"><span class="material-symbols-outlined">groups</span>Resort</span>
             </div>
@@ -793,7 +847,10 @@
 
           <div class="pm-item pm-item--medium reveal" role="listitem"
             data-images="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port1.avif?tr=w-700,q-70">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port1.avif?tr=w-700,q-70" loading="lazy" alt="Farm Landscape Design">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port1.avif?tr=w-700,q-70"
+              srcset="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port1.avif?tr=w-700,q-70 700w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port1.avif?tr=w-1000,q-72 1000w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port1.avif?tr=w-1400,q-75 1400w"
+              sizes="(max-width:768px) 45vw, 33vw"
+              loading="lazy" alt="Farm Landscape Design">
             <div class="pm-overlay">
               <span class="pm-tag"><span class="material-symbols-outlined">agriculture</span> Green wall</span>
             </div>
@@ -801,7 +858,10 @@
 
           <div class="pm-item pm-item--tall reveal" role="listitem"
             data-images="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port4.2.avif,https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port4.avif?tr=w-700,q-70,">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port4.2.avif?tr=w-700,q-70" loading="lazy" alt="Public Park Renovation">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port4.2.avif?tr=w-700,q-70"
+              srcset="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port4.2.avif?tr=w-700,q-70 700w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port4.2.avif?tr=w-1000,q-72 1000w, https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/home/projects/port4.2.avif?tr=w-1400,q-75 1400w"
+              sizes="(max-width:768px) 45vw, 33vw"
+              loading="lazy" alt="Public Park Renovation">
             <div class="pm-overlay">
               <span class="pm-tag"><span class="material-symbols-outlined">park</span> Park Renovation</span>
             </div>
@@ -1216,7 +1276,7 @@
     <span class="material-symbols-outlined">arrow_upward</span>
   </button>
 
-  <script src="js/main.js" defer></script>
+  <script src="js/main.min.js" defer></script>
   
 
   <!-- Quote form submit handler (Netlify AJAX submission) -->

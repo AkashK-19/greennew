@@ -555,8 +555,37 @@
   const INTERVAL = 4000;
   let autoTimer = null;
 
+  // Slides after the first one ship with data-src/data-srcset instead of
+  // src/srcset so they don't compete with the LCP image for bandwidth on
+  // first paint. Swap them in once the page has finished loading (or, as a
+  // safety net, right before they're about to be shown).
+  function hydrateSlideImage(slide) {
+    const img = slide.querySelector('img[data-src]');
+    if (!img) return;
+    if (img.dataset.srcset) {
+      img.srcset = img.dataset.srcset;
+      img.removeAttribute('data-srcset');
+    }
+    img.src = img.dataset.src;
+    img.removeAttribute('data-src');
+  }
+
+  function hydrateAllSlides() {
+    slides.forEach(hydrateSlideImage);
+  }
+
+  if (document.readyState === 'complete') {
+    hydrateAllSlides();
+  } else {
+    window.addEventListener('load', hydrateAllSlides, { once: true });
+    // Fallback in case 'load' is delayed by something unrelated — don't make
+    // users wait indefinitely to see slide 2/3 if they linger on slide 1.
+    setTimeout(hydrateAllSlides, 4000);
+  }
+
   function showSlide(index) {
     current = (index + slides.length) % slides.length;
+    hydrateSlideImage(slides[current]); // safety net if 'load' hasn't fired yet
     slides.forEach((s, i) => s.classList.toggle('hero-slide--active', i === current));
     dots.forEach((d, i) => d.classList.toggle('slide-dot--active', i === current));
     // restart progress bar animation (rAF avoids forcing a synchronous layout reflow)
