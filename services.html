@@ -22,17 +22,20 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Fonts — global.css handles all body/heading fonts via @import.
-       Font Awesome removed (unused). Unbounded removed (hero deleted). -->
+       Font Awesome removed (unused). Trimmed: removed unused Playfair Display,
+       Unbounded reduced to weight 900 only. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Unbounded:wght@900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   
   <!-- Styles -->
   <link rel="stylesheet" href="style/global.css">
   <link rel="stylesheet" href="style/header.css">
-  <link rel="stylesheet" href="style/footer.css">
   <link rel="stylesheet" href="style/services.css">
+  <!-- footer.css loaded non-blocking: below the fold, doesn't affect FCP/LCP -->
+  <link rel="preload" href="style/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style/footer.css"></noscript>
 </head>
 
 <body class="no-announcement">
@@ -87,7 +90,7 @@
         <!-- Card 1 — Garden Design (photo, featured/wide) -->
         <div class="svc-card svc-card--photo svc-card--wide reveal" data-category="design">
           <div class="svc-card-img">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/garden.webp?tr=w-450,q-70" loading="eager" fetchpriority="high" decoding="async" alt="Custom garden design layout">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/garden.webp?tr=w-450,q-65" loading="eager" fetchpriority="high" decoding="async" alt="Custom garden design layout">
             <span class="svc-cat-tag">Design</span>
           </div>
           <div class="svc-card-body">
@@ -99,7 +102,7 @@
         <!-- Card 2 — Lawn Care (image + colorful body) -->
         <div class="svc-card svc-card--photo reveal" data-category="care">
           <div class="svc-card-img svc-card-img--med">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/Lawncare.webp?tr=w-450,q-70" loading="eager" decoding="async" alt="Lush lawn care and grass maintenance">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/Lawncare.webp?tr=w-450,q-65" loading="eager" decoding="async" alt="Lush lawn care and grass maintenance">
             <span class="svc-cat-tag">Care</span>
           </div>
           <div class="svc-card-body svc-card-body--colored svc-grad--lime">
@@ -111,7 +114,7 @@
         <!-- Card 3 — Planting & Landscaping (photo) -->
         <div class="svc-card svc-card--photo reveal" data-category="design">
           <div class="svc-card-img svc-card-img--med">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/planting%20and%20landscaping.webp?tr=w-450,q-70" loading="lazy" decoding="async" alt="Residential garden planting and landscaping">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/planting%20and%20landscaping.webp?tr=w-450,q-65" loading="lazy" decoding="async" alt="Residential garden planting and landscaping">
             <span class="svc-cat-tag">Design</span>
           </div>
           <div class="svc-card-body">
@@ -123,7 +126,7 @@
         <!-- Card 4 — Corporate Green Gifts (photo) -->
         <div class="svc-card svc-card--photo reveal" data-category="gifts">
           <div class="svc-card-img svc-card-img--med">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/gifting.webp?tr=w-450,q-70" loading="lazy" decoding="async" alt="Corporate green gifting hampers">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/gifting.webp?tr=w-450,q-65" loading="lazy" decoding="async" alt="Corporate green gifting hampers">
             <span class="svc-cat-tag">Gifting</span>
           </div>
           <div class="svc-card-body">
@@ -135,7 +138,7 @@
         <!-- Card 5 — Plant Supply (photo) -->
         <div class="svc-card svc-card--photo reveal" data-category="care">
           <div class="svc-card-img svc-card-img--med">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/maintainance.webp?tr=w-450,q-70" loading="lazy" decoding="async" alt="Plant supply and sourcing for gardens">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/maintainance.webp?tr=w-450,q-65" loading="lazy" decoding="async" alt="Plant supply and sourcing for gardens">
             <span class="svc-cat-tag">Care</span>
           </div>
           <div class="svc-card-body">
@@ -147,7 +150,7 @@
         <!-- Card 6 — Farm Landscape (photo, wide) — content swapped from Card 7 -->
         <div class="svc-card svc-card--photo reveal" data-category="design">
           <div class="svc-card-img svc-card-img--med">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/farmLandscape.webp?tr=w-450,q-70" loading="lazy" decoding="async" alt="Farm landscape design with orchards">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/farmLandscape.webp?tr=w-450,q-65" loading="lazy" decoding="async" alt="Farm landscape design with orchards">
             <span class="svc-cat-tag">Design</span>
           </div>
           <div class="svc-card-body svc-card-body--colored svc-grad--amber">
@@ -159,7 +162,7 @@
         <!-- Card 7 — Garden Development (photo, wide) — content swapped from Card 6 -->
         <div class="svc-card svc-card--photo svc-card--wide reveal" data-category="design">
           <div class="svc-card-img">
-            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/landexecution.webp?tr=w-450,q-70" loading="lazy" decoding="async" alt="Landscape execution and site preparation">
+            <img src="https://ik.imagekit.io/greenspire/GreenSpire%20Solutions%20/services/landexecution.webp?tr=w-450,q-65" loading="lazy" decoding="async" alt="Landscape execution and site preparation">
             <span class="svc-cat-tag">Design</span>
           </div>
           <div class="svc-card-body">
@@ -173,7 +176,7 @@
         <!-- Card 8 — Irrigation Systems (photo, wide — large card) -->
         <div class="svc-card svc-card--photo svc-card--wide reveal" data-category="care">
           <div class="svc-card-img">
-            <img src="https://ik.imagekit.io/greenspire/images/service2.webp?tr=w-450,q-70" loading="lazy" decoding="async" alt="Smart drip irrigation system installation">
+            <img src="https://ik.imagekit.io/greenspire/images/service2.webp?tr=w-450,q-65" loading="lazy" decoding="async" alt="Smart drip irrigation system installation">
             <span class="svc-cat-tag">Care</span>
           </div>
           <div class="svc-card-body">
@@ -185,7 +188,7 @@
         <!-- Card 9 — Consultancy Services (small) -->
         <div class="svc-card svc-card--photo reveal" data-category="gifts">
           <div class="svc-card-img svc-card-img--med">
-            <img src="https://ik.imagekit.io/greenspire/images/about.webp??tr=w-450,q-70" loading="lazy" decoding="async" alt="One-on-one horticulture consultancy session">
+            <img src="https://ik.imagekit.io/greenspire/images/about.webp?tr=w-450,q-65" loading="lazy" decoding="async" alt="One-on-one horticulture consultancy session">
             <span class="svc-cat-tag">Consulting</span>
           </div>
           <div class="svc-card-body svc-card-body--colored svc-grad--purple">
@@ -199,7 +202,7 @@
         <!-- Card 10 — Vertical Gardening Solutions (small) -->
         <div class="svc-card svc-card--photo reveal" data-category="design">
           <div class="svc-card-img svc-card-img--med">
-            <img src="https://ik.imagekit.io/greenspire/images/work5.webp?tr=w-450,q-70" loading="lazy" decoding="async" alt="Vertical garden and green wall installation">
+            <img src="https://ik.imagekit.io/greenspire/images/work5.webp?tr=w-450,q-65" loading="lazy" decoding="async" alt="Vertical garden and green wall installation">
             <span class="svc-cat-tag">Design</span>
           </div>
           <div class="svc-card-body">
@@ -211,7 +214,7 @@
         <!-- Card 11 — Fertilizer Application (small, colorful) -->
         <div class="svc-card svc-card--photo reveal" data-category="care">
           <div class="svc-card-img svc-card-img--med">
-            <img src="https://ik.imagekit.io/greenspire/images/two.webp?tr=w-450,q-70" loading="lazy" decoding="async" alt="Organic fertilizer application and soil testing">
+            <img src="https://ik.imagekit.io/greenspire/images/two.webp?tr=w-450,q-65" loading="lazy" decoding="async" alt="Organic fertilizer application and soil testing">
             <span class="svc-cat-tag">Care</span>
           </div>
           <div class="svc-card-body svc-card-body--colored svc-grad--teal">
@@ -223,7 +226,7 @@
         <!-- Card 12 — Green Infrastructure & Plantations (small) -->
         <div class="svc-card svc-card--photo reveal" data-category="design">
           <div class="svc-card-img svc-card-img--med">
-            <img src="https://ik.imagekit.io/greenspire/images/work4.webp?tr=w-450,q-70" loading="lazy" decoding="async" alt="Green infrastructure and large-scale plantations">
+            <img src="https://ik.imagekit.io/greenspire/images/work4.webp?tr=w-450,q-65" loading="lazy" decoding="async" alt="Green infrastructure and large-scale plantations">
             <span class="svc-cat-tag">Design</span>
           </div>
           <div class="svc-card-body">
@@ -236,7 +239,7 @@
         <!-- Card 13 — Specialized & Commercial Projects (full-width) -->
         <div class="svc-card svc-card--photo svc-card--full reveal" data-category="design">
           <div class="svc-card-img svc-card-img--panorama">
-            <img src="https://ik.imagekit.io/greenspire/images/work3.webp?tr=w-450,q-70" loading="lazy" decoding="async" alt="Specialized and commercial landscape projects">
+            <img src="https://ik.imagekit.io/greenspire/images/work3.webp?tr=w-450,q-65" loading="lazy" decoding="async" alt="Specialized and commercial landscape projects">
             <span class="svc-cat-tag">Design</span>
             <span class="svc-popular">Signature Service</span>
           </div>
@@ -326,10 +329,10 @@
         <!-- LEFT — two portrait photos side by side, ref-style -->
         <div class="eco-split-photos reveal-left">
           <div class="eco-photo eco-photo--back">
-            <img src="https://ik.imagekit.io/greenspire/images/work3.webp?updatedAt=1776152709834" alt="Sustainable farm landscape" loading="lazy">
+            <img src="https://ik.imagekit.io/greenspire/images/work3.webp?tr=w-500,q-65" alt="Sustainable farm landscape" loading="lazy">
           </div>
           <div class="eco-photo eco-photo--front">
-            <img src="https://ik.imagekit.io/greenspire/images/about.webp?updatedAt=1776152697371" alt="GreenSpire horticulture expert" loading="lazy">
+            <img src="https://ik.imagekit.io/greenspire/images/about.webp?tr=w-500,q-65" alt="GreenSpire horticulture expert" loading="lazy">
             <!-- floating experience badge -->
             <div class="eco-exp-badge">
               <strong>2+</strong>

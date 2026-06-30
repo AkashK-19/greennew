@@ -559,13 +559,14 @@
     current = (index + slides.length) % slides.length;
     slides.forEach((s, i) => s.classList.toggle('hero-slide--active', i === current));
     dots.forEach((d, i) => d.classList.toggle('slide-dot--active', i === current));
-    // restart progress bar animation
+    // restart progress bar animation (rAF avoids forcing a synchronous layout reflow)
     if (progressBar) {
       progressBar.style.transition = 'none';
       progressBar.style.width = '0%';
-      progressBar.offsetWidth;
-      progressBar.style.transition = `width ${INTERVAL}ms linear`;
-      progressBar.style.width = '100%';
+      requestAnimationFrame(() => {
+        progressBar.style.transition = `width ${INTERVAL}ms linear`;
+        progressBar.style.width = '100%';
+      });
     }
   }
 
@@ -780,6 +781,7 @@
   let cards = [];
   let dots = [];
   let startX = 0, startY = 0, isDragging = false, dragDeltaX = 0;
+  let cachedWrapperWidth = 0; // avoids reading offsetWidth (forced reflow) on every drag/slide
 
   function buildDots(count) {
     dotsContainer.innerHTML = '';
@@ -806,8 +808,7 @@
 
   function getOffset(index) {
     if (!cards[index]) return 0;
-    const wrapper = track.parentElement;
-    return index * wrapper.offsetWidth;
+    return index * cachedWrapperWidth;
   }
 
   function goTo(index, instant) {
@@ -833,7 +834,8 @@
       return;
     }
     track.style.animation = 'none';
-    const wrapperWidth = track.parentElement.offsetWidth;
+    cachedWrapperWidth = track.parentElement.offsetWidth; // single read, reused by getOffset()
+    const wrapperWidth = cachedWrapperWidth;
     cards.forEach(c => {
       c.style.width = (wrapperWidth - 32) + 'px';
       c.style.minWidth = (wrapperWidth - 32) + 'px';
