@@ -34,7 +34,11 @@
   };
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  // Deferred via rAF: reading window.scrollY here during initial script
+  // execution can force the browser to synchronously flush pending layout
+  // (e.g. while CSS/fonts are still resolving), which is expensive on slow
+  // connections. rAF lets first paint happen before this read runs.
+  requestAnimationFrame(onScroll);
 
   // Active link highlighting
   const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
@@ -413,16 +417,37 @@
     flow.insertBefore(svg, flow.firstChild);
   }
 
-  window.addEventListener('DOMContentLoaded', buildCurve);
-  window.addEventListener('load', buildCurve);
+  // Single guarded call — previously fired on DOMContentLoaded + load + an
+  // immediate readyState check, causing buildCurve()'s getBoundingClientRect()
+  // reads to force layout up to 3x during initial page render (measured at
+  // 1000ms+ of forced reflow on slow connections). requestIdleCallback lets
+  // the browser finish first paint before this non-critical decorative SVG
+  // curve does its layout reads; rAF fallback covers Safari.
+  let curveBuilt = false;
+  function buildCurveOnce() {
+    if (curveBuilt) return;
+    curveBuilt = true;
+    buildCurve();
+  }
+  function scheduleBuildCurve() {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(buildCurveOnce, { timeout: 1000 });
+    } else {
+      requestAnimationFrame(() => requestAnimationFrame(buildCurveOnce));
+    }
+  }
+
+  if (document.readyState === 'complete') {
+    scheduleBuildCurve();
+  } else {
+    window.addEventListener('load', scheduleBuildCurve, { once: true });
+  }
+
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(buildCurve, 150);
+    resizeTimer = setTimeout(() => { curveBuilt = false; buildCurveOnce(); }, 150);
   }, { passive: true });
-
-  // Also run immediately in case DOM is already ready
-  if (document.readyState !== 'loading') buildCurve();
 })();
 
 /* ═══════════════════════════════════════════
